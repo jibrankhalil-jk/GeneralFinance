@@ -1,0 +1,65 @@
+{% load static %}
+<style>
+    #{{ active }}   {      
+    padding:0.6rem;
+    background-color:#7D6F;
+    border-radius: 8px;
+    color:black;
+    }
+    .nav-link{
+    color:white;
+    }
+ </style>
+<nav class="navbar align-items-start sidebar  accordion p-2" style="background-color: #3E3C50;">
+        <div class="container-fluid d-flex flex-column p-0">
+          <a
+            class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
+            href="{% url  'home' %}"
+            ><div class="sidebar-brand- icon rotate-n-15"></div>
+            <div class="sidebar-brand-text mx-3"  >
+              <span style="color:  #ffff; ">Genfin</span>
+            </div></a
+          >
+          <hr class="sidebar-divider my-0"  />
+          <ul class="navbar-nav text-light" id="accordionSidebar">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url  'home' %}" id="home"
+                ><i class="fa-solid fa-house"></i></i><span>Home</span></a
+              >
+            </li>
+            <li class="nav-item"  >
+              <a class="nav-link" href="{% url  'home/entry' %}" id="entry"
+                ><i class="fa-solid fa-shop"></i><span>Entry</span></a
+              >
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link" href="{% url  'home/inventory' %}" id="inventory"
+                ><i class="fa-solid fa-shop"></i><span>Inventory</span></a
+              >
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link" href="{% url  'home/khata' %}" id="khata"
+                ><i class="fa-solid fa-landmark"></i><span>Khata</span></a
+              >
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link" href="{% url  'home/analysis' %}" id="analysis"
+                ><i class="fa-solid fa-chart-line"></i><span>Analysis</span></a
+              >
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link  " href="{% url  'home/settings' %}" id="settings"
+                > <i class="fa-solid fa-gear"></i><span>Settings</span></a
+              >
+            </li>
+           
+          </ul>
+          <div class="text-center d-none d-md-inline">
+            <button
+              class="btn rounded-circle border-0"
+              id="sidebarToggle"
+              type="button"
+            ></button>
+          </div>
+        </div>
+      </nav>

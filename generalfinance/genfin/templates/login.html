@@ -1,0 +1,87 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title%}Login - Genfin{% endblock%} 
+{% block body%}
+<div class="container .justify-content-center">
+  <div class="row justify-content-center" style="min-height: 100%">
+    <div class="col-md-9 col-lg-12 col-xl-10">
+      <div
+        class="card shadow-lg o-hidden border-0 my-5"
+        style="height: 550px; border-radius: 18px"
+      >
+        <div class="card-body p-0">
+          <div class="row" style="height: 550px">
+            <div class="col-lg-6 justify-content-center">
+              <div class="p-5" style="min-height: 550px">
+                <div class="text-center">
+                  <h4
+                    class="text-dark"
+                    style="font-weight: bold; margin-bottom: 4px"
+                  >
+                    Sign In
+                  </h4>
+                </div>
+                <p
+                  style="
+                    text-align: center;
+                    margin-bottom: 46px;
+                    color: var(--bs-dark-border-subtle);
+                  "
+                >
+                  Sign in to stay connected.
+                </p>
+                <form class="user" method="post">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <input
+                      class="form-control form-control-user"
+                      type="email"
+                      id="exampleInputEmail"
+                      aria-describedby="emailHelp"
+                      placeholder="Enter Email Address..."
+                      name="email"
+                      style="border-radius: 10px"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      class="form-control form-control-user"
+                      type="password"
+                      id="exampleInputPassword"
+                      placeholder="Password"
+                      name="password"
+                      style="border-radius: 10px"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <div class="custom-checkbox small"></div>
+                  </div>
+                  <a href="home"
+                    ><button
+                      class="btn btn-primary d-block btn-user w-100"
+                      type="submit"
+                      style="margin-top: 36px; border-radius: 10px"
+                    >
+                      Login
+                    </button></a>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-flex text-center">
+              <div
+                class="flex-grow-1 bg-login-image"
+                style="
+                  background: url('{% static "assets/img/illustrations/login_side.svg" %}') center / cover no-repeat;
+                "
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock%} 
+{% block scripts %}
+<script src="{% static 'assets/js/login_script.js' %}"></script>
+{% endblock%}
