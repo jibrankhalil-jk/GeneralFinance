@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from datetime import datetime
+from django.utils.timezone import datetime
 
 
 class Customer(models.Model):
@@ -10,7 +10,7 @@ class Customer(models.Model):
     customer_name =  models.CharField(max_length=50)
     phone_number =  models.IntegerField()
     adress =  models.TextField(max_length=500)
-    last_login =  models.DateTimeField(default=datetime.now())
+    last_login =  models.DateTimeField(default=datetime.now)
     status =  models.BooleanField(default=True)
     loan_status =   models.BooleanField(default=False)
 
@@ -34,7 +34,7 @@ class Admin(models.Model):
     admin_name =  models.CharField(max_length=50)
     role = models.CharField(max_length=1, choices=ADMIN_ROLES)
     phone_number =  models.IntegerField()
-    last_login =  models.DateTimeField(default=datetime.now())
+    last_login =  models.DateTimeField(default=datetime.now)
     status =  models.BooleanField(default=True)
 
 @receiver(post_save, sender=User)
