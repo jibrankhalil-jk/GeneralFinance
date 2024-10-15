@@ -1,10 +1,10 @@
 from django.db import models 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.timezone import datetime
-
-
+ 
+ 
 class Customer(models.Model):
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     customer_name =  models.CharField(max_length=50)
@@ -14,16 +14,6 @@ class Customer(models.Model):
     status =  models.BooleanField(default=True)
     loan_status =   models.BooleanField(default=False)
 
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Customer.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
-    
- 
 class Admin(models.Model):
     ADMIN_ROLES = {
         "O": "Owner",
@@ -36,18 +26,6 @@ class Admin(models.Model):
     phone_number =  models.IntegerField()
     last_login =  models.DateTimeField(default=datetime.now)
     status =  models.BooleanField(default=True)
-
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Customer.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
-    
-
-# remaining model
 
 class Categories(models.Model): 
     categories_id = models.BigAutoField(primary_key=True)

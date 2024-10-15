@@ -2,6 +2,8 @@
 {% load static %}
 {% block title%}Login - Genfin{% endblock%} 
 {% block body%}
+
+
 <div class="container .justify-content-center">
   <div class="row justify-content-center" style="min-height: 100%">
     <div class="col-md-9 col-lg-12 col-xl-10">
@@ -35,11 +37,11 @@
                   <div class="mb-3">
                     <input
                       class="form-control form-control-user"
-                      type="email"
-                      id="exampleInputEmail"
-                      aria-describedby="emailHelp"
-                      placeholder="Enter Email Address..."
-                      name="email"
+                      type="username"
+                      id="exampleInputUserName"
+                      aria-describedby="usernameHelp"
+                      placeholder="Enter User Name..."
+                      name="username"
                       style="border-radius: 10px"
                     />
                   </div>
@@ -81,7 +83,31 @@
     </div>
   </div>
 </div>
+
+{% if messages %}
+{% for message in messages %}
+ 
+<div class="alert alert-danger alert-dismissible fade show m-4" role="alert">
+  <strong>Login Failed</strong> {{message}}.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<script>
+$(document).ready(function() {
+$(".alert").hide(); 
+$(".alert").fadeTo(2000, 500).slideUp(500, function() {
+$(".alert").slideUp(500);
+});
+});
+</script>
+ 
+{% endfor %}
+{% endif %}
 {% endblock%} 
 {% block scripts %}
 <script src="{% static 'assets/js/login_script.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 {% endblock%}
