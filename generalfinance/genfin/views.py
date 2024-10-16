@@ -12,6 +12,8 @@ def Index(request):
     else:
         return redirect('home')
  
+
+
 def Login(request): 
     if request.user.is_authenticated:
         return redirect('home')
@@ -21,21 +23,23 @@ def Login(request):
             password = request.POST["password"]
             if len(userName) != 0 and len(password) != 0:
                 if User.objects.filter(username=userName).exists():
-                        user = authenticate(request, username=userName, password=password)
-                        if user is not None:
-                            try:
-                                print('00-00'*20)
-                                login(request, user)
-                                print('00-00'*20)
-                                return redirect('home') 
-                            except Exception as e:
-                                messages.error(request, '[',e,']')
-                                # messages.error(request, 'Invalid email or password')
-                                return render(request, 'registration/login.html')
-                        else:
+                    user = authenticate(request, username=userName, password=password)
+                    if user is not None:
+                        try:
+                            login(request, user)
+                            return redirect('home') 
+                        except Exception as e:
+                            messages.error(request, f'Error: {e}')
                             return render(request, 'registration/login.html')
+                    else:
+                        messages.error(request, 'Invalid username or password')
+                        return render(request, 'registration/login.html')
                 else:
-                    messages.error(request, 'User dose not exist')
+                    messages.error(request, 'User does not exist')
+                    return render(request, 'registration/login.html')
+            else:
+                messages.error(request, 'Username and password cannot be empty')
+                return render(request, 'registration/login.html')
     return render(request, 'registration/login.html')
 
 def Register(request): 
@@ -59,7 +63,13 @@ def Logout(request):
 
 @login_required
 def Home(request):
-    return render(request,'home/home.html',context={'active':'home'})
+    chart_data = [
+        {"label": "Direct", "value": 50, "color": "text-primary"},
+        {"label": "Social", "value": 30, "color": "text-success"},
+        {"label": "Referral", "value": 15, "color": "text-info"}
+    ]
+    current_user = request.user
+    return render(request,'home/home.html',context={'active':'home','username':current_user,'chart_data':chart_data})
 
 @login_required
 def Entry(request):
@@ -81,4 +91,5 @@ def Analysis(request):
 def Settings(request):
     return render(request,'home/settings.html',context={'active':'settings'})
 
-
+def custom_404_view(request):
+    return render(request,'404.html')
