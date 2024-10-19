@@ -1,76 +1,77 @@
-from django.db import models 
-from django.contrib.auth.models import User,AbstractUser
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+from django.db import models
+from django.contrib.auth.models import User, AbstractUser
+from django.db.models.signals import post_save 
 from django.utils.timezone import datetime
- 
- 
-class Customer(models.Model):
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
-    customer_name =  models.CharField(max_length=50)
-    phone_number =  models.IntegerField()
-    adress =  models.TextField(max_length=500)
-    last_login =  models.DateTimeField(default=datetime.now)
-    status =  models.BooleanField(default=True)
-    loan_status =   models.BooleanField(default=False)
+
+
+class Transactions(models.Model):
+    transaction_type = models.CharField(max_length=30, default="Cash")
+    transaction_date = models.DateField(default=datetime.now)
+    total_amount = models.IntegerField(default=0)
+    status = models.BooleanField(default=True)
 
 class Admin(models.Model):
     ADMIN_ROLES = {
         "O": "Owner",
         "A": "Admin",
-        "S": "SalesPerson",  
-    }
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
-    admin_name =  models.CharField(max_length=50)
-    role = models.CharField(max_length=1, choices=ADMIN_ROLES)
-    phone_number =  models.IntegerField()
-    last_login =  models.DateTimeField(default=datetime.now)
-    status =  models.BooleanField(default=True)
+        "S": "SalesPerson",
+    } 
+    user_id = models.OneToOneField(User, on_delete=models.CASCADE )
+    admin_name = models.CharField(max_length=50)
+    role = models.CharField(max_length=1, choices=ADMIN_ROLES, default="S")
+    phone_number = models.BigIntegerField()
+    last_login = models.DateTimeField(default=datetime.now)
+    status = models.BooleanField(default=True)
+
+class Customer(models.Model):  
+    user_id = models.OneToOneField(User, on_delete=models.CASCADE )
+    customer_name = models.CharField(max_length=50)
+    phone_number = models.BigIntegerField()
+    address = models.TextField(max_length=500)
+    last_login = models.DateTimeField(default=datetime.now)
+    status = models.BooleanField(default=True)
+    loan_status = models.BooleanField(default=False)
+
 
 class Categories(models.Model): 
-    categories_id = models.BigAutoField(primary_key=True)
     categorie_name = models.CharField(max_length=30)
 
 class Product(models.Model): 
-    product_id = models.BigAutoField(primary_key=True)
+    categorie_id = models.ForeignKey(Categories, on_delete=models.CASCADE)
     product_name = models.CharField(max_length=30)
-    categorie_id = models.ForeignKey(Categories,on_delete=models.CASCADE)
-    price = models.IntegerField()
-    stock_quantity = models.IntegerField() 
+    price = models.IntegerField(default=0)
+    stock_quantity = models.IntegerField(default=0)
     bar_code = models.CharField(max_length=100)
-    image = models.ImageField(upload_to="products/images/",blank=True,null=True)
-    quality = models.IntegerField()
-    
-class Transactions(models.Model): 
-    transactions_id = models.BigAutoField(primary_key=True)
-    transaction_type = models.CharField(max_length=30)
-    transaction_date = models.DateField()
-    total_amount = models.IntegerField()
-     
-    
-class Sales(models.Model): 
-    sales_id = models.BigAutoField(primary_key=True)
-    sales_manager_id = models.ForeignKey(Admin,on_delete=models.CASCADE)
-    date_time = models.DateTimeField()
-    total_amount = models.IntegerField()
-    # items = models.
-    user_id = models.ForeignKey(User ,on_delete=models.CASCADE)
-    tid = models.ForeignKey(Transactions,on_delete=models.CASCADE)
-    
-class Sales(models.Model): 
-    sales_manager_id = models.ForeignKey(Admin,on_delete=models.CASCADE)
-    date_time = models.DateTimeField()
-    total_amount = models.IntegerField()
-    # items = models.
-    user_id = models.ForeignKey(User ,on_delete=models.CASCADE)
-    tid = models.ForeignKey(Transactions,on_delete=models.CASCADE)
- 
-class Item(models.Model): 
-    product_id = models.ForeignKey(Product,on_delete=models.CASCADE)
-    quantity = models.IntegerField()
-    subtotal = models.IntegerField()
-    sales_id = models.ForeignKey(Sales,on_delete=models.CASCADE)
-    
-    
+    image = models.ImageField(
+        upload_to="products/images/", blank=True, null=True)
+    quality = models.IntegerField(default=1)
 
+
+class Loan(models.Model): 
+    customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    amount = models.IntegerField(default=0)
+    previous_amount = models.IntegerField(default=0)
+
+class Sales(models.Model): 
+    sales_manager_id = models.ForeignKey(Admin, on_delete=models.CASCADE)
+    date_time = models.DateTimeField(default=datetime.now)
+    total_amount = models.IntegerField(default=0)
+    items = models.ManyToManyField(Product)
+    user_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    transactions_id = models.ForeignKey(Transactions, on_delete=models.CASCADE)
+
+
+class Item(models.Model):  
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    subtotal = models.IntegerField(default=0)
+
+
+class LoanPayement(models.Model): 
+    sales_manager_id = models.ForeignKey(Admin, on_delete=models.CASCADE)
+    date_time = models.DateTimeField(default=datetime.now)
+    total_amount = models.IntegerField(default=0)
+    payement_type = models.CharField(max_length=30, default="Cash")
+    user_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    
 

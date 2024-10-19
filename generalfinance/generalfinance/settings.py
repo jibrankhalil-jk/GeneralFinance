@@ -1,5 +1,6 @@
 from pathlib import Path
-import os  
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,12 +10,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9%+buiq7c2y4_4b-8$5z#^j^mug9ipa#lg(iy$j#615@_slduh'
+SECRET_KEY = 'django-insecure-b3ct=2+4e08048v$dg)51!1c=w&)h@gg$ozh=b@)0c6#&)bq_e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -64,15 +65,16 @@ WSGI_APPLICATION = 'generalfinance.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-        'default': {
+   'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'genfin',
+        'NAME': 'generalfinance',
         'USER': 'root',
         'PASSWORD': 'khalil02',
-        'HOST':'localhost',
-        'PORT':'3306',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
 
 
 # Password validation
@@ -118,6 +120,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = 'login'
-LOGIN_URL = 'login' 
+LOGIN_URL = 'login'
 
 ERROR_404_TEMPLATE_NAME = 'erro_404.html'

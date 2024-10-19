@@ -1,9 +1,13 @@
-{% extends 'home/dashboard_base.html' %}  
-
-{% block title%}Entry - Genfin{% endblock%} 
-
-{% block body%}
- 
- 
- 
-{% endblock%} 
+{% extends 'home/components/dashboard_base.html' %} {% block title%}Entry - Genfin{% endblock%}
+{%block body%}
+<div class="container-fluid w-12">
+  <form method="post" enctfype="multipart/form-data" class="form">
+    <!-- {% if form.instance.pk %} 
+    {% csrf_token %} {{ form.as_p}} 
+    {% else %} -->
+     {% csrf_token %} {{ form.as_p}} 
+<!-- {% endif %} -->
+    <button class="btn btn-warning" type="submit">Submit</button>
+  </form>
+</div>
+{% endblock%}

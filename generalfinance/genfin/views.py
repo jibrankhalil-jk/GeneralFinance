@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
-from django.http import HttpRequest
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.auth.models import User
+from . import forms,models
 
 
 def Index(request):
@@ -12,6 +12,14 @@ def Index(request):
     else:
         return redirect('home')
  
+def createUser(request):
+    username = 'Jibran'
+    user = User.objects.create(username=username,email=f"{username}@gmail.com")
+    user.set_password(username)
+    user.save()
+    customer = models.Customer.objects.create(user_id=user ,customer_name =username,phone_number =3001234567,address = "Lahore, Pakistan")
+    customer.save()
+    return render(request,'home/home.html')
 
 
 def Login(request): 
@@ -73,7 +81,8 @@ def Home(request):
 
 @login_required
 def Entry(request):
-    return render(request,'home/entry.html',context={'active':'entry'}) 
+    sales_form = forms.SalesEntryForm() 
+    return render(request,'home/entry.html',context={'active':'entry','form':sales_form}) 
 
 @login_required
 def Inventory(request):
