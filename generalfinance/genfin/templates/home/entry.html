@@ -1,13 +1,75 @@
-{% extends 'home/components/dashboard_base.html' %} {% block title%}Entry - Genfin{% endblock%}
-{%block body%}
-<div class="container-fluid w-12">
-  <form method="post" enctfype="multipart/form-data" class="form">
-    <!-- {% if form.instance.pk %} 
-    {% csrf_token %} {{ form.as_p}} 
-    {% else %} -->
-     {% csrf_token %} {{ form.as_p}} 
-<!-- {% endif %} -->
-    <button class="btn btn-warning" type="submit">Submit</button>
-  </form>
+{% extends 'home/components/dashboard_base.html' %} {% load static %} {% block title %}Entry -
+Genfin{% endblock %} {%block body %}
+<script>
+var user_obj = 
+</script>
+<div class="row mx-4">
+  <h1>Entry</h1>
+  <div class="row row-xl-4">
+    <div class="col-lg-6">
+      <input
+        type="text"
+        id="item_name"
+        placeholder="Search Item"
+        class="mb-3 px-4 py-2 rounded-3 border border-0"
+      />
+      <ul class="list-group" id="searched_items_List"></ul>
+    </div>
+    <div class="col-lg-4">
+      <input
+        type="text"
+        id="name"
+        placeholder="Type a username"
+        class="mb-3 px-4 py-2 rounded-3 border border-0"
+      />
+      <ul class="list-group" id="userList"></ul>
+      <div class="card" style="background-color: #3e3c50; border: none">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h6 class="text-primary fw-bold m-0">User Info</h6>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Name :</li>
+          <li class="list-group-item">Number :</li>
+          <li class="list-group-item">... :</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
-{% endblock%}
+
+<script>
+  $(document).ready(function () {
+    $("#name").on("input", function () {
+      var query = $(this).val();
+      if (query.length > 0) {
+        $.ajax({
+          url: "{% url 'get_user' %}?username=" + query,
+          success: function (response) {
+            var userList = $("#userList");
+            userList.empty();
+            if (response.data.length > 0) {
+              response.data.forEach(function (username) {
+                userList.append('<li class="list-group-item">' + username + "</li>");
+              });
+            } else {
+              userList.append('<div class="user-item">No users found</div>');
+              userList.empty();
+            }
+          },
+          error: function (xhr, status, error) {
+            console.log("Error: " + error);
+          },
+        });
+      } else {
+        $("#userList").empty();
+      }
+    });
+
+    $("#entryForm").on("submit", function (event) {
+      event.preventDefault(); // Prevent the form from submitting via the browser
+      console.log("Form submit intercepted");
+    });
+  });
+</script>
+
+{% endblock %}
