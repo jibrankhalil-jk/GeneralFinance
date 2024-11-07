@@ -130,3 +130,7 @@ def get_user(request):
         customer_usernames = []
 
     return JsonResponse({"data": customer_usernames})
+
+
+def unknown(request):
+    return render(request, '404.html')
