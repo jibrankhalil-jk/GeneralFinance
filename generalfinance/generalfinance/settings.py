@@ -66,12 +66,17 @@ WSGI_APPLICATION = 'generalfinance.wsgi.application'
 
 DATABASES = {
   'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'mysql-3cc1af6b-raqeebraees23-b16f.j.aivencloud.com',
-        'NAME': 'defaultdb',
-        'USER': 'avnadmin',
-        'PASSWORD': 'AVNS_qZ_IrVBflDYT3-jqS6N',
-        'PORT': '22562',
+      
+       'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+      
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'HOST': 'mysql-3cc1af6b-raqeebraees23-b16f.j.aivencloud.com',
+        # 'NAME': 'defaultdb',
+        # 'USER': 'avnadmin', # 'ENGINE': 'django.db.backends.mysql',
+        # 'HOST': 'mysql-3cc1af6b-raqeebraees23-b16f.j.aivencloud.com',
+        # 'PASSWORD': 'AVNS_qZ_IrVBflDYT3-jqS6N',
+        # 'PORT': '22562',
          
         # 'HOST': 'localhost',
         # 'NAME': 'generalfinance',

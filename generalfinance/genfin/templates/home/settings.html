@@ -1,9 +1,75 @@
-{% extends 'home/components/dashboard_base.html' %}  
+{% extends 'home/components/dashboard_base.html' %} 
+{% block title %}Settings - Genfin{% endblock %} 
+{% block body %}
 
-{% block title%}Settings - Genfin{% endblock%} 
+<div class="container">
+  <div class="row">
+    <h1 style="color: white">Settings</h1>
+  </div>
 
-{% block body%}
- 
- 
- 
-{% endblock%} 
+  <!-- Top flex item with extra space -->
+  <div class="d-flex bg-gray-900 p-md-3 rounded-3 mb-4">
+    <div class="flex-shrink-0">
+      <img src="..." alt="..." />
+    </div>
+    <div class="flex-grow-1 ms-3 text-white">
+      Dark Theme
+    </div>
+    <div class="flex-shrink-0">
+        <img src="..." alt="..." />
+      </div>
+  </div>
+
+  <!-- Bottom flex items with lines between them -->
+  <div class="d-flex flex-column gap-1 ">
+    <div class="d-flex bg-gray-900 p-md-3 rounded-top-3">
+      <div class="flex-shrink-0">
+        <img src="..." alt="..." />
+      </div>
+      <div class="flex-grow-1 ms-3 text-white">
+        Back Up
+      </div>
+      <div class="flex-shrink-0">
+        <img src="..." alt="..." />
+      </div>
+    </div>
+    <div class="d-flex bg-gray-900 p-md-3">
+      <div class="flex-shrink-0">
+        <img src="..." alt="..." />
+      </div>
+      <div class="flex-grow-1 ms-3 text-white">
+        Status
+      </div>
+      <div class="flex-shrink-0">
+        <img src="..." alt="..." />
+      </div>
+    </div>
+    <div class="d-flex bg-gray-900 p-md-3 rounded-bottom-3">
+      <div class="flex-shrink-0">
+        <img src="..." alt="..." />
+      </div>
+      <div class="flex-grow-1 ms-3 text-white">
+        Help
+      </div>
+      <div class="flex-shrink-0">
+        <img src="..." alt="..." />
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column gap-1 mt-4">
+    <div class="d-flex bg-gray-900 p-md-3 rounded-2">
+      <div class="flex-shrink-0">
+        <img src="..." alt="..." />
+      </div>
+      <div class="flex-grow-1 ms-3 text-white">
+        LogOut
+      </div>
+      <div class="flex-shrink-0">
+        <img src="..." alt="..." />
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

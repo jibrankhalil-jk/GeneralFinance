@@ -17,4 +17,5 @@ urlpatterns = [
     path('home/khata', views.Khata,name='home/khata'),
     path('home/analysis', views.Analysis,name='home/analysis'),
     path('home/settings', views.Settings,name='home/settings'), 
+    
 ] 
