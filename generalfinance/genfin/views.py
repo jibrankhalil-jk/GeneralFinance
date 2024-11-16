@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from . import forms, models 
 from django.http import JsonResponse
+from .models import User
+from django.utils.crypto import get_random_string
 
 
 def Index(request):
@@ -69,6 +71,20 @@ def Register(request):
         return redirect('home')
     return render(request, 'registration/registration.html')
 
+
+def add_user(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        number = request.POST.get('number')
+        address = request.POST.get('address')
+        username = get_random_string(10)
+
+        # Create the user
+        user = User.objects.create_user(username,number,address)
+        user.first_name = name
+        user.save()
+        return JsonResponse({'success': True, 'user': {'name': name, 'number': number,'address': address}})
+    return JsonResponse({'success': False})
 
 @login_required
 def Logout(request):

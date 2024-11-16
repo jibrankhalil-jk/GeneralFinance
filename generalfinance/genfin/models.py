@@ -75,3 +75,4 @@ class LoanPayement(models.Model):
     user_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
     
 
+
