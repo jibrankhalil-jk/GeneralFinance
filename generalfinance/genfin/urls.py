@@ -5,8 +5,15 @@ urlpatterns = [
     path('', views.Index,name='index'),    
     
     path('get-user/', views.get_user, name='get_user'),
-    # path('entry/', views.entry_view, name='entry_view'),
-
+    path('get_user_info/', views.get_user_info, name='get_user_info'),
+    
+    path('get-product/', views.get_product, name='get_product'),
+    path('get_product_info/', views.get_product_info, name='get_product_info'),
+    
+    path('order-entry/', views.order_entry, name='order_entry'),
+    
+    # path('user/', views.createUser, name='user'),
+    # path('add_user', views.add_user, name='add_user'),
 
 
     path('login', views.Login,name='login'),

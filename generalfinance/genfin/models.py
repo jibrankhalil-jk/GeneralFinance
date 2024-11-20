@@ -34,18 +34,17 @@ class Customer(models.Model):
 
 
 class Categories(models.Model): 
-    categorie_name = models.CharField(max_length=30)
+    categorie_name = models.CharField(max_length=200)
 
 class Product(models.Model): 
     categorie_id = models.ForeignKey(Categories, on_delete=models.CASCADE)
-    product_name = models.CharField(max_length=30)
+    product_name = models.CharField(max_length=500)
     price = models.IntegerField(default=0)
     stock_quantity = models.IntegerField(default=0)
     bar_code = models.CharField(max_length=100)
     image = models.ImageField(
         upload_to="products/images/", blank=True, null=True)
     quality = models.IntegerField(default=1)
-
 
 class Loan(models.Model): 
     customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
@@ -56,15 +55,10 @@ class Sales(models.Model):
     sales_manager_id = models.ForeignKey(Admin, on_delete=models.CASCADE)
     date_time = models.DateTimeField(default=datetime.now)
     total_amount = models.IntegerField(default=0)
-    items = models.ManyToManyField(Product)
+    items = models.JSONField(default=list)
     user_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
     transactions_id = models.ForeignKey(Transactions, on_delete=models.CASCADE)
 
-
-class Item(models.Model):  
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=0)
-    subtotal = models.IntegerField(default=0)
 
 
 class LoanPayement(models.Model): 

@@ -1,11 +1,9 @@
 {% extends 'home/components/dashboard_base.html' %} {% load static %} {% block title %}Entry -
 Genfin{% endblock %} {%block body %}
-<script>
-var user_obj = 
-</script>
 <div class="row mx-4">
   <h1>Entry</h1>
   <div class="row row-xl-4">
+    <!-- Left Column -->
     <div class="col-lg-6">
       <input
         type="text"
@@ -13,8 +11,39 @@ var user_obj =
         placeholder="Search Item"
         class="mb-3 px-4 py-2 rounded-3 border border-0"
       />
-      <ul class="list-group" id="searched_items_List"></ul>
+      <ul
+        class="list-group position-absolute bg-white shadow-lg"
+        id="searched_items_List"
+        style="z-index: 1000; width: 40vh"
+      ></ul>
+
+      <div class="col-lg-">
+        <div class="card" style="background-color: #3e3c50; border: none">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h6 class="text-primary fw-bold m-0">Items</h6>
+          </div>
+          <div class="overflow-auto" style="height: 60vh; background-color: #3e3c50">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Item</th>
+                  <th scope="col">Qty</th>
+                  <th scope="col">Qly</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Remove</th>
+                </tr>
+              </thead>
+              <tbody id="items_table">
+                <!-- item here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Right Column  -->
     <div class="col-lg-4">
       <input
         type="text"
@@ -22,32 +51,67 @@ var user_obj =
         placeholder="Type a username"
         class="mb-3 px-4 py-2 rounded-3 border border-0"
       />
-      <ul class="list-group" id="userList"></ul>
-      <div class="card" style="background-color: #3e3c50; border: none">
+      <ul
+        class="list-group position-absolute bg-white shadow-lg"
+        id="userList"
+        style="z-index: 1000; width: 40vh"
+      ></ul>
+
+      <div class="card mt-3" style="background-color: #3e3c50; border: none">
         <div class="card-header d-flex justify-content-between align-items-center">
           <h6 class="text-primary fw-bold m-0">User Info</h6>
         </div>
-        <ul class="list-group list-group-flush">
+        <ul class="currentuserInfo list-group list-group-flush" id="currentuserInfo">
           <li class="list-group-item">Name :</li>
           <li class="list-group-item">Number :</li>
-          <li class="list-group-item">... :</li>
         </ul>
+      </div>
+
+      <div class="card mt-3" style="background-color: #3e3c50; border: none">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h6 class="text-primary fw-bold m-0">Details</h6>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" id="totalItemslabel">Items :</li>
+          <li class="list-group-item">Discount: 0</li>
+          <li class="list-group-item container">
+            Total :
+            <h3>Rs <span id="totalPrice" style="color: greenyellow"></span></h3>
+          </li>
+        </ul>
+      </div>
+      <div class="container orderActions">
+        <button id="cancelOrder" type="button" class="btn btn-danger mt-4 px-5 py-2">Cancel</button>
+        <button id="placeOrder" type="button" class="btn btn-success mt-4 px-5 py-2">Submit</button>
       </div>
     </div>
   </div>
 </div>
 
+<div
+  style="position: absolute; top: 0; left: 30vh; right: 10vh; display: none"
+  class="alert alert-danger alert-dismissible fade show m-4"
+  role="alert"
+>
+  <strong> </strong>
+</div>
+
 <script>
+  currentUser = "";
+  itemsList = [];
+  itemindex = 0;
+
   $(document).ready(function () {
+    // show user on type
     $("#name").on("input", function () {
       var query = $(this).val();
       if (query.length > 0) {
         $.ajax({
-          url: "{% url 'get_user' %}?username=" + query,
+          url: "{% url 'get_user' %}?username=" + query.toLowerCase(),
           success: function (response) {
             var userList = $("#userList");
             userList.empty();
-            if (response.data.length > 0) {
+            if (response.data && response.data.length > 0) {
               response.data.forEach(function (username) {
                 userList.append('<li class="list-group-item">' + username + "</li>");
               });
@@ -65,10 +129,155 @@ var user_obj =
       }
     });
 
-    $("#entryForm").on("submit", function (event) {
-      event.preventDefault(); // Prevent the form from submitting via the browser
-      console.log("Form submit intercepted");
+    // selectng a user
+    $("#userList").on("click", ".list-group-item", function () {
+      currentUser = $(this).text();
+      $("#name").val("");
+      $("#userList").empty();
+      console.log($(this).text());
+      var query = $(this).text();
+      $.ajax({
+        url: "{% url 'get_user_info' %}?username=" + query.toLowerCase(),
+        success: function (response) {
+          var userinfos = $(".currentuserInfo");
+          userinfos.empty();
+          if (response.data.length > 0) {
+            // console.log(" "+response.data[0]);
+            // console.log(" "+response.data[1]);
+            userinfos.append('<li class="list-group-item">Name : ' + response.data[0] + "</li>");
+            userinfos.append(
+              '<li class="list-group-item">Phone Number : ' + response.data[1] + "</li>"
+            );
+          } else {
+            console.log("no data");
+          }
+        },
+        error: function (xhr, status, error) {
+          console.log("Error Used not found: " + error);
+        },
+      });
     });
+
+    //--------------------------------------------------------------------------------------------
+    // show items on type --------------------------------------------------------------------------------------------
+    $("#item_name").on("input", function () {
+      var query = $(this).val();
+      if (query.length > 0) {
+        $.ajax({
+          url: "{% url 'get_product' %}?product=" + query.toLowerCase(),
+          success: function (response) {
+            var item_list = $("#searched_items_List");
+            item_list.empty();
+            if (response.data && response.data.length > 0) {
+              response.data.forEach(function (prod) {
+                item_list.append('<li class="list-group-item">' + prod + "</li>");
+              });
+            } else {
+              // userList.append('<div class="user-item">No prod found</div>');
+              item_list.empty();
+            }
+          },
+          error: function (xhr, status, error) {
+            console.log("Error: " + error);
+          },
+        });
+      } else {
+        $(".searched_items_List").empty();
+        console.log("erro in asdfasf");
+      }
+    });
+
+    // selectng an item
+    $("#searched_items_List").on("click", ".list-group-item", function () {
+      // itemsList.append($(this).text();
+      $("#item_name").val("");
+      $("#searched_items_List").empty();
+      console.log($(this).text());
+      var query = $(this).text();
+      $.ajax({
+        url: "{% url 'get_product_info' %}?product=" + query.toLowerCase(),
+        success: function (response) {
+          var items_table = $("#items_table");
+          // userinfos.empty);
+          if (response.data.length > 0) {
+            console.log(" " + response.data[0]);
+            itemsList.push(response.data);
+            itemindex = itemindex + 1;
+            items_table.append(
+              "<tr>  <td>" +
+                itemindex +
+                "</td>  <td>" +
+                response.data[1] +
+                "</td> <td>" +
+                1 +
+                "</td> <td>" +
+                1 +
+                "</td> <td>Rs " +
+                response.data[2] +
+                '</td> <td><button class="btn btn-danger delete-row">X</button></td></tr>'
+            );
+
+            // Add click handler for delete button
+            $(".delete-row").click(function () {
+              $(this).closest("tr").remove();
+              if (itemindex > 0) {
+                itemindex = itemindex - 1;
+              } else {
+                itemindex = 0;
+              }
+              // Remove the corresponding item from itemsList
+              let rowIndex = $(this).closest("tr").index();
+              itemsList.splice(rowIndex, 1);
+              let total = 0;
+              itemsList.forEach((item) => {
+                total += parseFloat(item[2]); // item[2] contains the price value
+              });
+
+              $("#totalPrice").text(total);
+              $("#totalItemslabel").text("Items : " + itemindex);
+            });
+
+            let total = 0;
+            itemsList.forEach((item) => {
+              total += parseFloat(item[2]); // item[2] contains the price value
+            });
+
+            $("#totalPrice").text(total);
+            $("#totalItemslabel").text("Items : " + itemindex);
+          } else {
+            console.log("no data");
+          }
+          console.log(response.message);
+        },
+        error: function (xhr, status, error) {
+          console.log("Error Used not found: " + error);
+        },
+      });
+    });
+
+    $("#placeOrder").on("click", function () {
+      if (currentUser.length != 0 && itemsList.length != 0) {
+        var formData = {
+          user: currentUser,
+          items: [itemsList],
+        };
+        window.location.href = "{% url 'order_entry' %}?" + $.param(formData);
+      } else {
+        $(".alert").empty();
+        $(".alert").show();
+        $(".alert").append('<strong>Fill all the fields</strong>');
+        $(".alert")
+          .fadeTo(2000, 500)
+          .slideUp(500, function () {
+            $(".alert").slideUp(500);
+          });
+      }
+    });
+
+    // $("#entryForm").on("submit", function (event) {
+    //   event.preventDefault(); // Prevent the form from submitting via the browser
+    //   console.log("Form submit intercepted");
+    // });
   });
 </script>
 
