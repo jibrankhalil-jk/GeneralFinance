@@ -164,13 +164,18 @@ Genfin{% endblock %} {%block body %}
       var query = $(this).val();
       if (query.length > 0) {
         $.ajax({
-          url: "{% url 'get_product' %}?product=" + query.toLowerCase(),
+          url: "{% url 'get_product' %}",
+          data: { product: query.toLowerCase() },
           success: function (response) {
             var item_list = $("#searched_items_List");
             item_list.empty();
             if (response.data && response.data.length > 0) {
               response.data.forEach(function (prod) {
-                item_list.append('<li class="list-group-item">' + prod + "</li>");
+                if (prod[1] >= 1) {
+                  item_list.append('<li class="list-group-item">' + prod[0] + "</li>");
+                } else {
+                    item_list.append('<li class="list-group-item disabled" style="color:red"> <span style="font-size: 10px;">Not in Stock </span>' + prod[0] + "</li>");
+                }
               });
             } else {
               // userList.append('<div class="user-item">No prod found</div>');
@@ -189,71 +194,74 @@ Genfin{% endblock %} {%block body %}
 
     // selectng an item
     $("#searched_items_List").on("click", ".list-group-item", function () {
-      // itemsList.append($(this).text();
       $("#item_name").val("");
       $("#searched_items_List").empty();
-      console.log($(this).text());
       var query = $(this).text();
       $.ajax({
         url: "{% url 'get_product_info' %}?product=" + query.toLowerCase(),
         success: function (response) {
           var items_table = $("#items_table");
-          // userinfos.empty);
           if (response.data.length > 0) {
-            console.log(" " + response.data[0]);
-            itemsList.push(response.data);
-            itemindex = itemindex + 1;
-            items_table.append(
-              "<tr>  <td>" +
-                itemindex +
-                "</td>  <td>" +
-                response.data[1] +
-                "</td> <td>" +
-                1 +
-                "</td> <td>" +
-                1 +
-                "</td> <td>Rs " +
-                response.data[2] +
-                '</td> <td><button class="btn btn-danger delete-row">X</button></td></tr>'
-            );
+            // Check if item already exists
+            let existingItem = false;
+            itemsList.forEach((item, index) => {
+              if (item[1] === response.data[1]) {
+                existingItem = true;
+                // Update quantity and total price in table
+                let row = items_table.find("tr").eq(index);
+                let currentQty = parseInt(row.find("td").eq(2).text());
+                row
+                  .find("td")
+                  .eq(2)
+                  .text(currentQty + 1);
+                // Update quantity in itemsList
+                item[3] = currentQty + 1;
+                // Update individual item price
+                row
+                  .find("td")
+                  .eq(4)
+                  .text("Rs " + parseFloat(response.data[2]) * (currentQty + 1));
+              }
+            });
 
-            // Add click handler for delete button
+            if (!existingItem) {
+              response.data[3] = 1; // Set initial quantity
+              itemsList.push(response.data);
+              itemindex++;
+              items_table.append(
+                "<tr><td>" +
+                  itemindex +
+                  "</td><td>" +
+                  response.data[1] +
+                  "</td><td>1</td><td>1</td><td>Rs " +
+                  response.data[2] +
+                  '</td><td><button class="btn btn-danger delete-row">X</button></td></tr>'
+              );
+            }
+
+            // Delete button handler
             $(".delete-row").click(function () {
               $(this).closest("tr").remove();
-              if (itemindex > 0) {
-                itemindex = itemindex - 1;
-              } else {
-                itemindex = 0;
-              }
-              // Remove the corresponding item from itemsList
+              itemindex = Math.max(0, itemindex - 1);
               let rowIndex = $(this).closest("tr").index();
               itemsList.splice(rowIndex, 1);
-              let total = 0;
-              itemsList.forEach((item) => {
-                total += parseFloat(item[2]); // item[2] contains the price value
-              });
-
-              $("#totalPrice").text(total);
-              $("#totalItemslabel").text("Items : " + itemindex);
+              updateTotals();
             });
 
-            let total = 0;
-            itemsList.forEach((item) => {
-              total += parseFloat(item[2]); // item[2] contains the price value
-            });
-
-            $("#totalPrice").text(total);
-            $("#totalItemslabel").text("Items : " + itemindex);
-          } else {
-            console.log("no data");
+            updateTotals();
           }
-          console.log(response.message);
         },
         error: function (xhr, status, error) {
-          console.log("Error Used not found: " + error);
+          console.log("Error: " + error);
         },
       });
     });
+
+    function updateTotals() {
+      let total = itemsList.reduce((sum, item) => sum + parseFloat(item[2] * item[3]), 0);
+      $("#totalPrice").text(total);
+      $("#totalItemslabel").text("Items : " + itemindex);
+    }
 
     $("#placeOrder").on("click", function () {
       if (currentUser.length != 0 && itemsList.length != 0) {
@@ -265,7 +273,7 @@ Genfin{% endblock %} {%block body %}
       } else {
         $(".alert").empty();
         $(".alert").show();
-        $(".alert").append('<strong>Fill all the fields</strong>');
+        $(".alert").append("<strong>Fill all the fields</strong>");
         $(".alert")
           .fadeTo(2000, 500)
           .slideUp(500, function () {

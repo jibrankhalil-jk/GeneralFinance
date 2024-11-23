@@ -26,7 +26,7 @@ def Index(request):
 #     pn = 3125452445
 #     ad = 'gilgi,Pakistan'
 #     username = username.lower()
-#     user = User.objects.create(username=username,email=f"{username}@gmail.com")
+#     user = User.objects.create(username=request.user.id,email=f"{username}@gmail.com")
 #     user.set_password(f"{username}@gmail.com")
 #     user.save()
 #     customer = models.Customer.objects.create(user_id=user ,customer_name =username,phone_number=pn,address = ad)
@@ -181,8 +181,9 @@ def get_product(request):
     print('>>>>>>> ', product_prefix)
     if product_prefix:
         found_products = models.Product.objects.filter(
-            product_name__startswith=product_prefix)[:5]
-        product_names = [prdct.product_name for prdct in found_products]
+            product_name__icontains=product_prefix)[:5]
+        product_names = [[prdct.product_name, prdct.stock_quantity]
+                         for prdct in found_products]
     else:
         product_names = []
     return JsonResponse({"data": product_names})
@@ -213,25 +214,49 @@ def get_product_info(request):
 
 
 @login_required
-def order_entry(request): 
-    username  = request.GET.get('user');
-    items = [] 
-    for key, value in request.GET.items():
+def order_entry(request):
+    username = request.GET.get('user')
+    final_items = []
+    total_price = 0
+    for key, _ in request.GET.items():
         if key.startswith('items['):
             indices = key[:-2].split('[')[1:3]  # Get the two indices
             if len(indices) == 2:  # Only process valid item keys
                 item_values = request.GET.getlist(key)
                 if item_values:
-                    items.append({
-                        'id': item_values[0],
+                    final_items.append({
                         'name': item_values[1],
-                        'price': item_values[2], 
-                        'quantity': item_values[3]
+                        'quantity': item_values[3],
                     })
-    for item in items:
-        curr_product = models.Product.objects.filter(id=item['id']).first()
-        if curr_product:
-            curr_product.stock_quantity -= int(item['quantity'])
-            curr_product.save()
-        break
-    return JsonResponse({"data": [], "message": 'no product'})
+                    # incrementing the quantity from database
+                    curr_product = models.Product.objects.filter(
+                        id=item_values[0]).first()
+                    if curr_product:
+                        # updating the stock in database
+                        pass
+                        if curr_product.stock_quantity-int(item_values[3]) >=1 :
+                            curr_product.stock_quantity -= int(item_values[3])
+                            curr_product.save()
+                    total_price += int(item_values[2])
+
+    current_transaction = models.Transactions.objects.create(total_amount=total_price,status=0)
+    current_transaction.save();
+    current_logedin_user = User.objects.filter(username=request.user).first()
+    if current_logedin_user:
+        sales_manager = models.Admin.objects.filter(user_id=current_logedin_user).first()
+        tem_curr_user = User.objects.filter(username=username).first()
+        curr_customer = models.Customer.objects.filter(user_id=tem_curr_user).first()
+        place_item = models.Sales.objects.create(
+            sales_manager_id=sales_manager,
+            total_amount=total_price,
+            user_id=curr_customer,
+            transactions_id=current_transaction,
+            items=final_items
+        )
+        place_item.save()
+   
+        if place_item:
+            return redirect()
+
+    return JsonResponse({"data": [str(curr_customer)
+                                  ], "message": 'no product'})

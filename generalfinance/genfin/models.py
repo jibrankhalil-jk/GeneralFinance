@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.contrib.auth.models import User, AbstractUser
 from django.db.models.signals import post_save 
@@ -11,14 +12,13 @@ class Transactions(models.Model):
     status = models.BooleanField(default=True)
 
 class Admin(models.Model):
-    ADMIN_ROLES = {
-        "O": "Owner",
-        "A": "Admin",
-        "S": "SalesPerson",
-    } 
+    ADMIN_ROLES = [
+        ('admin', 'Administrator'),
+        ('sales', 'SalesPerson'), 
+    ]
     user_id = models.OneToOneField(User, on_delete=models.CASCADE )
     admin_name = models.CharField(max_length=50)
-    role = models.CharField(max_length=1, choices=ADMIN_ROLES, default="S")
+    role = models.CharField(max_length=10, choices=ADMIN_ROLES, default="user")
     phone_number = models.BigIntegerField()
     last_login = models.DateTimeField(default=datetime.now)
     status = models.BooleanField(default=True)
@@ -32,9 +32,8 @@ class Customer(models.Model):
     status = models.BooleanField(default=True)
     loan_status = models.BooleanField(default=False)
 
-
 class Categories(models.Model): 
-    categorie_name = models.CharField(max_length=200)
+    categorie_name = models.CharField(max_length=500)
 
 class Product(models.Model): 
     categorie_id = models.ForeignKey(Categories, on_delete=models.CASCADE)
@@ -59,7 +58,11 @@ class Sales(models.Model):
     user_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
     transactions_id = models.ForeignKey(Transactions, on_delete=models.CASCADE)
 
-
+class Item(models.Model): 
+    product_id = models.ForeignKey(Product,on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    subtotal = models.IntegerField(default=0) 
+    sales_id = models.ForeignKey(Sales,on_delete=models.CASCADE,default=1)
 
 class LoanPayement(models.Model): 
     sales_manager_id = models.ForeignKey(Admin, on_delete=models.CASCADE)
@@ -68,4 +71,4 @@ class LoanPayement(models.Model):
     payement_type = models.CharField(max_length=30, default="Cash")
     user_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
     
-
+  
