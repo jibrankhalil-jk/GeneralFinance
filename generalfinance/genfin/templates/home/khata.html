@@ -1,5 +1,5 @@
 {% extends 'home/components/dashboard_base.html' %} {% block title %}Khata -
-Genfin{% endblock %} {% block body %}
+Genfin{% endblock %} {% block body %} 
 
 <div class="row-1 m-4">
   <h2 class="text-left text-white m-auto">Khata</h2>
@@ -28,7 +28,7 @@ Genfin{% endblock %} {% block body %}
 
   <div class="col-3 text-end">
     <button
-      class="btn btn-primary ms-auto me-4 px-4"
+      class="btn btn-primary"
       data-bs-toggle="modal"
       data-bs-target="#addUserModal"
     >
@@ -37,54 +37,7 @@ Genfin{% endblock %} {% block body %}
   </div>
 </div>
 
-<!-- Khata Table, User info and Khata Calculation Tables-->
-<div class="row g-3 m-4">
-  <div class="col-8">
-    <table class="table table-hover" id="khataTable">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Item Name</th>
-          <th scope="col">Price</th>
-          <th scope="col">Quantity</th>
-        </tr>
-      </thead>
-      <tbody class="table-gray">
-        <!-- Data will be dynamically inserted here -->
-      </tbody>
-    </table>
-  </div>
-
-  <div class="col-3 align-content-between me-5">
-    <div class="row-cols-1">
-      <table class="table table-hover" id="userInfoTable">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">User Info</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Data will be dynamically inserted here -->
-        </tbody>
-      </table>
-    </div>
-
-    <div class="row-cols-1 mt-2">
-      <table class="table table-hover" id="khataCalculationTable">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">Khata Calculation</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Data will be dynamically inserted here -->
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<!-- Popup window for adding new customer -->
+<!-- Add User Modal -->
 <div
   class="modal fade"
   id="addUserModal"
@@ -105,6 +58,7 @@ Genfin{% endblock %} {% block body %}
       </div>
       <div class="modal-body">
         <form id="addUserForm">
+          {% csrf_token %}
           <div class="mb-3">
             <label for="userName" class="form-label">Name</label>
             <input
@@ -116,7 +70,7 @@ Genfin{% endblock %} {% block body %}
             />
           </div>
           <div class="mb-3">
-            <label for="userNumber" class="form-label">Number</label>
+            <label for="userNumber" class="form-label">Phone Number</label>
             <input
               type="text"
               class="form-control"
@@ -141,199 +95,158 @@ Genfin{% endblock %} {% block body %}
   </div>
 </div>
 
+<div class="row g-3 m-4">
+  <!-- Purched Item table on khata-->
+  <div class="col-8">
+    <table class="table table-hover" id="khataTable">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+        </tr>
+      </thead>
+      <tbody class="table-gray">
+        <!-- Data will be dynamically inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-3 align-content-between me-5">
+    <!-- User info-->
+    <div class="row-cols-1">
+      <table class="table table-hover" id="userInfoTable">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">User Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data will be dynamically inserted here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!--Khata calculation-->
+    <div class="row-cols-1 mt-2">
+      <table class="table table-hover" id="khataCalculationTable">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Khata Calculation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data will be dynamically inserted here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  //for test
-  const users = [
-    { name: "John Doe", id: 1 },
-    { name: "Jane Smith", id: 2 },
-    { name: "Alice Johnson", id: 3 },
-    // Add more users as needed
-  ];
-  document
-    .getElementById("addUserForm")
-    .addEventListener("submit", function (event)
-     {
+  $(document).ready(function() {
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+
+    $('#addUserForm').on('submit', function(event) {
       event.preventDefault();
-      const formData = new FormData(this);
-      fetch('{% url "add_user" %}', {
-        method: "POST",
-        body: formData,
-        headers:
-         {
-          "X-CSRFToken": "{{ csrf_token }}",
+      const formData = $(this).serialize();
+      $.ajax({
+        url: '{% url "add_customer" %}',
+        type: 'POST',
+        data: formData,
+        beforeSend: function(xhr, settings) {
+          xhr.setRequestHeader("X-CSRFToken", csrftoken);
         },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            // Add the new user to the users array
-            users.push({
-              id: data.user.id,
-              name: data.user.name,
-              number: data.user.number,
-              address: data.user.address,
-            });
-            // Close the modal
-            const addUserModal = bootstrap.Modal.getInstance(
-              document.getElementById("addUserModal")
-            );
-            addUserModal.hide();
-            // Clear the form
-            this.reset();
-            // Optionally, update the UI to reflect the new user
+        success: function(response) {
+          if (response.success) {
+            const user = response.user;
+            $('#userDropdown').append(`<li class="dropdown-item" onclick="fetchUserData(${user.id})">${user.name}</li>`);
+            $('#addUserModal').modal('hide');
+            $('#addUserForm')[0].reset();
             alert("User added successfully!");
           } else {
             alert("Failed to add user.");
           }
-        })
-        .catch((error) => {
+        },
+        error: function(error) {
           console.error("Error:", error);
           alert("Failed to add user.");
-        });
+        }
+      });
     });
 
-  function filterUsers() {
-    const input = document.getElementById("userSearchInput");
-    const filter = input.value.toLowerCase();
-    const dropdown = document.getElementById("userDropdown");
-    dropdown.innerHTML = "";
+    window.filterUsers = function() {
+      const input = $('#userSearchInput').val().toLowerCase();
+      const dropdown = $('#userDropdown');
+      dropdown.empty();
 
-    if (filter) {
-      const filteredUsers = users.filter((user) =>
-        user.name.toLowerCase().includes(filter)
-      );
-      filteredUsers.forEach((user) => {
-        const li = document.createElement("li");
-        li.classList.add("dropdown-item");
-        li.textContent = `${user.name}`;
-        li.onclick = () => fetchUserData(user.id);
-        dropdown.appendChild(li);
-      });
-      dropdown.classList.add("show");
-    } else {
-      dropdown.classList.remove("show");
-    }
-  }
-
-  function fetchUserData(userId) {
-    // Simulate fetching data from the server
-    const userData = {
-      1: {
-        userInfo: {
-          name: "John Doe",
-          address: "123 Main St",
-          phone: "1234567890",
-        },
-        khata: [
-          { item: "Item 1", price: "$10", quantity: 5 },
-          { item: "Item 2", price: "$20", quantity: 3 },
-        ],
-        calculation: {
-          lastMonth: "$100",
-          previousMonths: "$200",
-          total: "$300",
-        },
-      },
-      2: {
-        userInfo: {
-          name: "Jane Smith",
-          address: "456 Elm St",
-          phone: "0987654321",
-        },
-        khata: [
-          { item: "Item 3", price: "$15", quantity: 7 },
-          { item: "Item 4", price: "$25", quantity: 2 },
-        ],
-        calculation: {
-          lastMonth: "$150",
-          previousMonths: "$250",
-          total: "$400",
-        },
-      },
-      3: {
-        userInfo: {
-          name: "Alice Johnson",
-          address: "789 Oak St",
-          phone: "5555555555",
-        },
-        khata: [
-          { item: "Item 5", price: "$30", quantity: 4 },
-          { item: "Item 6", price: "$12", quantity: 6 },
-        ],
-        calculation: {
-          lastMonth: "$120",
-          previousMonths: "$220",
-          total: "$340",
-        },
-      },
+      if (input) {
+        $.ajax({
+          url: '{% url "get_customer" %}',
+          type: 'GET',
+          data: { username: input },
+          success: function(response) {
+            if (response.success) {
+              const users = response.data;
+              users.forEach(user => {
+                dropdown.append(`<li class="dropdown-item" onclick="fetchUserData(${user.id})">${user.name}</li>`);
+              });
+              dropdown.addClass('show');
+            } else {
+              dropdown.removeClass('show');
+            }
+          },
+          error: function(error) {
+            console.error("Error:", error);
+            dropdown.removeClass('show');
+          }
+        });
+      } else {
+        dropdown.removeClass('show');
+      }
     };
 
-    // Add the new user data to the userData object
-    users.forEach((user) => {
-      if (!userData[user.id]) {
-        userData[user.id] = {
-          userInfo: {
-            name: user.name,
-            address: user.address,
-            phone: user.number,
-          },
-          khata: [], // Add default or fetched khata data here
-          calculation: {
-            lastMonth: "$0",
-            previousMonths: "$0",
-            total: "$0",
-          },
-        };
-      }
-    });
-
-    const data = userData[userId];
-
-    // Update User Info Table
-    const userInfoTable = document
-      .getElementById("userInfoTable")
-      .getElementsByTagName("tbody")[0];
-    userInfoTable.innerHTML = `
-     <tr><td>Name: ${data.userInfo.name}</td></tr>
-     <tr><td>Address: ${data.userInfo.address}</td></tr>
-     <tr><td>Phone: ${data.userInfo.phone}</td></tr>
-   `;
-
-    // Update Khata Table
-    const khataTable = document
-      .getElementById("khataTable")
-      .getElementsByTagName("tbody")[0];
-    khataTable.innerHTML = data.khata
-      .map(
-        (item, index) => `
-     <tr>
-       <th scope="row">${index + 1}</th>
-       <td>${item.item}</td>
-       <td>${item.price}</td>
-       <td>${item.quantity}</td>
-     </tr>
-   `
-      )
-      .join("");
-
-    // Update Khata Calculation Table
-    const khataCalculationTable = document
-      .getElementById("khataCalculationTable")
-      .getElementsByTagName("tbody")[0];
-    khataCalculationTable.innerHTML = `
-     <tr><td>Last Month Remainings: ${data.calculation.lastMonth}</td></tr>
-     <tr><td>Previous Months Remainings: ${data.calculation.previousMonths}</td></tr>
-     <tr><td>Total Remainings: ${data.calculation.total}</td></tr>
-   `;
-  }
-
-  // Ensure the modal closes when the close button is clicked
-  document.querySelector(".btn-close").addEventListener("click", function () {
-    const addUserModal = new bootstrap.Modal(
-      document.getElementById("addUserModal")
-    );
-    addUserModal.hide();
+    window.fetchUserData = function(userId) {
+      $.ajax({
+        url: '{% url "get_customer" %}',
+        type: 'GET',
+        data: { user_id: userId },
+        success: function(response) {
+          if (response.success) {
+            const data = response.data;
+            const userInfoTable = $('#userInfoTable tbody');
+            userInfoTable.html(`
+              <tr><td>Name: ${data.name}</td></tr>
+              <tr><td>Address: ${data.address}</td></tr>
+              <tr><td>Phone: ${data.phone}</td></tr>
+            `);
+          } else {
+            alert("Failed to fetch user data.");
+          }
+        },
+        error: function(error) {
+          console.error("Error:", error);
+          alert("Failed to fetch user data.");
+        }
+      });
+    };
   });
 </script>
-
 {% endblock %}

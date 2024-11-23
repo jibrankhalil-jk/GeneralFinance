@@ -19,4 +19,8 @@ urlpatterns = [
     path('home/settings', views.Settings,name='home/settings'), 
     path('add_user/', views.add_user, name='add_user'),
     
+    path('add_customer/', views.add_customer, name='add_customer'),
+    path('get_customer/', views.get_customer, name='get_customer'),
+   
+  
 ] 

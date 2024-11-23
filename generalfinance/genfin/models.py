@@ -2,11 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User, AbstractUser
 from django.db.models.signals import post_save 
 from django.utils.timezone import datetime
+from django.utils import timezone
 
 
 class Transactions(models.Model):
     transaction_type = models.CharField(max_length=30, default="Cash")
-    transaction_date = models.DateField(default=datetime.now)
+    transaction_date = models.DateField(default=timezone.now)
     total_amount = models.IntegerField(default=0)
     status = models.BooleanField(default=True)
 
@@ -16,23 +17,21 @@ class Admin(models.Model):
         ('user', 'User'),
         ('guest', 'Guest'),
     ]
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE )
+    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     admin_name = models.CharField(max_length=50)
     role = models.CharField(max_length=10, choices=ADMIN_ROLES, default="user")
     phone_number = models.BigIntegerField()
-    last_login = models.DateTimeField(default=datetime.now)
+    last_login = models.DateTimeField(default=timezone.now)
     status = models.BooleanField(default=True)
 
-class Customer(models.Model):  
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE )
+class Customer(models.Model):
+    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     customer_name = models.CharField(max_length=50)
     phone_number = models.BigIntegerField()
     address = models.TextField(max_length=500)
-    last_login = models.DateTimeField(default=datetime.now)
+    last_login = models.DateTimeField(default=timezone.now)
     status = models.BooleanField(default=True)
     loan_status = models.BooleanField(default=False)
-
-
 class Categories(models.Model): 
     categorie_name = models.CharField(max_length=30)
 

@@ -39,31 +39,31 @@ var user_obj =
 
 <script>
   $(document).ready(function () {
-    $("#name").on("input", function () {
-      var query = $(this).val();
-      if (query.length > 0) {
-        $.ajax({
-          url: "{% url 'get_user' %}?username=" + query,
-          success: function (response) {
-            var userList = $("#userList");
-            userList.empty();
-            if (response.data.length > 0) {
-              response.data.forEach(function (username) {
-                userList.append('<li class="list-group-item">' + username + "</li>");
-              });
-            } else {
-              userList.append('<div class="user-item">No users found</div>');
+      $("#name").on("input", function () {
+        var query = $(this).val();
+        if (query.length > 0) {
+          $.ajax({
+            url: "{% url 'get_user' %}?username=" + query,
+            success: function (response) {
+              var userList = $("#userList");
               userList.empty();
-            }
-          },
-          error: function (xhr, status, error) {
-            console.log("Error: " + error);
-          },
-        });
-      } else {
-        $("#userList").empty();
-      }
-    });
+              if (response.data.length > 0) {
+                response.data.forEach(function (username) {
+                  userList.append('<li class="list-group-item">' + username + "</li>");
+                });
+              } else {
+                userList.append('<div class="user-item">No users found</div>');
+                userList.empty();
+              }
+            },
+            error: function (xhr, status, error) {
+              console.log("Error: " + error);
+            },
+          });
+        } else {
+          $("#userList").empty();
+        }
+      });
 
     $("#entryForm").on("submit", function (event) {
       event.preventDefault(); // Prevent the form from submitting via the browser

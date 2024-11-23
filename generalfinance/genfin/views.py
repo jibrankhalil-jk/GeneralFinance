@@ -7,7 +7,7 @@ from . import forms, models
 from django.http import JsonResponse
 from .models import User
 from django.utils.crypto import get_random_string
-
+from .models import Customer
 
 def Index(request):
     if not request.user.is_authenticated:
@@ -144,9 +144,99 @@ def get_user(request):
         customer_usernames = [customer.username for customer in customers]
     else:
         customer_usernames = []
-
     return JsonResponse({"data": customer_usernames})
 
 
 def unknown(request):
     return render(request, '404.html')
+
+@login_required
+def add_customer(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        number = request.POST.get('number')
+        address = request.POST.get('address')
+        username = get_random_string(10)
+
+        # Create the user
+        user = User.objects.create_user(username=username, password='defaultpassword')
+        user.first_name = name
+        user.save()
+
+        # Create the customer
+        customer = Customer.objects.create(user_id=user, customer_name=name, phone_number=number, address=address)
+        return JsonResponse({'success': True, 'user': {'id': customer.id, 'name': name, 'number': number, 'address': address}})
+    return JsonResponse({'success': False})
+# @login_required
+# def get_customer(request):
+#     username = request.GET.get('username')
+#     if not username:
+#         return JsonResponse({'success': False, 'error': 'Username parameter is missing or empty'})
+
+#     customers = Customer.objects.filter(user_id__username__icontains=username)
+   
+#     return JsonResponse({'data': [customers.name,customers.phone_number,customers.address]})
+@login_required
+def get_customer(request):
+    username = request.GET.get('username')
+    user_id = request.GET.get('user_id')
+
+    if username:
+        customers = Customer.objects.filter(user_id__username__icontains=username)
+        data = [
+            {
+                'id': customer.id,
+                'name': customer.customer_name,
+                'address': customer.address,
+                'phone': customer.phone_number,
+            }
+            for customer in customers
+        ]
+        return JsonResponse({'success': True, 'data': data})
+
+    if user_id:
+        try:
+            customer = Customer.objects.get(id=user_id)
+            data = {
+                'id': customer.id,
+                'name': customer.customer_name,
+                'address': customer.address,
+                'phone': customer.phone_number,
+            }
+            return JsonResponse({'success': True, 'data': data})
+        except Customer.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'Customer not found'})
+
+    return JsonResponse({'success': False, 'error': 'No valid parameters provided'})
+# @login_required
+# def get_customer(request):
+    username = request.GET.get('username')
+    user_id = request.GET.get('user_id')
+
+    if username:
+        customers = Customer.objects.filter(user_id__username__icontains=username)
+        data = [
+            {
+                'id': customer.id,
+                'name': customer.customer_name,
+                'address': customer.address,
+                'phone': customer.phone_number,
+            }
+            for customer in customers
+        ]
+        return JsonResponse({'success': True, 'data': data})
+
+    if user_id:
+        try:
+            customer = Customer.objects.get(id=user_id)
+            data = {
+                'id': customer.id,
+                'name': customer.customer_name,
+                'address': customer.address,
+                'phone': customer.phone_number,
+            }
+            return JsonResponse({'success': True, 'data': data})
+        except Customer.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'Customer not found'})
+
+    return JsonResponse({'success': False, 'error': 'No valid parameters provided'})
