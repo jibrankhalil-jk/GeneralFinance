@@ -4,6 +4,313 @@
 
 {% block body%}
  
+<div>
+    {% comment %} First row {% endcomment %}
+    <div class="row">
+        <div class="col-8">
+            <h2 class="text-white">Inventory </h2>
+
+            <div class="row">
+                {% comment %} Search bar {% endcomment %}
+                <div class="col-3 mt-2">
+                    <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input
+                        type="text"
+                        class="form-control  rounded-end-2 "
+                        placeholder="Search for User"
+                        aria-label="Search"
+                        aria-describedby="basic-addon1"
+                        id="userSearchInput"
+                        onkeyup="filterUsers()"
+                    />
+                    <ul class="dropdown-menu mt-5" id="userDropdown">
+                        {% comment %}  Dynamic user list will be appended here  {% endcomment %}
+                    </ul>
+                    </div>
+
+                </div>
+
+                {% comment %} Category drop down {% endcomment %}  
+                <div class="col-1 mt-2 ">
+                    <div class="dropdown-list">
+                        <button class="btn btn-secondary dropdown-toggle bg-gray-800" type="button" id="dropdownMenuButton">
+                            Categories</button>
+                    </div>
+                </div>
+
+                {% comment %} Stock Alert dropdown {% endcomment %}
+                <div class="col-1 mt-2 ms-5">
+                    <div class="dropdown-list">
+                        <button class="btn btn-secondary dropdown-toggle bg-gray-800 " type="button" id="dropdownMenuButton">
+                            Stock Alert</button>
+                    </div>
+                </div>
+                {% comment %}  Add product Button{% endcomment %}
+                <div class="col-2 mt-2 ms-5">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">Add Product</button>
+                </div>
+            </div>
+
+            <div class="row">
+                {% comment %} Inventory table {% endcomment %}
+                <div class="col-12 mt-5">
+                    <table class="table table-hover" id="inventoryTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Item Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Category</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-gray">
+                            {% for product in products %}
+                            <tr id="product-{{ product.id }}">
+                                <td>{{ product.id }}</td>
+                                <td>{{ product.product_name }}</td>
+                                <td>{{ product.price }}</td>
+                                <td>{{ product.quantity }}</td>
+                                <td>{{ product.categorie_id.categorie_name }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        {% comment %} /265 in the figma design is the total number of items in the Inventory {% endcomment %}
+
+        <div class="col-4">
+            <h2 class="text-white">Categories</h2>
+            {% comment %} /14 is the number of categories present in the inventory {% endcomment %}
+            {% comment %} Searching categories {% endcomment %}
+        
+            <div class="row mt-3">
+                <div class="col-5">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">
+                        <i class="bi bi-search"></i>
+                        </span>
+                        <input
+                        type="text"
+                        class="form-control rounded-end-2"
+                        placeholder="Search for User"
+                        aria-label="Search"
+                        aria-describedby="basic-addon1"
+                        id="userSearchInput"
+                        onkeyup="filterUsers()"
+                        />
+                        <ul class="dropdown-menu mt-5" id="userDropdown">
+                        {% comment %} Dynamic user list will be appended here {% endcomment %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-5">
+                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Category</button>
+                </div>
+            </div>
+            
+        
+            {% comment %} Categories table {% endcomment %}
+            <div class="row mt-5">
+                <div class="col-9">
+                    <table class="table table-hover" id="khataTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Category Name</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-gray">
+                            {% comment %} Data will be dynamically inserted here{% endcomment %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<!-- Add Product Modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addProductModalLabel">Add New Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addProductForm">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="productName" class="form-label">Item Name</label>
+              <input type="text" class="form-control" id="productName" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="productPrice" class="form-label">Price</label>
+              <input type="number" class="form-control" id="productPrice" name="price" required>
+            </div>
+            <div class="mb-3">
+              <label for="productQuantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" id="productQuantity" name="quantity" required>
+            </div>
+            <div class="mb-3">
+              <label for="productCategory" class="form-label">Category</label>
+              <select class="form-control" id="productCategory" name="category" required>
+                {% for category in categories %}
+                  <option value="{{ category.id }}">{{ category.categorie_name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+
+
+
+
+
+  <!-- Add Category Modal -->
+
+
+
+  <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addCategoryModalLabel">Add New Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addCategoryForm">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="categoryName" class="form-label">Category Name</label>
+              <input type="text" class="form-control" id="categoryName" name="name" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  $(document).ready(function() {
+      function getCookie(name) {
+          let cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+              const cookies = document.cookie.split(';');
+              for (let i = 0; i < cookies.length; i++) {
+                  const cookie = cookies[i].trim();
+                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+              }
+          }
+          return cookieValue;
+      }
+  
+      const csrftoken = getCookie('csrftoken');
+  
+      $('#addProductForm').on('submit', function(event) {
+          event.preventDefault();
+          const formData = $(this).serialize();
+          $.ajax({
+              url: '{% url "add_product" %}',
+              type: 'POST',
+              data: formData,
+              beforeSend: function(xhr, settings) {
+                  xhr.setRequestHeader("X-CSRFToken", csrftoken);
+              },
+              success: function(response) {
+                  if (response.success) {
+                      $('#addProductModal').modal('hide');
+                      $('#addProductForm')[0].reset();
+                      alert("Product added successfully!");
+  
+                      const product = response.product;
+                      const created = response.created;
+                      if (created) {
+                          $('#inventoryTable tbody').append(`
+                              <tr id="product-${product.id}">
+                                  <td>${product.id}</td>
+                                  <td>${product.name}</td>
+                                  <td>${product.price}</td>
+                                  <td>${product.quantity}</td>
+                                  <td>${product.category}</td>
+                              </tr>
+                          `);
+                      } else {
+                          const row = $(`#product-${product.id}`);
+                          row.find('td:nth-child(4)').text(product.quantity);
+                      }
+                  } else {
+                      alert("Failed to add product.");
+                  }
+              },
+              error: function(error) {
+                  console.error("Error:", error);
+                  alert("Failed to add product.");
+              }
+          });
+      });
+  
+      $('#addCategoryForm').on('submit', function(event) {
+          event.preventDefault();
+          const formData = $(this).serialize();
+          $.ajax({
+              url: '{% url "add_category" %}',
+              type: 'POST',
+              data: formData,
+              beforeSend: function(xhr, settings) {
+                  xhr.setRequestHeader("X-CSRFToken", csrftoken);
+              },
+              success: function(response) {
+                  if (response.success) {
+                      $('#addCategoryModal').modal('hide');
+                      $('#addCategoryForm')[0].reset();
+                      alert("Category added successfully!");
+                      const newCategory = response.category;
+                      $('#productCategory').append(`<option value="${newCategory.id}">${newCategory.name}</option>`);
+                  } else {
+                      alert("Failed to add category.");
+                  }
+              },
+              error: function(error) {
+                  console.error("Error:", error);
+                  alert("Failed to add category.");
+              }
+          });
+      });
+  });
+  </script>
+  
+
+  
+    {% endblock%} 
+
  
-{% endblock%} 

@@ -39,7 +39,9 @@ class Product(models.Model):
     categorie_id = models.ForeignKey(Categories, on_delete=models.CASCADE)
     product_name = models.CharField(max_length=30)
     price = models.IntegerField(default=0)
+    # expire_date = models.DateField(default=datetime.now)
     stock_quantity = models.IntegerField(default=0)
+    
     bar_code = models.CharField(max_length=100)
     image = models.ImageField(
         upload_to="products/images/", blank=True, null=True)

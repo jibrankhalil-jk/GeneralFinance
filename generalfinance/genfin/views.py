@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from . import forms, models 
 from django.http import JsonResponse
-from .models import User
+from .models import User, Product, Categories
 from django.utils.crypto import get_random_string
 from .models import Customer
 
@@ -208,35 +208,54 @@ def get_customer(request):
             return JsonResponse({'success': False, 'error': 'Customer not found'})
 
     return JsonResponse({'success': False, 'error': 'No valid parameters provided'})
-# @login_required
-# def get_customer(request):
-    username = request.GET.get('username')
-    user_id = request.GET.get('user_id')
 
-    if username:
-        customers = Customer.objects.filter(user_id__username__icontains=username)
-        data = [
-            {
-                'id': customer.id,
-                'name': customer.customer_name,
-                'address': customer.address,
-                'phone': customer.phone_number,
-            }
-            for customer in customers
-        ]
-        return JsonResponse({'success': True, 'data': data})
 
-    if user_id:
-        try:
-            customer = Customer.objects.get(id=user_id)
-            data = {
-                'id': customer.id,
-                'name': customer.customer_name,
-                'address': customer.address,
-                'phone': customer.phone_number,
-            }
-            return JsonResponse({'success': True, 'data': data})
-        except Customer.DoesNotExist:
-            return JsonResponse({'success': False, 'error': 'Customer not found'})
 
-    return JsonResponse({'success': False, 'error': 'No valid parameters provided'})
+
+
+#Inventory Product 
+
+@login_required
+def add_product(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        # expire_date = request.POST.get('expire_date')
+        stock_quantity = int(request.POST.get('quantity'))
+        category_id = request.POST.get('category')
+
+        category = Categories.objects.get(id=category_id)
+        product, created = Product.objects.get_or_create(
+            product_name=name,
+            categorie_id=category,
+            defaults={'price': price, 'stock_quantity': stock_quantity}
+        )
+
+        if not created:
+            product.stock_quantity += stock_quantity
+            product.save()
+
+        return JsonResponse({
+            'success': True,
+            'product': {
+                'id': product.id,
+                'name': name,
+                'price': price,
+                'quantity': product.stock_quantity,
+                'category': category.categorie_name
+            },
+            'created': created
+        })
+    return JsonResponse({'success': False})
+@login_required
+def inventory(request):
+    categories = Categories.objects.all()
+    return render(request, 'inventory.html', {'categories': categories})
+
+@login_required
+def add_category(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        category = Categories.objects.create(categorie_name=name)
+        return JsonResponse({'success': True, 'category': {'id': category.id, 'name': name}})
+    return JsonResponse({'success': False})
