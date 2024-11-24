@@ -41,8 +41,7 @@ class Product(models.Model):
     price = models.IntegerField(default=0)
     stock_quantity = models.IntegerField(default=0)
     bar_code = models.CharField(max_length=100)
-    image = models.ImageField(
-        upload_to="products/images/", blank=True, null=True)
+    image = models.ImageField(  upload_to="products/images/", blank=True, null=True)
     quality = models.IntegerField(default=1)
 
 class Loan(models.Model): 

@@ -3,12 +3,13 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from . import forms, models
+from . import forms, models,apis
 from django.http import JsonResponse
 from django.contrib.auth import authenticate
 # from .models import User
 from django.utils.crypto import get_random_string
-
+import pandas as pd
+import datetime
 
 def Index(request):
     if not request.user.is_authenticated:
@@ -16,17 +17,42 @@ def Index(request):
     else:
         return redirect('home')
 
-# def createCategorie(request):
-#     categorie = models.Categories.objects.create(categorie_name="Books")
-#     categorie.save()
-#     return render(request,'home/home.html')
+def createCategorie(request):
+    categorie = models.Categories.objects.create(categorie_name="Books")
+    categorie.save()
+    return render(request,'home/home.html')
+
+def createUser(request):
+    
+    current_logedin_user = User.objects.filter(username=request.user).first()
+    if current_logedin_user:
+        sales_manager = models.Admin.objects.filter(user_id=current_logedin_user).first()
+        
+        df = pd.read_csv('/Users/jibrankhalil/Dev/Projects/GeneralFinance/SourceCode/genfin/scrapping_data/Sales.csv')
+        for i,d in df.iterrows():
+            date = datetime.datetime.strptime(d['date'], '%Y-%m-%d %H:%M:%S.%f')
+            items = d['items']
+            sales_id=1,
+            user_id=d['user_id'],
+            total=d['total']
+
+            current_transaction = models.Transactions.objects.create(total_amount=total, status=0,transaction_date=date)
+            current_transaction.save()
+            
+            c_user = models.Customer.objects.filter(id=user_id[0]).first()
+            if c_user:
+                sale = models.Sales.objects.create(user_id=c_user,date_time=date,items=items,sales_manager_id=sales_manager, total_amount=total, transactions_id=current_transaction)
+                sale.save() 
+        return JsonResponse({'data':f"done" })
+    return JsonResponse({'data':user_id})
+
 
 # def createUser(request):
-#     username = 'naeem'.lower()
+#     username = 'usman'.lower()
 #     pn = 3125452445
 #     ad = 'gilgi,Pakistan'
 #     username = username.lower()
-#     user = User.objects.create(username=request.user.id,email=f"{username}@gmail.com")
+#     user = User.objects.create(username=username,email=f"{username}@gmail.com")
 #     user.set_password(f"{username}@gmail.com")
 #     user.save()
 #     customer = models.Customer.objects.create(user_id=user ,customer_name =username,phone_number=pn,address = ad)
@@ -102,13 +128,16 @@ def Logout(request):
 
 @login_required
 def Home(request):
+    data = apis.get_today_sales_data()
+    sources = apis.get_today_payement_sources()
+    
     chart_data = [
         {"label": "Direct", "value": 50, "color": "text-primary"},
         {"label": "Social", "value": 30, "color": "text-success"},
         {"label": "Referral", "value": 15, "color": "text-info"}
     ]
     current_user = request.user
-    return render(request, 'home/home.html', context={'active': 'home', 'username': current_user, 'chart_data': chart_data})
+    return render(request, 'home/home.html', context={'active': 'home', 'username': current_user, 'sources':sources,'chart_data': chart_data,'today_sales':data})
 
 
 @login_required
@@ -234,18 +263,20 @@ def order_entry(request):
                     if curr_product:
                         # updating the stock in database
                         pass
-                        if curr_product.stock_quantity-int(item_values[3]) >=1 :
+                        if curr_product.stock_quantity-int(item_values[3]) >= 1:
                             curr_product.stock_quantity -= int(item_values[3])
                             curr_product.save()
                     total_price += int(item_values[2])
-
-    current_transaction = models.Transactions.objects.create(total_amount=total_price,status=0)
-    current_transaction.save();
+    current_transaction = models.Transactions.objects.create(
+        total_amount=total_price, status=0)
+    current_transaction.save()
     current_logedin_user = User.objects.filter(username=request.user).first()
     if current_logedin_user:
-        sales_manager = models.Admin.objects.filter(user_id=current_logedin_user).first()
+        sales_manager = models.Admin.objects.filter(
+            user_id=current_logedin_user).first()
         tem_curr_user = User.objects.filter(username=username).first()
-        curr_customer = models.Customer.objects.filter(user_id=tem_curr_user).first()
+        curr_customer = models.Customer.objects.filter(
+            user_id=tem_curr_user).first()
         place_item = models.Sales.objects.create(
             sales_manager_id=sales_manager,
             total_amount=total_price,
@@ -254,9 +285,9 @@ def order_entry(request):
             items=final_items
         )
         place_item.save()
-   
+
         if place_item:
-            return redirect()
+            return redirect('home/entry')
 
     return JsonResponse({"data": [str(curr_customer)
                                   ], "message": 'no product'})

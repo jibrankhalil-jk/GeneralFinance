@@ -138,3 +138,9 @@ FROM generalfinance.genfin_products
 ORDER BY product_id DESC 
 LIMIT 100;
 DELETE FROM generalfinance.genfin_products;
+
+
+"[{'name': 'bonus tristar detergent  400 gm (05)', 'quantity': 1}, {'name': 'colgate slim soft t\\\\brush(05)', 'quantity': 1}]"
+
+
+"[{'name': 'shan fried shop/steadk msala(62)', 'quantity': 1}]"
