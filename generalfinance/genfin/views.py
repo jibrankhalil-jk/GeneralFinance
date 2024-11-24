@@ -3,7 +3,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from . import forms, models,apis
+from . import forms, models, apis
 from django.http import JsonResponse
 from django.contrib.auth import authenticate
 # from .models import User
@@ -11,40 +11,48 @@ from django.utils.crypto import get_random_string
 import pandas as pd
 import datetime
 
+
 def Index(request):
     if not request.user.is_authenticated:
         return redirect('login')
     else:
         return redirect('home')
 
+
 def createCategorie(request):
     categorie = models.Categories.objects.create(categorie_name="Books")
     categorie.save()
-    return render(request,'home/home.html')
+    return render(request, 'home/home.html')
+
 
 def createUser(request):
-    
+
     current_logedin_user = User.objects.filter(username=request.user).first()
     if current_logedin_user:
-        sales_manager = models.Admin.objects.filter(user_id=current_logedin_user).first()
-        
-        df = pd.read_csv('/Users/jibrankhalil/Dev/Projects/GeneralFinance/SourceCode/genfin/scrapping_data/Sales.csv')
-        for i,d in df.iterrows():
-            date = datetime.datetime.strptime(d['date'], '%Y-%m-%d %H:%M:%S.%f')
-            items = d['items']
-            sales_id=1,
-            user_id=d['user_id'],
-            total=d['total']
+        sales_manager = models.Admin.objects.filter(
+            user_id=current_logedin_user).first()
 
-            current_transaction = models.Transactions.objects.create(total_amount=total, status=0,transaction_date=date)
+        df = pd.read_csv(
+            '/Users/jibrankhalil/Dev/Projects/GeneralFinance/SourceCode/genfin/scrapping_data/Sales.csv')
+        for i, d in df.iterrows():
+            date = datetime.datetime.strptime(
+                d['date'], '%Y-%m-%d %H:%M:%S.%f')
+            items = d['items']
+            sales_id = 1,
+            user_id = d['user_id'],
+            total = d['total']
+
+            current_transaction = models.Transactions.objects.create(
+                total_amount=total, status=0, transaction_date=date)
             current_transaction.save()
-            
+
             c_user = models.Customer.objects.filter(id=user_id[0]).first()
             if c_user:
-                sale = models.Sales.objects.create(user_id=c_user,date_time=date,items=items,sales_manager_id=sales_manager, total_amount=total, transactions_id=current_transaction)
-                sale.save() 
-        return JsonResponse({'data':f"done" })
-    return JsonResponse({'data':user_id})
+                sale = models.Sales.objects.create(user_id=c_user, date_time=date, items=items,
+                                                   sales_manager_id=sales_manager, total_amount=total, transactions_id=current_transaction)
+                sale.save()
+        return JsonResponse({'data': f"done"})
+    return JsonResponse({'data': user_id})
 
 
 # def createUser(request):
@@ -130,14 +138,24 @@ def Logout(request):
 def Home(request):
     data = apis.get_today_sales_data()
     sources = apis.get_today_payement_sources()
-    
+    monthly_sales = apis.get_monthly_sales()
+    top_selling_products = apis.top_selling_products()
+
     chart_data = [
         {"label": "Direct", "value": 50, "color": "text-primary"},
         {"label": "Social", "value": 30, "color": "text-success"},
         {"label": "Referral", "value": 15, "color": "text-info"}
     ]
     current_user = request.user
-    return render(request, 'home/home.html', context={'active': 'home', 'username': current_user, 'sources':sources,'chart_data': chart_data,'today_sales':data})
+    data = {'active': 'home',
+            'username': current_user,
+            'sources': sources,
+            'chart_data': chart_data,
+            'today_sales': data,
+            'monthly_sales': monthly_sales,
+            'top_selling_producs':top_selling_products
+            }
+    return render(request, 'home/home.html', context=data)
 
 
 @login_required

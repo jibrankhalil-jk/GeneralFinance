@@ -25,32 +25,37 @@
         <canvas
           data-bss-chart='{
         "type": "bar",
-        "data": {
-            "labels": ["apple", "orange", "banana", "mango", "grape"],
-            "datasets": [{
-                "label": "Fruits",
-                "backgroundColor": ["#4e73df", "#1cc88a", "#36b9cc", "#f6c23e", "#e74a3b"],
-                "borderColor": ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"],
-                "data": [10, 15, 25, 30, 28]
-            }]
-        },
-        "options": {
-            "maintainAspectRatio": false,
-            "legend": {
-                "display": false,
-                "labels": {
-                    "fontStyle": "normal"
-                }
-            },
-            "scales": {
-                "yAxes": [{
-                    "ticks": {
-                        "beginAtZero": true
-                    }
-                }]
-            }
+"data": {
+  "labels": {{top_selling_producs.labels}},
+  "datasets": [{
+    "label": "Top Selling products",
+    "backgroundColor": ["#4e73df", "#1cc88a", "#36b9cc", "#f6c23e", "#e74a3b"],
+    "borderColor": ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"],
+    "data": {{top_selling_producs.values}}
+  }]
+},
+    "options": {
+      "maintainAspectRatio": false,
+      "legend": {
+        "display": false,
+        "labels": {
+          "fontStyle": "normal"
         }
-    }'
+      },
+      "scales": {
+        "xAxes": [{
+          "ticks": {
+            "fontSize": 8
+          }
+        }],
+        "yAxes": [{
+          "ticks": {
+            "beginAtZero": true
+          }
+        }]
+      }
+    }
+  }'
         ></canvas>
       </div>
     </div>
