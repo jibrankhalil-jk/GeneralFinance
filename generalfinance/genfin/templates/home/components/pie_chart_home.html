@@ -23,14 +23,14 @@
     <div class="card-body justify-content-between align-items-center">
       <div class="chart-area" style="height: 28vh">
         <canvas
-          data-bss-chart='{"type":"doughnut","data":{"labels":["Online","Cash","Loan"],"datasets":[{"label":"","backgroundColor":["#663EDCCE","#1cc88a","#36b9cc"],"borderColor":["#ffffff","#ffffff","#ffffff"],"data":{{sources.data}}}]},"options":{"maintainAspectRatio":false,"legend":{"display":false,"labels":{"fontStyle":"normal"}},"title":{"fontStyle":"normal"}}}'
+          data-bss-chart='{"type":"doughnut","data":{"labels":["Cash","Loan","Online"],"datasets":[{"label":"","backgroundColor":["#1cc88a","#663EDCCE","#36b9cc"],"borderColor":["#ffffff","#ffffff","#ffffff"],"data":{{sources.data}}}]},"options":{"maintainAspectRatio":false,"legend":{"display":false,"labels":{"fontStyle":"normal"}},"title":{"fontStyle":"normal"}}}'
         ></canvas>
       </div>
-      <div class="text-center small mt-4"> 
-        <span class="me-2"><i class="fas fa-circle text-primary"></i>&nbsp;Online</span>
-        <span class="me-2"><i class="fas fa-circle text-success"></i>&nbsp;Cash</span>
-        <span class="me-2"><i class="fas fa-circle text-info"></i>&nbsp;Loan</span>
- 
+      <div class="text-center small mt-4">  
+        <span class="me-2"><i class="fas fa-circle" style="color: #1cc88a;"></i>&nbsp;Cash</span>
+        <span class="me-2"><i class="fas fa-circle" style="color: #663EDCCE;"></i>&nbsp;Loan</span>
+        <span class="me-2"><i class="fas fa-circle" style="color: #36b9cc;"></i>&nbsp;Online</span>
+ {{sources.labels}}
       </div>
     </div>
   </div>

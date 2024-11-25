@@ -17,7 +17,7 @@ urlpatterns = [
     path('user/', views.createUser, name='user'),
     # path('add_user', views.add_user, name='add_user'),
     
-    path('home/ana', analysis.get_sales_of_month, name='add_user'),
+    # path('home/ana', analysis.get_sales_of_month, name='add_user'),
 
     path('login', views.Login,name='login'),
     path('home', views.Home,name='home'),
@@ -29,9 +29,6 @@ urlpatterns = [
     path('home/settings', views.Settings,name='home/settings'), 
     
 
-
-
-    # apis
-    path('get_today_sales', apis.get_today_sales_data ),
+ 
     
 ] 

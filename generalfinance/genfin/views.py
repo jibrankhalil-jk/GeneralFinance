@@ -3,11 +3,9 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from . import forms, models, apis
+from . import  models, apis,analysis
 from django.http import JsonResponse
-from django.contrib.auth import authenticate
-# from .models import User
-from django.utils.crypto import get_random_string
+from django.contrib.auth import authenticate     
 import pandas as pd
 import datetime
 
@@ -133,62 +131,47 @@ def Logout(request):
     logout(request)
     return redirect('login')
 
-
 @login_required
 def Home(request):
     data = apis.get_today_sales_data()
     sources = apis.get_today_payement_sources()
     monthly_sales = apis.get_monthly_sales()
     top_selling_products = apis.top_selling_products()
-
-    chart_data = [
-        {"label": "Direct", "value": 50, "color": "text-primary"},
-        {"label": "Social", "value": 30, "color": "text-success"},
-        {"label": "Referral", "value": 15, "color": "text-info"}
-    ]
     current_user = request.user
     data = {'active': 'home',
             'username': current_user,
             'sources': sources,
-            'chart_data': chart_data,
             'today_sales': data,
             'monthly_sales': monthly_sales,
             'top_selling_producs':top_selling_products
             }
     return render(request, 'home/home.html', context=data)
 
-
 @login_required
 def Entry(request):
     return render(request, 'home/entry.html', context={'active': 'entry'})
-
 
 @login_required
 def Inventory(request):
     return render(request, 'home/inventory.html', context={'active': 'inventory'})
 
-
 @login_required
 def Khata(request):
     return render(request, 'home/khata.html', context={'active': 'khata'})
 
-
 @login_required
 def Analysis(request):
+    analysis.analyis_monthly_sales(request)
     return render(request, 'home/analysis.html', context={'active': 'analysis'})
-
 
 @login_required
 def Settings(request):
     return render(request, 'home/settings.html', context={'active': 'settings'})
 
-
 def custom_404_view(request):
     return render(request, '404.html')
 
-
 # -------------------------------------- Request views --------------------------------------
-
 
 @login_required
 def get_user(request):
@@ -200,7 +183,6 @@ def get_user(request):
     else:
         customer_usernames = []
     return JsonResponse({"data": customer_usernames})
-
 
 @login_required
 def get_user_info(request):
@@ -221,7 +203,6 @@ def get_user_info(request):
             pass
     return JsonResponse({"data": []})
 
-
 @login_required
 def get_product(request):
     product_prefix = request.GET["product"]
@@ -234,7 +215,6 @@ def get_product(request):
     else:
         product_names = []
     return JsonResponse({"data": product_names})
-
 
 @login_required
 def get_product_info(request):
@@ -258,7 +238,6 @@ def get_product_info(request):
             pass
     # print("+++++++++ no product +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     return JsonResponse({"data": [], "message": 'no product'})
-
 
 @login_required
 def order_entry(request):

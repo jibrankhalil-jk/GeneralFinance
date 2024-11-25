@@ -1,0 +1,8 @@
+,id,date_time,sales_manager_id__admin_name,user_id__customer_name,transactions_id__total_amount,name,quantity
+0,3553,2024-11-24 10:15:47.104133+00:00,admin ,Ali,441,chicken spread 200ml,1
+0,3553,2024-11-24 10:15:47.104133+00:00,admin ,Ali,441,young olive spread 200ml sap,1
+1,3554,2024-11-24 10:15:57.998127+00:00,admin ,sajid,265,chicken spread 200ml,1
+2,3555,2024-11-24 10:21:41.126309+00:00,admin ,moeez,355,young b/b honey 200gm pouch,2
+3,3556,2024-11-24 17:47:54.366286+00:00,admin ,farooq,300,3 pieces plastic bowl set albadqa,1
+4,3557,2024-11-24 18:22:10.571521+00:00,admin ,qaim,1116,bita masala box,1
+4,3557,2024-11-24 18:22:10.571521+00:00,admin ,qaim,1116,ubtan soap 100 gm (41),1

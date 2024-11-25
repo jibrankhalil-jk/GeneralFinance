@@ -1,15 +1,6 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.contrib.auth.models import User
-from . import forms, models
-from django.http import JsonResponse
-from django.contrib.auth import authenticate
-# from .models import User
-from django.utils.crypto import get_random_string
+from . import models
 import datetime
-
 import pandas as pd
 
 
@@ -53,17 +44,19 @@ def get_today_payement_sources():
     df_grouped = df.groupby(
         'transaction_type').size().reset_index(name='count')
     sources_with_counts = df_grouped.to_dict('records')
-    labels = [item['transaction_type'] for item in sources_with_counts]
-    data = [item['count'] for item in sources_with_counts]
+    # labels = [item['transaction_type'] for item in sources_with_counts]
+    # data = [item['count'] for item in sources_with_counts]
+    
     return {
-        'labels': labels,
-        'data': data,
+        'cash':  sources_with_counts['Cash'],
+        'online': sources_with_counts['online'],
+        'loan':  sources_with_counts['loan'],
         # 'today_payement_sources': sources_with_counts
     }
 
 
 def get_monthly_sales():
-    current_year = datetime.datetime.now().year - 1
+    current_year = datetime.datetime.now().year 
     monthly_sales = []
 
     for month in range(1, 13):
@@ -79,20 +72,7 @@ def get_monthly_sales():
 
     return monthly_sales
 
-# def top_selling_products():
-#     today = datetime.datetime.now().date()
-#     start_date = datetime.datetime.combine(today, datetime.time.min)
-#     end_date = datetime.datetime.combine(today, datetime.time.max)
-#     today_sales = models.Sales.objects.filter(
-#         date_time__range=(start_date, end_date))
-#     df = pd.DataFrame(list(today_sales.values()))
-#     df['items'] = df['items'].apply(lambda x: sum([int(item['quantity']) for item in x]))
-#     df = df.sort_values(by='items', ascending=False).head(4)  # Changed from 5 to 4
 
-
-#     # labels = df['inventory_name'].tolist()
-#     values = df['items']
-#     return {'labels': 'labels', 'values': values}
 def top_selling_products():
     today = datetime.datetime.now().date()
     start_date = datetime.datetime.combine(today, datetime.time.min)
@@ -119,8 +99,3 @@ def top_selling_products():
     values = [product[1] for product in top_products]
 
     return {'labels': labels, 'values': values}
-
-
-@login_required
-def get_all_the_products(request):
-    pass

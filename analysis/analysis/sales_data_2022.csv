@@ -1,0 +1,879 @@
+,id,date_time,sales_manager_id__admin_name,user_id__customer_name,transactions_id__total_amount,name,quantity
+0,1792,2022-01-16 15:06:38.941549+00:00,admin ,maaz,518,mothercare baby oil l,2
+0,1792,2022-01-16 15:06:38.941549+00:00,admin ,maaz,518,ariel hs orig 500g jubilee,2
+1,1794,2022-08-28 16:10:58.738156+00:00,admin ,raza,2904,poly bag 7x11 (260 pcs) per kg (ob-p),1
+1,1794,2022-08-28 16:10:58.738156+00:00,admin ,raza,2904,soya supreme oil 3 ltr btl  (for ki zone),3
+2,1797,2022-12-21 17:08:52.403862+00:00,admin ,asaf,290,4me air freshner english rose(55),1
+3,1800,2022-12-27 09:05:19.643245+00:00,admin ,abbas,258,mezan ghee 1x10 kg old code,1
+4,1802,2022-07-13 09:37:13.378150+00:00,admin ,jafar,425,nutri chipsticks peri peri 60 gm (1w),2
+4,1802,2022-07-13 09:37:13.378150+00:00,admin ,jafar,425,shampo head & shoulders supmeme 80ml(55),1
+5,1805,2022-04-25 15:50:21.467117+00:00,admin ,moeez,201,kinza salt iofized 800gm,1
+5,1805,2022-04-25 15:50:21.467117+00:00,admin ,moeez,201,kontrol mac fresh dish washing liquid 300 ml(59),2
+6,1811,2022-04-23 21:54:06.996840+00:00,admin ,sabir,1966,shan tikka seekh kabab 90 gm d/p(62),2
+6,1811,2022-04-23 21:54:06.996840+00:00,admin ,sabir,1966,kisan corn oil 2ltr,3
+7,1813,2022-04-18 12:30:40.184921+00:00,admin ,riyan,689,diamond mop well jasmine 1000ml cleaner,3
+7,1813,2022-04-18 12:30:40.184921+00:00,admin ,riyan,689,tehwar ajwaien 50 gms (ob-s),1
+8,1821,2022-06-26 19:18:32.041928+00:00,admin ,asaf,3229,tumblers clover 280 ml,1
+8,1821,2022-06-26 19:18:32.041928+00:00,admin ,asaf,3229,super habib c/oil 3ltr btl ,3
+9,1826,2022-08-16 19:09:44.814802+00:00,admin ,qasim,330,cleeno bath room cleaner  500 ml  thick,2
+10,1828,2022-03-10 17:26:02.468931+00:00,admin ,arbab,177,aghaaz banaspati 1*5 kg (for mn/qa/sr zone),1
+11,1830,2022-01-01 12:05:06.746749+00:00,admin ,asfand yar,1150,lumer original 5 kg (detergents powder) (18),1
+12,1836,2022-05-18 20:18:58.939838+00:00,admin ,arbab,590,clear shampoo 350 ml,2
+13,1838,2022-09-21 20:41:06.098981+00:00,admin ,saif,1084,kiwi auto shine tube 83 gm(59),1
+13,1838,2022-09-21 20:41:06.098981+00:00,admin ,saif,1084,h/w style shampoo 250 ml,3
+14,1839,2022-01-27 14:36:02.165397+00:00,admin ,saif,404,ls green chilli 1 kg (lp)(f-s),2
+15,1841,2022-08-06 13:14:02.881202+00:00,admin ,saif,120,bigger apple 1500 ml,2
+16,1846,2022-04-14 08:13:32.412516+00:00,admin ,Ali,220,shangrla mix pik 500g,2
+17,1850,2022-09-25 18:35:40.568078+00:00,admin ,moeez,248,macaroni fancy screw 400 gm bake parlor(59),2
+18,1852,2022-12-23 10:41:11.162019+00:00,admin ,sabir,678,colgate total fresh strip t past 160 gm (05),2
+18,1852,2022-12-23 10:41:11.162019+00:00,admin ,sabir,678,osem talcum powder-bouquet-m 100 gm (41),2
+19,1854,2022-03-17 08:12:19.697941+00:00,admin ,qasim,2,kalwanji (black cumin seeds raw) (ob-r),2
+20,1856,2022-09-12 10:19:18.179900+00:00,admin ,arbab,601,doughstory  plain cake 200 gm (94),3
+20,1856,2022-09-12 10:19:18.179900+00:00,admin ,arbab,601,pakola lychee 500 ml,1
+21,1859,2022-07-31 08:14:24.199934+00:00,admin ,bilal,843,wiz general purpose cleaner rose 1000ml bottle (60),3
+22,1860,2022-05-16 21:57:57.286096+00:00,admin ,abbas,1115,golden sun c/oil c/ oil 5 ltr btl ,1
+22,1860,2022-05-16 21:57:57.286096+00:00,admin ,abbas,1115,rose petal car pack 50s(59),2
+23,1866,2022-08-08 12:27:56.517663+00:00,admin ,mirza,600,"gastrail plus imlee tab 120,s(75)",3
+24,1868,2022-09-12 16:16:12.165998+00:00,admin ,khan,25,click 23.7 gm (14),1
+24,1868,2022-09-12 16:16:12.165998+00:00,admin ,khan,25,shino lemo dishwash clean 140 gm,1
+25,1869,2022-07-11 21:16:38.521472+00:00,admin ,saif,225,euro delux beauty soap milk almond 115 gms(93),3
+26,1872,2022-07-08 08:45:45.477341+00:00,admin ,jafar,1588,dove sham dryness care 360 ml(08),2
+27,1873,2022-09-24 12:48:15.587962+00:00,admin ,abid,117,der cheni 50 gm,3
+28,1878,2022-02-12 08:27:21.945183+00:00,admin ,riyan,396,shng garlic c/s 1 kg igs 250g fre,2
+29,1879,2022-07-26 19:34:08.507002+00:00,admin ,yahya,1008,nivea body natural fairness cream 100ml(59),2
+30,1881,2022-01-04 16:30:25.119502+00:00,admin ,sajid,150,bettani tea 25 gm (rmbt) (1e),3
+31,1882,2022-02-02 10:37:26.546838+00:00,admin ,Ali,174,fruit basket st,3
+32,1883,2022-12-14 14:42:36.158833+00:00,admin ,zubair,1730,warid-zem-250,2
+32,1883,2022-12-14 14:42:36.158833+00:00,admin ,zubair,1730,tapal f/m 950gm fre try,2
+33,1887,2022-05-14 20:21:02.661762+00:00,admin ,waqas,695,skin naturals bb cream x light 50 ml(79),1
+34,1890,2022-01-20 08:13:02.072679+00:00,admin ,sajid,10872,balty bucket.no 3 super st,2
+34,1890,2022-01-20 08:13:02.072679+00:00,admin ,sajid,10872,habib ghee 10kg tin ,3
+35,1905,2022-09-28 12:41:31.041255+00:00,admin ,waqas,1650,body spray fascine code red 200 ml(55),3
+36,1906,2022-09-03 21:05:07.113407+00:00,admin ,sajid,1394,farina storm regular 3*1(76),1
+36,1906,2022-09-03 21:05:07.113407+00:00,admin ,sajid,1394,ppv 185ml ahf-f(10),3
+37,1907,2022-04-29 14:11:26.064301+00:00,admin ,raza,24,vim dishwash bar hi jump lemon 200 gm(08),1
+38,1909,2022-08-31 14:27:37.857758+00:00,admin ,moeez,2030,life style sharbat bazuri 800 ml red syrup(rmsp)(66),2
+38,1909,2022-08-31 14:27:37.857758+00:00,admin ,moeez,2030,olpers full cream milk powder 390x24 gm(64),2
+39,1913,2022-02-27 15:07:56.970519+00:00,admin ,waqas,534,mango pickle 1000 gms (mitch.)deleted code,3
+40,1919,2022-10-28 21:58:53.713452+00:00,admin ,asfand yar,353,wiper s 1122,2
+40,1919,2022-10-28 21:58:53.713452+00:00,admin ,asfand yar,353,kitchen knifesuperior handle,1
+41,1930,2022-03-25 10:45:58.298335+00:00,admin ,zubair,945,maan c/ oil 1x5 ltr pouch ,3
+42,1931,2022-06-23 11:42:28.920082+00:00,admin ,zubair,1410,iqra food garam masala whole 100gm (39),2
+42,1931,2022-06-23 11:42:28.920082+00:00,admin ,zubair,1410,sundas super basmati rice 1kg,3
+43,1932,2022-01-21 13:43:34.271966+00:00,admin ,abid,830,agro pak garam masala powder 100 gm(92),2
+43,1932,2022-01-21 13:43:34.271966+00:00,admin ,abid,830,marhaba toot siah 120 ml,2
+44,1937,2022-11-07 12:52:41.638002+00:00,admin ,asfand yar,890,pantene shampoo breakage defence 375 ml(55),1
+45,1940,2022-11-21 17:44:52.903682+00:00,admin ,raza,580,mitchell chilli garlic sauce 250 gm,1
+45,1940,2022-11-21 17:44:52.903682+00:00,admin ,raza,580,utility rahat-e-jan (red syrup) 750 ml (ob-v),3
+46,1943,2022-02-23 09:04:16.992271+00:00,admin ,moeez,392,moveeta luxs/t144p,1
+46,1943,2022-02-23 09:04:16.992271+00:00,admin ,moeez,392,pakora poni m,1
+47,1945,2022-04-03 19:16:00.032234+00:00,admin ,raza,775,gillet razor set fusion,1
+48,1946,2022-09-09 12:44:28.718509+00:00,admin ,qasim,725,canolive premium c/ oil 1 x 5  ltr pp ctn(rmol)(1a),1
+48,1946,2022-09-09 12:44:28.718509+00:00,admin ,qasim,725,lifebuoy hand wash total 200 ml(08),1
+49,1947,2022-09-25 10:19:21.076961+00:00,admin ,mirza,3673,usc green aallaichi 15 gm (ob-s)(rmob),2
+49,1947,2022-09-25 10:19:21.076961+00:00,admin ,mirza,3673,"eva canola oil 10 ltr jery can (for id,ad pr zone)",1
+50,1949,2022-10-13 09:19:45.750083+00:00,admin ,raza,195,nutivita c/corn flakes 460 gm,1
+51,1950,2022-01-05 09:01:26.430540+00:00,admin ,saif,387,bonus tristar detergent  400 gm (05),2
+51,1950,2022-01-05 09:01:26.430540+00:00,admin ,saif,387,life buoy care hand wash 140 ml,3
+52,1952,2022-06-04 09:58:43.522784+00:00,admin ,raza,52,national jelly crystal p/apple8(56),1
+53,1966,2022-03-23 14:36:56.924470+00:00,admin ,maaz,10,rite gold chocolate mini rs 10(59),1
+54,1967,2022-11-12 16:00:39.891760+00:00,admin ,saif,528,mirinda 345 ml,2
+54,1967,2022-11-12 16:00:39.891760+00:00,admin ,saif,528,vigo baby mini x-l 18 pcs,1
+55,1968,2022-10-06 14:27:35.493558+00:00,admin ,moeez,241,savannah majestic glow 125 gms(27),1
+55,1968,2022-10-06 14:27:35.493558+00:00,admin ,moeez,241,hankies fun pack 100 2p,2
+56,1970,2022-05-14 17:58:10.154697+00:00,admin ,abbas,526,iqra black pepper whole 50 gm (39),1
+56,1970,2022-05-14 17:58:10.154697+00:00,admin ,abbas,526,shahi korma masala 100 gm (36),2
+57,1971,2022-07-25 13:39:53.247898+00:00,admin ,maaz,30,cocomo half roll strawberry (pcs)(59),3
+58,1972,2022-06-06 18:34:37.538090+00:00,admin ,sajid,2580,“777” sella rice kainat – 1121 (02 kg)(134)(r),3
+59,1975,2022-01-29 10:59:25.930815+00:00,admin ,raza,830,whitening face wash 100ml,2
+59,1975,2022-01-29 10:59:25.930815+00:00,admin ,raza,830,serving rice dish blue,1
+60,1978,2022-08-24 09:56:02.883167+00:00,admin ,arbab,156,damaghri 100 gms,1
+60,1978,2022-08-24 09:56:02.883167+00:00,admin ,arbab,156,tops white vinegar synthetic,3
+61,1981,2022-08-18 21:08:42.648086+00:00,admin ,Ali,95,sunlight hs std powder pink 380 gms(08),1
+62,1983,2022-05-07 21:47:40.298700+00:00,admin ,moeez,96,shan chinese chop souy 40 gm (62),2
+63,1985,2022-01-17 17:14:25.372996+00:00,admin ,riyan,733,clean&cl/s/g/w/b hand150/200,2
+63,1985,2022-01-17 17:14:25.372996+00:00,admin ,riyan,733,kure toothbrush bacteria guard bristles  medium,1
+64,1986,2022-09-08 19:36:04.521859+00:00,admin ,raza,119,wiz h/wash 250ml bottle cocunut (60),1
+65,1988,2022-05-22 16:28:56.957886+00:00,admin ,mirza,1088,poly bag 10x15 (110 pcs) per kg (3kg) packing (ob-p),2
+65,1988,2022-05-22 16:28:56.957886+00:00,admin ,mirza,1088,bombay biryani masala 30 gm(malka)(36),2
+66,1996,2022-01-02 17:53:52.292980+00:00,admin ,salman,564,double king polishing ong std nutural (80),3
+66,1996,2022-01-02 17:53:52.292980+00:00,admin ,salman,564,pepsi 2.25 liter (90),3
+67,1997,2022-02-28 12:09:23.157276+00:00,admin ,khan,810,chicken shish kabab 600 gm,1
+67,1997,2022-02-28 12:09:23.157276+00:00,admin ,khan,810,shangrilla fruit-o-red grape fruit drink 1 ltr(26),1
+68,1998,2022-11-23 20:50:00.107436+00:00,admin ,waqas,27,t/ketchup 100 ml b/p(59),1
+69,1999,2022-04-08 18:40:48.062873+00:00,admin ,salman,1966,always nights t5 soft trio(10),2
+70,2003,2022-03-24 15:11:36.233370+00:00,admin ,sajid,58,an egg per pcs (lp)(mtn),2
+71,2007,2022-01-27 17:21:29.554931+00:00,admin ,saif,372,am bread large (lp)(dgk),2
+72,2012,2022-07-23 19:58:41.254014+00:00,admin ,abbas,1224,kisan super basmati rice 2 kg(132)(r),2
+73,2018,2022-12-28 20:05:45.423990+00:00,admin ,qasim,394,veet lotion 40 gm dry(04),2
+74,2029,2022-06-22 18:52:13.177060+00:00,admin ,saif,130,nutri black pepper powder 50 gm (1w),1
+75,2030,2022-07-03 12:11:39.044261+00:00,admin ,waqas,270,mehran kheer mix 155 gm(67),2
+76,2038,2022-09-06 10:11:12.344143+00:00,admin ,qasim,1650,angoota petra 524,3
+76,2038,2022-09-06 10:11:12.344143+00:00,admin ,qasim,1650,naubhar super biryani rice 5 kg,1
+77,2039,2022-08-14 11:11:29.631910+00:00,admin ,waqas,18795,nangrow 3 12x900 gm pk(57),3
+77,2039,2022-08-14 11:11:29.631910+00:00,admin ,waqas,18795,shampoo pert plus with olive oil 200 ml(55),3
+78,2040,2022-08-23 13:04:19.281002+00:00,admin ,sabir,296,lilly toilet soap lilly large purple145 gms x6 sw(07),1
+79,2045,2022-07-06 12:56:57.096011+00:00,admin ,abbas,640,denim shaving gel 200 ml,1
+79,2045,2022-07-06 12:56:57.096011+00:00,admin ,abbas,640,joy crincle sancks (shell) 200 gm (39),3
+80,2046,2022-08-16 15:16:51.013171+00:00,admin ,qasim,500,warid-zem-500,2
+81,2050,2022-12-11 10:30:38.416047+00:00,admin ,asaf,635,national karahi gosht masala 24 gm(56),3
+81,2050,2022-12-11 10:30:38.416047+00:00,admin ,asaf,635,carts mach 3 turbo,1
+82,2052,2022-04-05 10:59:31.859518+00:00,admin ,maaz,520,smart chilli garlic 200 gm (58),2
+82,2052,2022-04-05 10:59:31.859518+00:00,admin ,maaz,520,pistachio salted  150 gm(74),1
+83,2057,2022-02-16 12:03:24.291160+00:00,admin ,saif,210,nutri chipsticks  sour cream 30 gm (1w),3
+84,2058,2022-10-06 11:57:38.555728+00:00,admin ,bilal,75,innovative digestive 6x24(59),3
+85,2064,2022-05-03 20:56:55.725976+00:00,admin ,bilal,3086,aquapura water tablets 100m,3
+85,2064,2022-05-03 20:56:55.725976+00:00,admin ,bilal,3086,star mixer lime pani 2500 gm(69),2
+86,2067,2022-06-09 21:13:13.967098+00:00,admin ,bilal,319,quice tomato ketchup 1 kg pouch(84),2
+86,2067,2022-06-09 21:13:13.967098+00:00,admin ,bilal,319,an egg per pcs (lp)(mtn),1
+87,2070,2022-11-05 11:16:31.824494+00:00,admin ,sajid,378,shan tikka seekh kabab masala 45 gm(62),2
+87,2070,2022-11-05 11:16:31.824494+00:00,admin ,sajid,378,olper 1 liter (64),1
+88,2072,2022-12-04 21:23:50.242248+00:00,admin ,jafar,390,best food nimko ecial 150 gm(38),1
+88,2072,2022-12-04 21:23:50.242248+00:00,admin ,jafar,390,a4 gentle roseleaf  175mm x 180mm(1y),1
+89,2073,2022-07-26 09:12:53.440290+00:00,admin ,abbas,738,inseguard repellent lotion 60 ml(59),3
+90,2075,2022-06-22 08:36:26.844876+00:00,admin ,jafar,790,maan cooking oil 1x5 ltr pouch,2
+90,2075,2022-06-22 08:36:26.844876+00:00,admin ,jafar,790,national iodized pink salt 800 gm(56),2
+91,2076,2022-07-22 19:58:42.231979+00:00,admin ,salman,1080,parizad garam masala pdr 100 gm,3
+92,2077,2022-02-23 15:46:46.232651+00:00,admin ,sajid,1645,life style shan-e-masiq 800 ml red syrup(rmsp)(66),2
+92,2077,2022-02-23 15:46:46.232651+00:00,admin ,sajid,1645,herbbee honey 300 gm glass b&b import,3
+93,2088,2022-10-20 12:26:12.754024+00:00,admin ,mirza,45,eco salt (iodize) 800gm (88),1
+94,2089,2022-10-03 17:42:13.327609+00:00,admin ,asfand yar,2886,ss wiper bend clump large(24),3
+94,2089,2022-10-03 17:42:13.327609+00:00,admin ,asfand yar,2886,jazaa dried fenugreek leaves (kasuri methi) (1q),3
+95,2090,2022-09-21 15:54:45.503575+00:00,admin ,asfand yar,389,kisan ghee 2.5kg bkt,1
+96,2091,2022-02-17 10:06:08.686397+00:00,admin ,zubair,550,tops malt-79 500 ml nr,2
+96,2091,2022-02-17 10:06:08.686397+00:00,admin ,zubair,550,vo5 shampoo  extra body 325 ml(55),2
+97,2094,2022-09-10 13:54:08.754736+00:00,admin ,asfand yar,160,nutri nimko dal mooth150 gm (1w),1
+98,2100,2022-09-12 15:11:49.267016+00:00,admin ,asfand yar,1120,crown rice sella 2 kg(131)(r),2
+99,2105,2022-04-22 21:09:38.637534+00:00,admin ,sabir,281,mercury white b/black,1
+99,2105,2022-04-22 21:09:38.637534+00:00,admin ,sabir,281,vital antibacterial soap (maximum protection) 95 gms(30),2
+100,2106,2022-04-11 10:09:43.696816+00:00,admin ,yahya,141,nestle hclf milk 500ml,2
+100,2106,2022-04-11 10:09:43.696816+00:00,admin ,yahya,141,moveeta luxt/p100p,1
+101,2107,2022-03-05 14:22:28.947993+00:00,admin ,sajid,17280,dalda canola oil 16 ltr jerry can (for all usc zone except karachi) (old code)(1c),3
+102,2116,2022-01-29 19:32:40.132015+00:00,admin ,asaf,208,adidas bdy spry (women),1
+103,2119,2022-09-28 09:15:28.077764+00:00,admin ,zubair,256,milan dishwash 100 gm (22),2
+103,2119,2022-09-28 09:15:28.077764+00:00,admin ,zubair,256,jacker potato cris 75 gm can sour cream & onion ,2
+104,2126,2022-02-24 12:18:50.566360+00:00,admin ,jafar,1390,tetley gold 190 gm,1
+104,2126,2022-02-24 12:18:50.566360+00:00,admin ,jafar,1390,balti new plastic with top 12 ltr ,3
+105,2127,2022-10-08 16:30:36.613511+00:00,admin ,salman,301,benz phenyl white perfumed 1200ml(17),1
+105,2127,2022-10-08 16:30:36.613511+00:00,admin ,salman,301,gurr 1 kg (only for jails)(39),1
+106,2128,2022-10-17 20:43:30.059670+00:00,admin ,moeez,289,marhaba amla hair oil 100 ml,1
+106,2128,2022-10-17 20:43:30.059670+00:00,admin ,moeez,289,shangrilla garlic chilli sauce 950 gm pouch rs 20/off(26),1
+107,2130,2022-01-21 20:21:32.956984+00:00,admin ,raza,1061,shama c/ oil 5 ltr btl,1
+107,2130,2022-01-21 20:21:32.956984+00:00,admin ,raza,1061,cotton wool 300 gm(20),1
+108,2132,2022-03-08 14:01:51.136948+00:00,admin ,moeez,4237,sharp colour t.v 14 ,1
+108,2132,2022-03-08 14:01:51.136948+00:00,admin ,moeez,4237,barkat cooking oil 5 ltr,1
+109,2133,2022-06-25 12:14:12.397679+00:00,admin ,sabir,341,kisan c/ oil 1x5 ltr dienser,1
+109,2133,2022-06-25 12:14:12.397679+00:00,admin ,sabir,341,golden sun c/oil c/ oil 1 ltr pkt ,1
+110,2134,2022-07-27 10:26:57.797475+00:00,admin ,salman,402,colgate herbal 200 gm,3
+111,2136,2022-07-04 21:47:40.770339+00:00,admin ,mirza,284,wiper siri std zg (clean max),1
+111,2136,2022-07-04 21:47:40.770339+00:00,admin ,mirza,284,gluco 200 gms (p.f),2
+112,2137,2022-01-27 17:56:49.357921+00:00,admin ,zubair,400,plate 9  serving daisy,2
+113,2139,2022-06-11 18:24:10.130821+00:00,admin ,asaf,2892,ls ginger 1 kg (lp) (khb),3
+113,2139,2022-06-11 18:24:10.130821+00:00,admin ,asaf,2892,khobani dry 250 gm,3
+114,2144,2022-10-18 09:21:43.002786+00:00,admin ,raza,246,carts victor plus,2
+114,2144,2022-10-18 09:21:43.002786+00:00,admin ,raza,246,tux facial perfumed 100*,1
+115,2146,2022-02-17 17:38:15.735928+00:00,admin ,mirza,162,safeguard h/sanitzer 59 ml,1
+116,2147,2022-06-02 16:15:33.863356+00:00,admin ,jafar,5310,classic tru bru coffee 200 gm(1a),3
+117,2148,2022-08-03 16:55:57.936678+00:00,admin ,salman,760,fauji ice cream 300 gm,1
+117,2148,2022-08-03 16:55:57.936678+00:00,admin ,salman,760,petal fresh lotion 700ml,2
+118,2151,2022-03-19 19:30:10.828370+00:00,admin ,maaz,670,agro pak bedyan khatai 25 gm (92),3
+118,2151,2022-03-19 19:30:10.828370+00:00,admin ,maaz,670,manpasand ghee 1 kg pouch (old code),1
+119,2157,2022-01-15 17:07:36.462424+00:00,admin ,waqas,573,atta,3
+119,2157,2022-01-15 17:07:36.462424+00:00,admin ,waqas,573,en liven after shave 125 ml,3
+120,2161,2022-06-29 08:55:56.903468+00:00,admin ,jafar,948,jelly chili mili 36 bags 36 box(61),2
+120,2161,2022-06-29 08:55:56.903468+00:00,admin ,jafar,948,sfg lhs floral scent 375ml refill-pd(10),2
+121,2164,2022-03-21 08:52:23.251939+00:00,admin ,abid,281,qarshi almond oil 10 ml(45),1
+121,2164,2022-03-21 08:52:23.251939+00:00,admin ,abid,281,fairness snow aloevera 60 gms (sarwana)(41),1
+122,2173,2022-06-13 19:58:34.014594+00:00,admin ,yahya,658,dettol mpc rose 500 ml(04),1
+122,2173,2022-06-13 19:58:34.014594+00:00,admin ,yahya,658,usc toilet roll (ob-v),3
+123,2175,2022-11-04 08:29:28.362511+00:00,admin ,sajid,303,mughal diamond 1 kg(135)(r),1
+124,2176,2022-07-26 14:35:52.120936+00:00,admin ,riyan,471,shafay bondi 200gm (2a),1
+124,2176,2022-07-26 14:35:52.120936+00:00,admin ,riyan,471,agro pak sagudana 200 gm (92),2
+125,2180,2022-12-20 13:31:17.135908+00:00,admin ,abbas,135,nitto pvc tape  21  (10y) blue(59),3
+126,2181,2022-12-09 18:14:16.029956+00:00,admin ,mirza,520,ezigrip kombat tooth brush (aka)(59),3
+126,2181,2022-12-09 18:14:16.029956+00:00,admin ,mirza,520,best black paper powder 100 gm(38),1
+127,2184,2022-05-21 11:46:21.391881+00:00,admin ,waqas,5,pantene sh smooth & strong 5 pk(10),1
+128,2185,2022-10-13 20:28:46.949938+00:00,admin ,riyan,5204,harpic toilet cleaner rose 1 ltr  (04),1
+128,2185,2022-10-13 20:28:46.949938+00:00,admin ,riyan,5204,lipton yellow lable tea kpk 950 gm(rmbt) (16),3
+129,2187,2022-05-25 11:28:13.290418+00:00,admin ,waqas,774,supreme 475 gm,2
+130,2188,2022-10-15 16:42:58.676720+00:00,admin ,sajid,1736,planta c/oil 2.5 ltr tin,1
+130,2188,2022-10-15 16:42:58.676720+00:00,admin ,sajid,1736,pnt smooth & strong 650 ml-f(10),1
+131,2192,2022-07-30 08:25:27.162697+00:00,admin ,zubair,6884,oral care vis med 40,1
+131,2192,2022-07-30 08:25:27.162697+00:00,admin ,zubair,6884,habib  ghee 10kg tin(pg)(87),2
+132,2193,2022-12-30 12:57:42.260258+00:00,admin ,zubair,423,milo drink choc 200gms,1
+132,2193,2022-12-30 12:57:42.260258+00:00,admin ,zubair,423,twinkle/comfort pink 200ml(08),2
+133,2194,2022-11-28 21:29:45.819770+00:00,admin ,moeez,10,eco ballpoint blue,2
+134,2195,2022-02-04 10:38:07.443065+00:00,admin ,yahya,153,kisan ghee 1x5 kg dienser ,1
+135,2196,2022-10-11 09:10:56.378286+00:00,admin ,bilal,945,ntri garam masala whole 250g,3
+136,2198,2022-06-01 18:51:16.044408+00:00,admin ,asaf,125,sa onion 1 kg (lp)(shk),1
+137,2202,2022-10-04 12:25:47.999899+00:00,admin ,moeez,2458,golden sun c/oil c/ oil 3 ltr btl,3
+137,2202,2022-10-04 12:25:47.999899+00:00,admin ,moeez,2458,supreme 950 gm,1
+138,2203,2022-03-17 19:32:26.859086+00:00,admin ,asfand yar,3051,softlan 2000 ml pink (bottle) (05),3
+139,2206,2022-10-09 09:06:50.275305+00:00,admin ,abbas,111,broom coconut brown 400 gm (imported)(59),1
+140,2208,2022-11-20 13:50:54.215723+00:00,admin ,asfand yar,200,tooth pick green,2
+141,2211,2022-12-13 12:23:58.018668+00:00,admin ,bilal,813,naphthalene balls 400 gm(17),3
+142,2212,2022-10-24 10:38:51.213202+00:00,admin ,moeez,93,savannah london passion 75 gms (special fregrance),3
+143,2217,2022-11-06 13:48:09.625953+00:00,admin ,bilal,189,jazaa dried fenugreek leaves (kasuri methi) (1q),2
+143,2217,2022-11-06 13:48:09.625953+00:00,admin ,bilal,189,best chat masala 100 gm(38),1
+144,2219,2022-09-27 11:34:49.461650+00:00,admin ,sajid,660,stainer with wood handle 16cm,2
+145,2221,2022-11-25 09:39:52.427362+00:00,admin ,yahya,20,lu biscuts whtbl h/fbr,2
+146,2223,2022-10-30 11:30:01.624799+00:00,admin ,abbas,48,waltz chocolate 85 gm,1
+147,2226,2022-08-26 21:42:23.910953+00:00,admin ,salman,226,frina storm small(3 in 1),2
+147,2226,2022-08-26 21:42:23.910953+00:00,admin ,salman,226,rex white liquid 100 ml,1
+148,2228,2022-04-02 10:47:15.419793+00:00,admin ,bilal,1630,tapal tezdum 950 gm tray fre,2
+148,2228,2022-04-02 10:47:15.419793+00:00,admin ,bilal,1630,party 61.1 gm x 6 hr (14),3
+149,2230,2022-10-16 10:26:32.672682+00:00,admin ,Ali,40,chocolicious mini - vanilla 15.5gm sp (14),2
+149,2230,2022-10-16 10:26:32.672682+00:00,admin ,Ali,40,choclatto half roll rs 10(59),1
+150,2231,2022-04-12 18:54:02.118647+00:00,admin ,riyan,1090,toilet soap hypro  energetic 120 gms x 3 rs.15 off(07),3
+150,2231,2022-04-12 18:54:02.118647+00:00,admin ,riyan,1090,skin naturals light radiant face wash 100 ml(79),1
+151,2233,2022-05-29 19:51:24.951480+00:00,admin ,sajid,2150,dil dil banaspati 5 kg bkt,2
+152,2235,2022-04-07 15:17:58.127862+00:00,admin ,raza,3158,ocean pearl lazzat 1kg ,2
+152,2235,2022-04-07 15:17:58.127862+00:00,admin ,raza,3158,badam kaghzi 400 gm,3
+153,2236,2022-06-22 21:59:30.401603+00:00,admin ,abid,342,caresse naturals hand wash (exclusive gold) 450 ml(95),1
+154,2239,2022-07-29 08:42:50.703628+00:00,admin ,jafar,117,swaad biryani masala 50 gm (70),1
+155,2242,2022-08-20 18:57:49.866095+00:00,admin ,moeez,950,qarshi chilli garlic s\1000(45),3
+155,2242,2022-08-20 18:57:49.866095+00:00,admin ,moeez,950,finis all purpose insect killer liquid 425 ml (btl) (a.k.a),1
+156,2243,2022-04-16 16:58:11.753044+00:00,admin ,sajid,397,savannah b/b/soap 150gm(27),3
+156,2243,2022-04-16 16:58:11.753044+00:00,admin ,sajid,397,english breeze h/wash rexing vio 500ml,1
+157,2245,2022-09-20 10:06:08.120158+00:00,admin ,qasim,3,packing material 200gm (6x8) universal prime gate,1
+158,2247,2022-11-25 20:54:10.772119+00:00,admin ,saif,4545,mughal diamond 5 kg(135)(r),3
+159,2248,2022-07-05 12:23:26.766039+00:00,admin ,salman,784,,0
+160,2254,2022-05-25 11:18:45.114724+00:00,admin ,khan,704,thousand island kanas 400 gm89(59),2
+161,2255,2022-06-17 10:21:55.834365+00:00,admin ,sabir,1146,penne arrabbiata macaroni 250 gm,2
+161,2255,2022-06-17 10:21:55.834365+00:00,admin ,sabir,1146,pantene shampoo repair 200 ml khybertraders(55),2
+162,2257,2022-10-26 20:55:02.139077+00:00,admin ,riyan,86,sanitary n/regular long thick,1
+162,2257,2022-10-26 20:55:02.139077+00:00,admin ,riyan,86,knor ndl lemon twist 66g,1
+163,2263,2022-01-10 10:29:32.679862+00:00,admin ,bilal,330,shangrilla mixed pickle chunks 390 gm(26),1
+164,2265,2022-09-22 11:51:19.375623+00:00,admin ,maaz,2175,treet- 3 orange with lubra strip(59),3
+164,2265,2022-09-22 11:51:19.375623+00:00,admin ,maaz,2175,kausar sella rice 5 kg,2
+165,2266,2022-02-09 09:56:48.847828+00:00,admin ,abid,1677,tehwar big allaichi 50 gm (ob-s) (rmob),3
+165,2266,2022-02-09 09:56:48.847828+00:00,admin ,abid,1677,lipton yellow green tea bag mint 25 s (16),3
+166,2268,2022-04-22 16:44:13.749374+00:00,admin ,saif,3510,lipton yellow label tea 900 gm(rmbt) (16),2
+167,2274,2022-09-15 12:17:46.388393+00:00,admin ,asaf,515,storage box 3 kp,1
+167,2274,2022-09-15 12:17:46.388393+00:00,admin ,asaf,515,vim bar lem 460gm(08),1
+168,2276,2022-05-28 21:34:19.268261+00:00,admin ,abid,1135,,0
+169,2282,2022-09-29 19:35:04.811209+00:00,admin ,bilal,45,waltz ch/wafer ack,3
+170,2284,2022-08-06 15:17:33.027587+00:00,admin ,salman,346,goldfish face painting c/ b 12s pkt (43),2
+171,2285,2022-04-04 11:39:48.406735+00:00,admin ,sabir,78,green cardamon reg 25 gm,1
+172,2288,2022-12-21 18:30:13.559821+00:00,admin ,zubair,1201,towel l/s 54x27 ravi plastic,3
+172,2288,2022-12-21 18:30:13.559821+00:00,admin ,zubair,1201,injeer brand chakki atta 5 kg (consignment),1
+173,2290,2022-07-24 10:04:18.650190+00:00,admin ,Ali,1288,max lequid 750ml lemon(05),3
+173,2290,2022-07-24 10:04:18.650190+00:00,admin ,Ali,1288,golden window wiper,1
+174,2291,2022-10-29 09:05:48.261796+00:00,admin ,raza,573,fruitien apple nector 1000 ml,3
+174,2291,2022-10-29 09:05:48.261796+00:00,admin ,raza,573,safeguard 70 gms 2 cp bundle pack(10),1
+175,2293,2022-02-05 09:52:32.552179+00:00,admin ,zubair,187,"scotch brite  classic pad large,3pcs(28)",1
+176,2295,2022-11-04 17:43:52.434527+00:00,admin ,yahya,124,wiz h/wash 250ml bottle anti bacterial green (60),1
+177,2301,2022-04-20 12:19:34.883277+00:00,admin ,jafar,2330,golden sun 10 kg bkt ,1
+177,2301,2022-04-20 12:19:34.883277+00:00,admin ,jafar,2330,"gastrial plus plain tab 120,s(75)",3
+178,2309,2022-09-20 16:27:00.754908+00:00,admin ,saif,110,shan tez lal mirch pdr 45 gm(62),1
+179,2313,2022-05-05 08:02:55.255094+00:00,admin ,abbas,29,knock out simply salt 39 gm-gloss,1
+180,2315,2022-06-12 10:22:41.482028+00:00,admin ,abid,268,gold falke by rothmans of london 20 hl cigrate (only for jails)(99),1
+180,2315,2022-06-12 10:22:41.482028+00:00,admin ,abid,268,rex white liquid 50 ml,2
+181,2316,2022-04-19 08:37:45.803725+00:00,admin ,arbab,800,smart ketchup family pack 800 gm (58),1
+181,2316,2022-04-19 08:37:45.803725+00:00,admin ,arbab,800,tapal family mix 475 gms pouch rs 50 off(37),1
+182,2317,2022-03-05 13:29:42.618447+00:00,admin ,jafar,478,commander antibacterial soap lemon cool 30 gm(54),2
+182,2317,2022-03-05 13:29:42.618447+00:00,admin ,jafar,478,kontrol aerosol 400ml(59),2
+183,2318,2022-05-11 11:24:23.370351+00:00,admin ,raza,3093,balti new plastic w/o top 35 ltr ,3
+183,2318,2022-05-11 11:24:23.370351+00:00,admin ,raza,3093,dunhill swithc 20 hl cigrate (only for jails)(96),1
+184,2319,2022-11-03 09:37:14.816534+00:00,admin ,jafar,134,nutri snacks ring 40 gm (1w),1
+184,2319,2022-11-03 09:37:14.816534+00:00,admin ,jafar,134,3g safety match box regular small 10 s,2
+185,2321,2022-03-02 08:34:38.162944+00:00,admin ,zubair,245,mehran chapli kabab 100 gm(67),1
+186,2323,2022-10-05 20:20:17.479454+00:00,admin ,maaz,1302,lipton yl blk kpk 400 gm (rmbt) (16),2
+187,2326,2022-09-23 11:37:36.792813+00:00,admin ,bilal,3850,chicken breast fillet 1 kg,2
+187,2326,2022-09-23 11:37:36.792813+00:00,admin ,bilal,3850,zug washing powder 4 kg (89),3
+188,2333,2022-12-27 11:16:03.540291+00:00,admin ,sajid,1901,kisan sunflower oil 3 ltr btl ,3
+188,2333,2022-12-27 11:16:03.540291+00:00,admin ,sajid,1901,chai patti craft paper pack 125 gm(rmbt),2
+189,2334,2022-05-26 14:43:33.427130+00:00,admin ,salman,2955,laziza pista coconut kheer 155 gm(82),3
+189,2334,2022-05-26 14:43:33.427130+00:00,admin ,salman,2955,habib ghee 2.5 kg tin,3
+190,2338,2022-01-02 19:23:41.195458+00:00,admin ,sajid,1100,body spray fascino charming men 200 ml(55),2
+191,2339,2022-08-15 08:28:50.411690+00:00,admin ,zubair,510,colgate sensitive paste 100gm(05),3
+192,2342,2022-09-16 13:00:15.595376+00:00,admin ,asfand yar,495,golden sun cooking  oil 1ltr (rmol),1
+193,2343,2022-12-03 20:15:27.338736+00:00,admin ,qasim,3293,golden sun ghee 10kg bkt ,1
+193,2343,2022-12-03 20:15:27.338736+00:00,admin ,qasim,3293,n.vcr old used,3
+194,2345,2022-03-05 21:34:03.999400+00:00,admin ,sabir,430,karak tea whitener 200 ml,2
+194,2345,2022-03-05 21:34:03.999400+00:00,admin ,sabir,430,roll patti  25 sheet ,2
+195,2346,2022-09-29 16:04:54.973015+00:00,admin ,qasim,280,nutri chipsticks spicy 60 gm (1w),2
+196,2347,2022-10-27 09:37:02.898847+00:00,admin ,zubair,324,nestle fruita vitals mango orange 200 ml(57),1
+196,2347,2022-10-27 09:37:02.898847+00:00,admin ,zubair,324,fauji glow landry starch 300 ml,3
+197,2350,2022-10-11 13:42:26.857492+00:00,admin ,raza,510,alpifresh  cream 150 ml,3
+198,2352,2022-08-19 20:46:44.358142+00:00,admin ,zubair,3090,english antibacterial toothpaste - brush pack70 gms (sarwana)(41),3
+198,2352,2022-08-19 20:46:44.358142+00:00,admin ,zubair,3090,kashmir can/ 5 ltr tin(48),3
+199,2354,2022-07-09 19:35:25.913853+00:00,admin ,mirza,4923,shield diaper mega bachat 62 medium (consumer(53),1
+199,2354,2022-07-09 19:35:25.913853+00:00,admin ,mirza,4923,maan b/pati 5 kg tin ,2
+200,2355,2022-07-12 11:18:09.732460+00:00,admin ,asaf,4100,nestle cerelac 3 fruit 750 gm(57),2
+200,2355,2022-07-12 11:18:09.732460+00:00,admin ,asaf,4100,golden maeroni elbow  400 gm(32),3
+201,2358,2022-10-16 13:32:15.036328+00:00,admin ,abid,589,sufi super dertergents powder 1000 gm(29),2
+201,2358,2022-10-16 13:32:15.036328+00:00,admin ,abid,589,nl chilli pdr 50 gm,3
+202,2359,2022-06-27 14:44:13.823289+00:00,admin ,asaf,798,national turemeric powder 50 ms(56),3
+202,2359,2022-06-27 14:44:13.823289+00:00,admin ,asaf,798,oral b pro expert enamel,3
+203,2365,2022-09-09 15:25:29.665493+00:00,admin ,sajid,16,dar chini raw (ob-r),1
+203,2365,2022-09-09 15:25:29.665493+00:00,admin ,sajid,16,clear shmpoo cool blck 4.5ml(08),3
+204,2367,2022-04-12 10:36:17.779989+00:00,admin ,sajid,275,goldfish pencil eraser 45s card board box (43),1
+205,2373,2022-02-17 14:33:21.674587+00:00,admin ,yahya,198,commander fruity soap lemon 140 gm(54),2
+206,2377,2022-12-12 17:40:58.023572+00:00,admin ,saif,258,english prickly heat cream active neem l 80 gm (41),1
+206,2377,2022-12-12 17:40:58.023572+00:00,admin ,saif,258,eco bay leaves 25gm (88),1
+207,2380,2022-01-03 20:22:18.925203+00:00,admin ,maaz,942,primex multi s 691013,3
+207,2380,2022-01-03 20:22:18.925203+00:00,admin ,maaz,942,slanty jalapeno 55 gm,3
+208,2381,2022-11-12 16:09:58.484295+00:00,admin ,moeez,1010,dawn chocolate cupcake (box) 210 gm (94),2
+208,2381,2022-11-12 16:09:58.484295+00:00,admin ,moeez,1010,himalaya kajal,2
+209,2387,2022-05-07 14:18:29.179831+00:00,admin ,jafar,475,wiper angle exl,1
+209,2387,2022-05-07 14:18:29.179831+00:00,admin ,jafar,475,t brush fo adults deep clean,3
+210,2395,2022-05-30 12:17:27.733353+00:00,admin ,Ali,3625,kashmir premium gold 5ltr btl(48),3
+210,2395,2022-05-30 12:17:27.733353+00:00,admin ,Ali,3625,yardley powder 250gm,2
+211,2397,2022-03-21 19:10:13.490170+00:00,admin ,abid,1080,diamond salan deep plate 401012,2
+212,2398,2022-05-04 20:09:54.226434+00:00,admin ,riyan,824,mughal royal classic 1 kg(135)(r),2
+213,2399,2022-02-06 11:42:50.824432+00:00,admin ,raza,885,kilite phenyl plastic pack 3000 ml (saf ent)(24),3
+213,2399,2022-02-06 11:42:50.824432+00:00,admin ,raza,885,fruit/ veg knife hd asst  16 gauge stainless steel,3
+214,2400,2022-05-06 12:23:28.712435+00:00,admin ,sabir,1170,dettol multi purpose cleaner 1000 ml citrus(04),1
+215,2401,2022-03-14 18:35:34.062710+00:00,admin ,qasim,2034,"forhan,s anti dandruff herbal hair oil 100 ml",3
+215,2401,2022-03-14 18:35:34.062710+00:00,admin ,qasim,2034,dalda (fortified) cooking oil 1 ltr pouch(rmol)(1c),3
+216,2406,2022-08-10 18:42:41.616467+00:00,admin ,maaz,975,rlx lotion 200 ml natural nourishing 200 ml(55),3
+217,2409,2022-06-16 19:04:56.533230+00:00,admin ,asaf,449,shan achar gosht masala 25 gm (62),1
+217,2409,2022-06-16 19:04:56.533230+00:00,admin ,asaf,449,smart real mayonnaise 200 ml (58),2
+218,2416,2022-01-24 15:37:02.011230+00:00,admin ,qasim,2340,aspine synthetic liquid dishwash  750 ml(18),3
+218,2416,2022-01-24 15:37:02.011230+00:00,admin ,qasim,2340,mehran tomato k/up 400 gm(67),3
+219,2420,2022-07-17 13:54:50.859932+00:00,admin ,yahya,269,mehran chilli sauce 300 gm(67),1
+219,2420,2022-07-17 13:54:50.859932+00:00,admin ,yahya,269,ecial food red chilli coarsely grinded 100 gm,3
+220,2421,2022-12-10 09:16:29.944002+00:00,admin ,yahya,614,mehran chili garlic sauce 400 gm(67),2
+220,2421,2022-12-10 09:16:29.944002+00:00,admin ,yahya,614,ajwa honey 125 gm bt,2
+221,2423,2022-09-10 15:48:42.559572+00:00,admin ,waqas,1110,jazaa fish masala 50 gm (1q),2
+221,2423,2022-09-10 15:48:42.559572+00:00,admin ,waqas,1110,sufi sunflower oil 2.5ltr,2
+222,2431,2022-06-26 21:51:05.266166+00:00,admin ,bilal,351,crown dal masoor washed 250gm(131)(p),3
+223,2441,2022-06-27 16:09:25.742294+00:00,admin ,sabir,1413,mezan ghee 2.5 kg bkt(pg)(85),1
+223,2441,2022-06-27 16:09:25.742294+00:00,admin ,sabir,1413,piston  with out pin,2
+224,2442,2022-11-27 21:18:07.422885+00:00,admin ,salman,168,shield  feeder (evenflo cylindrical yp 250 ml(53),1
+225,2448,2022-12-31 19:35:42.982268+00:00,admin ,riyan,929,glade aerosol i love u 300 ml(59),1
+225,2448,2022-12-31 19:35:42.982268+00:00,admin ,riyan,929,qamar tea 20 gm  hp(ylw) (rmbt) (2b),2
+226,2452,2022-10-19 16:58:35.027424+00:00,admin ,khan,20,english biscuits peanut pik mini 35 gm hr (13),2
+227,2455,2022-08-31 19:05:55.571699+00:00,admin ,mirza,94,marhaba amla hair oil 100 ml,1
+228,2456,2022-08-30 08:16:40.687454+00:00,admin ,jafar,1,ring finger,2
+229,2460,2022-05-10 19:55:51.463543+00:00,admin ,salman,317,lifebuoy care 100 gms(08),3
+229,2460,2022-05-10 19:55:51.463543+00:00,admin ,salman,317,medicam double protection- tooth brush(rs.80/-)(09),1
+230,2463,2022-11-06 21:17:57.484347+00:00,admin ,jafar,410,versace glass 5041,1
+231,2464,2022-01-21 09:09:02.464222+00:00,admin ,abbas,1305,dove shampoo 335 ml usa,3
+232,2476,2022-09-18 14:24:38.149121+00:00,admin ,jafar,756,lifebuoy care twin pack 130 gms,2
+232,2476,2022-09-18 14:24:38.149121+00:00,admin ,jafar,756,water ort bottle ld asst.,1
+233,2477,2022-05-14 14:35:25.316273+00:00,admin ,waqas,96,king toilet cleaner family 1000 ml (80),1
+234,2478,2022-07-13 10:10:46.876280+00:00,admin ,yahya,240,shafay tamarind (imli) 100gm (2a),3
+235,2482,2022-06-18 19:54:05.578072+00:00,admin ,mirza,978,sfg body wash white 400ml(10),2
+236,2483,2022-02-24 17:11:18.934371+00:00,admin ,maaz,607,jelly abc 36 bag 36 boxes(61),3
+236,2483,2022-02-24 17:11:18.934371+00:00,admin ,maaz,607,divine foods dal chana 1kg(137)(p),2
+237,2485,2022-02-14 18:53:10.774834+00:00,admin ,jafar,74,(wrong code)  safeguard total 10 vitamin 70 gm(10),2
+238,2487,2022-03-08 09:08:24.182560+00:00,admin ,saif,555,habitt party pack (white)(1m),3
+239,2488,2022-07-25 19:26:46.760137+00:00,admin ,zubair,534,forhans silkona honey lotion 200ml,2
+239,2488,2022-07-25 19:26:46.760137+00:00,admin ,zubair,534,dentonic t/ paste 125 gm brush pack,2
+240,2489,2022-07-11 16:09:06.723496+00:00,admin ,abid,354,f&l m/v 50gm fair w/fairness(08),3
+241,2490,2022-08-24 10:40:57.882205+00:00,admin ,raza,326,tang 440gm,2
+242,2492,2022-11-23 08:58:11.479339+00:00,admin ,jafar,338,agro pak alubukhara 200 gm (92),1
+243,2496,2022-05-28 20:57:57.167960+00:00,admin ,khan,40,bonus tristar 160 gms new (05),2
+244,2498,2022-11-12 12:26:56.230818+00:00,admin ,jafar,1161,medicam dental cream 180 gm(09),2
+244,2498,2022-11-12 12:26:56.230818+00:00,admin ,jafar,1161,protien shampoo volume & bounce 200,3
+245,2500,2022-01-04 11:17:39.733383+00:00,admin ,Ali,1530,fauji corn flakes pkt 500 gm,3
+246,2501,2022-06-27 18:24:37.837285+00:00,admin ,Ali,4164,max paste green 400 gm (05),1
+246,2501,2022-06-27 18:24:37.837285+00:00,admin ,Ali,4164,star mixer orange tin 2500 gm(69),3
+247,2506,2022-01-06 15:57:27.355234+00:00,admin ,qasim,522,pik a nut m.s/p,3
+247,2506,2022-01-06 15:57:27.355234+00:00,admin ,qasim,522,shan tomato chutney 315 gm(62),2
+248,2508,2022-08-20 09:03:08.232675+00:00,admin ,asaf,454,crispo spagahtti(59),2
+249,2513,2022-03-13 11:56:11.233930+00:00,admin ,abid,1290,habib t-ketchup 1 kg,3
+249,2513,2022-03-13 11:56:11.233930+00:00,admin ,abid,1290,dental floss asst.,3
+250,2515,2022-11-27 19:39:43.662253+00:00,admin ,jafar,640,lumer lemon  3000 gms (detergent powder)(18),1
+251,2519,2022-06-05 21:32:17.767023+00:00,admin ,waqas,1135,mehran red chilli powder 100 gm(67),2
+251,2519,2022-06-05 21:32:17.767023+00:00,admin ,waqas,1135,nutri bondi200 gm (1w),3
+252,2529,2022-09-02 21:17:44.943683+00:00,admin ,sabir,370,raaz tea 190 gm pouch(rmbt)(42),2
+253,2532,2022-12-20 19:30:09.795955+00:00,admin ,riyan,300,vital care antibacterial soap 135 gms(30),2
+254,2535,2022-05-11 10:41:28.621719+00:00,admin ,yahya,2906,gentle face wash cream 100ml,3
+254,2535,2022-05-11 10:41:28.621719+00:00,admin ,yahya,2906,sunsilk shampoo  black shine 660 ml(08),2
+255,2536,2022-03-28 11:27:00.717925+00:00,admin ,riyan,151,dettol soap radiance 100 gm(04),3
+255,2536,2022-03-28 11:27:00.717925+00:00,admin ,riyan,151,chapat candy kairi rs 2(61),2
+256,2537,2022-01-16 16:37:59.935383+00:00,admin ,maaz,330,national chilli garlic sauce 225 gm(56),3
+257,2538,2022-12-02 08:29:05.968128+00:00,admin ,bilal,1826,golden sun oil 5ltr ,2
+258,2543,2022-11-08 13:41:37.193351+00:00,admin ,raza,840,feeder brush j/,3
+259,2548,2022-07-12 17:02:06.735797+00:00,admin ,salman,320,golden sun b/pati 1kg(pg),2
+260,2550,2022-08-03 09:59:15.914555+00:00,admin ,waqas,46,taksun calculator,1
+260,2550,2022-08-03 09:59:15.914555+00:00,admin ,waqas,46,layer cake coconut cream jam 27 gm,2
+261,2551,2022-12-03 18:10:52.730804+00:00,admin ,maaz,88,picasso ball pen cloud black 10s (43),1
+262,2552,2022-03-15 18:28:16.387286+00:00,admin ,moeez,204,veet cream dry 25gg skitle,2
+262,2552,2022-03-15 18:28:16.387286+00:00,admin ,moeez,204,chip choc soft butter (kolson),2
+263,2557,2022-06-29 14:15:59.120886+00:00,admin ,yahya,665,palmolive natural 98 gms (consumer promotion saver pack 5 in 1 save rs.30/-)(05),1
+263,2557,2022-06-29 14:15:59.120886+00:00,admin ,yahya,665,qabco marble floor cleaner 550ml,3
+264,2558,2022-05-01 16:34:02.635106+00:00,admin ,sajid,190,tapal tezdum 190 gm rs-10/off(37),1
+265,2562,2022-08-21 13:19:44.646212+00:00,admin ,raza,335,english biscuits gluco 43.50 gm mini hr (13),1
+265,2562,2022-08-21 13:19:44.646212+00:00,admin ,raza,335,mit jelly 450 gm,1
+266,2565,2022-01-12 11:21:55.650546+00:00,admin ,waqas,746,sharbat gulbahar 1500 ml ,2
+267,2571,2022-06-12 13:56:23.237922+00:00,admin ,mirza,70,tops green chilli 375gm,1
+268,2575,2022-08-14 15:18:38.322418+00:00,admin ,asfand yar,870,chicken wings 1 kg,2
+268,2575,2022-08-14 15:18:38.322418+00:00,admin ,asfand yar,870,milky toffee rs 5 bag (61),2
+269,2580,2022-01-19 19:19:25.010940+00:00,admin ,bilal,353,super king tin polish l 30 ml brown (80),3
+269,2580,2022-01-19 19:19:25.010940+00:00,admin ,bilal,353,diamond protect well aerosol 300ml,1
+270,2591,2022-04-10 16:23:32.465293+00:00,admin ,jafar,444,life style olive oil 100(66),1
+270,2591,2022-04-10 16:23:32.465293+00:00,admin ,jafar,444,goldfish pencil colour h/size card board 6s pkt (43),2
+271,2594,2022-03-31 16:37:55.629889+00:00,admin ,khan,749,shan tikka masala 100gm d/p(62),3
+271,2594,2022-03-31 16:37:55.629889+00:00,admin ,khan,749,kolson cream heart sc vanila 27 gm,1
+272,2597,2022-11-01 12:18:03.160166+00:00,admin ,sajid,254,nutri peanut salted 100gm,2
+272,2597,2022-11-01 12:18:03.160166+00:00,admin ,sajid,254,euro delux beauty soap milk almond 115 gms(93),2
+273,2599,2022-10-13 15:53:10.664499+00:00,admin ,mirza,952,savanah 75 gm smooth creamy,2
+273,2599,2022-10-13 15:53:10.664499+00:00,admin ,mirza,952,wiz hand sanitizer 200ml bottle floral (60),2
+274,2600,2022-05-05 13:01:40.267448+00:00,admin ,waqas,361,star anaseed 50 gm,1
+274,2600,2022-05-05 13:01:40.267448+00:00,admin ,waqas,361,sensodyne rp/a 30 gm(59),3
+275,2601,2022-05-12 08:40:20.192668+00:00,admin ,mirza,566,ariel touch of downy 450g(10),2
+275,2601,2022-05-12 08:40:20.192668+00:00,admin ,mirza,566,jammin orange 30x24(61),2
+276,2603,2022-08-11 20:22:19.332234+00:00,admin ,yahya,389,mehran soya sauce 300 ml(67),1
+276,2603,2022-08-11 20:22:19.332234+00:00,admin ,yahya,389,star mixer limepami btl 700 gm(69),2
+277,2607,2022-04-15 12:26:58.997465+00:00,admin ,arbab,224,sure roll on 50ml,2
+278,2609,2022-03-20 14:48:15.631901+00:00,admin ,zubair,510,macaroni biryani 250 gm(59),2
+278,2609,2022-03-20 14:48:15.631901+00:00,admin ,zubair,510,national pulao 70 gm(56),3
+279,2611,2022-06-08 12:16:16.026325+00:00,admin ,asaf,564,melamine dinner set plate small (writing ways (pvt),3
+279,2611,2022-06-08 12:16:16.026325+00:00,admin ,asaf,564,agro pak khopra sliced 100 gm (92),1
+280,2615,2022-10-16 18:11:55.152447+00:00,admin ,maaz,197,opal toilet soap 4+1 creamy  60 gms x 5(07),1
+281,2617,2022-10-12 09:20:15.381248+00:00,admin ,waqas,1410,shampoo pert plus honey xcts 200 ml(55),3
+281,2617,2022-10-12 09:20:15.381248+00:00,admin ,waqas,1410,raf strw 80g jelly q/s,3
+282,2621,2022-12-13 21:57:27.764976+00:00,admin ,sabir,77,chai wala biskut bisconni(59),3
+282,2621,2022-12-13 21:57:27.764976+00:00,admin ,sabir,77,capri pro h75g(07),2
+283,2623,2022-05-24 19:56:47.053385+00:00,admin ,moeez,198,(wrong code) pantene xt conditioner 200 ml(10),1
+284,2629,2022-08-24 18:23:33.455094+00:00,admin ,abbas,582,cherry blossom  black 42 ml (04),1
+284,2629,2022-08-24 18:23:33.455094+00:00,admin ,abbas,582,dentonic t/ paste 125 gm brush pack,1
+285,2632,2022-11-06 09:24:47.702877+00:00,admin ,yahya,492,w/wheat p/aghti 450gm(59),3
+286,2638,2022-12-28 08:20:08.267569+00:00,admin ,arbab,230,tomato ketchup kanas 100 gm pouch(59),2
+286,2638,2022-12-28 08:20:08.267569+00:00,admin ,arbab,230,sufi lychee 250 ml can (1d),2
+287,2641,2022-11-09 08:54:12.279280+00:00,admin ,raza,60,cfl  chocolate sandwich snack pack  32 gm (13),3
+288,2643,2022-09-26 10:50:01.789834+00:00,admin ,mirza,52,super fanty rs.02 (70 pc x 30 box),3
+288,2643,2022-09-26 10:50:01.789834+00:00,admin ,mirza,52,chocorama vanila cokies s/p,3
+289,2647,2022-01-28 08:56:20.126715+00:00,admin ,abbas,394,english  tooth brush pro whitening expert medium (41),3
+289,2647,2022-01-28 08:56:20.126715+00:00,admin ,abbas,394,picasso high lighter 02 bopp (43),2
+290,2652,2022-06-25 10:31:19.883682+00:00,admin ,Ali,1020,eva vegetable b/pati 1x5 kg pch ,3
+290,2652,2022-06-25 10:31:19.883682+00:00,admin ,Ali,1020,h&s sh refreshing with menthol 5 pkn(10),3
+291,2655,2022-10-29 14:45:10.036670+00:00,admin ,khan,75,euro delux beauty soap cucumber 115 gms(93),1
+292,2656,2022-04-21 14:07:16.944198+00:00,admin ,jafar,161,frina storm regular(76),2
+292,2656,2022-04-21 14:07:16.944198+00:00,admin ,jafar,161,medicam antibacterial soap 110 gms ice mint(09),1
+293,2658,2022-07-13 18:23:43.876647+00:00,admin ,yahya,330,vaseline petrleum jelly 100gm,2
+294,2666,2022-04-25 08:36:15.028270+00:00,admin ,qasim,1080,revlon zp 11 shmpo/cond 400ml,3
+295,2668,2022-04-25 14:44:38.240132+00:00,admin ,arbab,4575,fusion manual razor 2 up(10),3
+296,2669,2022-12-24 09:57:55.589541+00:00,admin ,sabir,327,commander fruity soap lemon 140 gm(54),3
+296,2669,2022-12-24 09:57:55.589541+00:00,admin ,sabir,327,zeeraray m.s/p,3
+297,2672,2022-06-14 13:41:01.681958+00:00,admin ,saif,123,savanah p/rom 115 gm,3
+298,2675,2022-01-30 21:52:39.123597+00:00,admin ,Ali,31,choclate chip cookies t/p(59),3
+298,2675,2022-01-30 21:52:39.123597+00:00,admin ,Ali,31,cadbury s/ice 12.5 gm h/p,1
+299,2680,2022-04-01 12:00:04.413627+00:00,admin ,sabir,94,shan fruit chaat masala 50 gm (62),1
+300,2684,2022-03-04 11:59:46.392050+00:00,admin ,mirza,10,lu zeera plus 16.5 gm,1
+301,2688,2022-09-24 09:41:44.506209+00:00,admin ,waqas,57,lotte out peppermint 23.8g,3
+302,2689,2022-01-28 16:32:08.452429+00:00,admin ,qasim,390,cream 21(all day) 150 ml,2
+303,2693,2022-03-27 16:19:15.002800+00:00,admin ,asaf,701,capstan filter 20 hl cigrate(only for jails),2
+303,2693,2022-03-27 16:19:15.002800+00:00,admin ,asaf,701,misk aroma perfumed 100 tissue paper (81),1
+304,2694,2022-12-19 15:07:11.848850+00:00,admin ,mirza,1230,cobra insecticide spray  500 ml,3
+305,2696,2022-10-04 11:25:16.244516+00:00,admin ,zubair,450,watermelon 10 mg velo 20s(only for jails),3
+306,2706,2022-02-11 13:59:38.679791+00:00,admin ,waqas,319,waves jug st,1
+306,2706,2022-02-11 13:59:38.679791+00:00,admin ,waqas,319,kinza lemon squash 800ml,1
+307,2707,2022-03-27 15:29:26.260678+00:00,admin ,qasim,349,always ultra s7 night 14x5(10),1
+308,2709,2022-06-10 15:40:52.712781+00:00,admin ,yahya,2178,pakpure desi ghee 1/2 kg(49),3
+309,2712,2022-01-16 14:13:28.842704+00:00,admin ,Ali,370,nova sylvana jug 6,1
+310,2713,2022-04-29 10:38:57.448465+00:00,admin ,qasim,840,nutri sonf roasted  pouch60 gm (1w),3
+311,2714,2022-09-07 15:41:34.537268+00:00,admin ,asaf,605,caley beauty soap 125 gms(23),2
+311,2714,2022-09-07 15:41:34.537268+00:00,admin ,asaf,605,colgate protex saver pack balance- 130gms x3(05),1
+312,2716,2022-08-11 20:35:40.237697+00:00,admin ,maaz,470,storage box 4.5 kp,1
+313,2718,2022-02-09 12:14:22.740972+00:00,admin ,riyan,220,face fresh beauty face wash,2
+314,2719,2022-07-26 08:31:56.120337+00:00,admin ,jafar,1560,violet ice cream payali,3
+315,2723,2022-05-07 12:44:27.977496+00:00,admin ,asaf,182,strike toilet b/cleaner(12),2
+316,2728,2022-04-01 13:19:45.026286+00:00,admin ,qasim,345,shezan happy farms grape 200 ml(47),1
+316,2728,2022-04-01 13:19:45.026286+00:00,admin ,qasim,345,star red apple 1500 ml (69),2
+317,2729,2022-01-30 20:52:52.338192+00:00,admin ,sajid,2130,dettol soap original 1x4 pack 110 gms (consumer promotion save rs.40/-) (04),3
+317,2729,2022-01-30 20:52:52.338192+00:00,admin ,sajid,2130,wiz hand sanitizer 200ml bottle floral (60),1
+318,2730,2022-09-26 19:22:42.937810+00:00,admin ,arbab,447,mezan ultra rich tea hard 90 gm(rmbt)(68),3
+319,2737,2022-10-05 10:12:13.658423+00:00,admin ,bilal,38,lifebuoy nature 112 gm,1
+320,2743,2022-11-23 11:24:25.452403+00:00,admin ,sabir,165,national mix pickle 200 gm(56),3
+321,2745,2022-06-01 09:34:45.892149+00:00,admin ,abbas,1537,bath tub mars no.03 slvr(clean max),3
+321,2745,2022-06-01 09:34:45.892149+00:00,admin ,abbas,1537,frina spick n span large(76),2
+322,2747,2022-06-03 21:17:10.984500+00:00,admin ,abid,30,peanut pik 17.8 gms sp (13),3
+323,2748,2022-08-06 17:49:51.953291+00:00,admin ,sabir,417,starch,3
+324,2759,2022-10-04 21:29:11.408588+00:00,admin ,yahya,10,lu zeera plus 16.5 gm,1
+325,2761,2022-06-30 12:03:48.849588+00:00,admin ,jafar,510,dawn bread crumbs (1 kilo pack) 1000 gm (94),1
+325,2761,2022-06-30 12:03:48.849588+00:00,admin ,jafar,510,daizy queen tea whitner 115 ml (51),2
+326,2763,2022-02-26 08:06:55.657550+00:00,admin ,arbab,2301,colgate plax freshmint 500 ml mouth wash(05),3
+326,2763,2022-02-26 08:06:55.657550+00:00,admin ,arbab,2301,rio double chocolate 56 gm (13),3
+327,2767,2022-01-07 16:21:02.400044+00:00,admin ,qasim,1340,koila 5 kg (only for jail) (39),2
+327,2767,2022-01-07 16:21:02.400044+00:00,admin ,qasim,1340,lifebuoy care 112g t/p,2
+328,2771,2022-11-19 13:25:00.316897+00:00,admin ,mirza,1303,,0
+329,2773,2022-12-03 10:34:47.007587+00:00,admin ,bilal,1090,dalda (fortified) banaspati 1 kg pouch(pg)(1c),2
+329,2773,2022-12-03 10:34:47.007587+00:00,admin ,bilal,1090,jelly abc 24 bags  x 24 boxes jumbo(61),2
+330,2778,2022-03-19 11:42:40.139011+00:00,admin ,yahya,320,national custard pdr 275 gm vanilla(56),2
+331,2780,2022-04-10 19:06:47.946061+00:00,admin ,sabir,538,sufi classic soap pink 70gms(11),3
+331,2780,2022-04-10 19:06:47.946061+00:00,admin ,sabir,538,ppv 75ml ahf - b(10),2
+332,2782,2022-11-14 10:28:07.376942+00:00,admin ,jafar,2823,manpasand ghee 2.5 kg tin (old code),3
+332,2782,2022-11-14 10:28:07.376942+00:00,admin ,jafar,2823,four seeds 100 gm,3
+333,2785,2022-05-13 18:31:42.860334+00:00,admin ,raza,795,dates (basra/iraq)500gm cr box,3
+333,2785,2022-05-13 18:31:42.860334+00:00,admin ,raza,795,polar mint 14 mg velo - 20s(only for jails)(97),3
+334,2787,2022-01-29 09:56:14.564517+00:00,admin ,abbas,2,new atta service charges rs 1 per 10 kg,2
+335,2791,2022-03-22 11:18:24.655783+00:00,admin ,saif,450,pmcl-ufone sim prepaid-150,3
+336,2792,2022-01-12 14:33:36.903751+00:00,admin ,zubair,535,labor packing charges 100gm universal prime gate,3
+336,2792,2022-01-12 14:33:36.903751+00:00,admin ,zubair,535,colgate tooth brush premier clean medium cp triple pack save rs.50 (05),3
+337,2794,2022-09-18 21:56:24.167642+00:00,admin ,abbas,2200,balti new plastic w/o top 20 ltr ,3
+337,2794,2022-09-18 21:56:24.167642+00:00,admin ,abbas,2200,s2 gentle autumn     190mm x 180mm (1y),2
+338,2795,2022-01-02 09:15:45.989797+00:00,admin ,zubair,362,wiper siri bath zg (clean max),2
+338,2795,2022-01-02 09:15:45.989797+00:00,admin ,zubair,362,cfl  lemon sandwich ticky pack 16 gm (13),2
+339,2799,2022-03-21 17:24:09.358177+00:00,admin ,sajid,1290,shangriila mustard sauce 227 gm(26),2
+340,2800,2022-07-08 17:47:17.981208+00:00,admin ,asfand yar,561,s.s perfect straight 200 ml,3
+341,2806,2022-01-14 17:15:45.155635+00:00,admin ,waqas,58,diamond protect well lotion 50 ml,1
+342,2809,2022-01-22 17:41:56.262630+00:00,admin ,asfand yar,350,chai patti craft paper pack 125 gm(rmbt),2
+343,2811,2022-06-12 21:28:12.527652+00:00,admin ,raza,338,agro pak alubukhara 200 gm (92),1
+344,2812,2022-09-01 10:43:15.665319+00:00,admin ,qasim,282,quice chilli garlic sauce 500 gm pouch(84),3
+345,2816,2022-05-04 08:17:53.840811+00:00,admin ,waqas,130,gul eggs per pcs (lp)(khl),1
+345,2816,2022-05-04 08:17:53.840811+00:00,admin ,waqas,130,slanty vegetable 55 gm,2
+346,2818,2022-07-16 20:58:25.253406+00:00,admin ,asfand yar,2418,chicken chapli kebab 600 gm,3
+347,2820,2022-06-09 09:55:11.107129+00:00,admin ,asaf,18,cleeno dish wash bar  140 gm,1
+348,2821,2022-01-28 09:55:20.086567+00:00,admin ,yahya,238,swaad shahi salan masala 100 gm  (70),2
+349,2828,2022-09-23 20:29:30.479974+00:00,admin ,abid,350,marinda 1 liter (90),1
+349,2828,2022-09-23 20:29:30.479974+00:00,admin ,abid,350,italiano hand wash 310 ml aqua splash(09),1
+350,2830,2022-12-18 09:58:27.495419+00:00,admin ,saif,1710,mitchells gold apple jam 450gm(44),3
+350,2830,2022-12-18 09:58:27.495419+00:00,admin ,saif,1710,tomato ketchup 305 gm ,3
+351,2832,2022-05-10 12:52:42.771294+00:00,admin ,asaf,1106,blue 2+ bag of 3(10),2
+352,2836,2022-07-29 08:56:50.013845+00:00,admin ,raza,810,pakora poni m,3
+353,2848,2022-01-28 11:02:36.977012+00:00,admin ,moeez,0,ring finger,1
+354,2850,2022-04-04 12:37:11.671634+00:00,admin ,waqas,513,tumblers stella 280 ml,3
+354,2850,2022-04-04 12:37:11.671634+00:00,admin ,waqas,513,crispo corn flour 120 gm(59),3
+355,2856,2022-07-25 13:52:19.973616+00:00,admin ,salman,850,garnier c/natrls  creamy coffee(79),2
+356,2861,2022-07-06 14:47:30.591709+00:00,admin ,zubair,14840,key brand vinegar 750ml(72),1
+356,2861,2022-07-06 14:47:30.591709+00:00,admin ,zubair,14840,kashmir ghee 10 kg bkt(48)(pg),3
+357,2862,2022-04-03 15:50:08.307888+00:00,admin ,khan,60,shino lemo dishwash bar 100gm,3
+357,2862,2022-04-03 15:50:08.307888+00:00,admin ,khan,60,cfl heart beat munch pack 27.5 gm (13),1
+358,2867,2022-01-13 17:31:15.404330+00:00,admin ,Ali,4180,nutrivita honey flakes 300gm,3
+358,2867,2022-01-13 17:31:15.404330+00:00,admin ,Ali,4180,pampers mp small butterfly-pk(10),2
+359,2868,2022-01-03 15:45:32.079298+00:00,admin ,asfand yar,332,fauji ch/corn flakes 300,2
+360,2873,2022-04-13 10:21:56.761295+00:00,admin ,abid,212,gold falke by rothmans of london 20 sc cigrate (only for jails)(99),1
+361,2878,2022-04-23 13:16:12.332841+00:00,admin ,raza,3050,handi c/ oil 10 ltr tin ,2
+362,2885,2022-03-07 13:46:40.318601+00:00,admin ,waqas,40,ecial food qeema masala 50 gm,1
+363,2894,2022-06-07 08:49:01.172945+00:00,admin ,raza,166,milo drink choc 200gms,2
+364,2901,2022-07-22 14:11:57.671321+00:00,admin ,moeez,380,mortien rate killer 30 gms (reckitt) (04),2
+365,2903,2022-03-26 10:05:17.680692+00:00,admin ,abbas,2592,"olper,s tarka (desi ghee) 1 kg(64)",2
+366,2904,2022-03-06 17:50:08.143610+00:00,admin ,sajid,413,dove h/wash 250 ml,2
+366,2904,2022-03-06 17:50:08.143610+00:00,admin ,sajid,413,amrood masala candy 30 box (70 pc)(61),3
+367,2906,2022-02-22 21:43:08.201904+00:00,admin ,abid,90,nitto pvc tape  21  (10y) yellow(59),2
+368,2908,2022-05-06 11:35:58.384181+00:00,admin ,riyan,630,maan c/ oil 1x5 ltr pouch ,2
+369,2911,2022-03-26 10:14:21.820855+00:00,admin ,saif,2163,"forhans,s amla herbal shampoo 200 ml",3
+369,2911,2022-03-26 10:14:21.820855+00:00,admin ,saif,2163,hasan gold sella basmati rice 2kg(133)(r),2
+370,2918,2022-04-27 11:38:41.898615+00:00,admin ,abid,489,lux bar velvet touch trio 3x145gm ,3
+371,2919,2022-10-29 17:00:35.655189+00:00,admin ,maaz,453,kolson egg noodles 227gm,3
+371,2919,2022-10-29 17:00:35.655189+00:00,admin ,maaz,453,anmol banaspati ghee 1 kg pch,1
+372,2921,2022-09-01 12:55:40.677038+00:00,admin ,Ali,5368,nan ha 400 gm(57),2
+372,2921,2022-09-01 12:55:40.677038+00:00,admin ,Ali,5368,nan ar 380 gm pak(57),1
+373,2923,2022-01-17 13:02:42.522581+00:00,admin ,bilal,1150,sfg lhs floral scent 200ml-pd(10),1
+373,2923,2022-01-17 13:02:42.522581+00:00,admin ,bilal,1150,tapal dana dar 200gm tea bag (tea mat free)(37),2
+374,2925,2022-02-04 15:35:41.425906+00:00,admin ,sabir,1700,eva cooking oil 5 ltr tin (for id/pr/ad zone) old code,1
+375,2928,2022-06-27 08:45:16.042535+00:00,admin ,maaz,1305,rlx perfume soap 125 gm boss refresh 125 gm(55),3
+375,2928,2022-06-27 08:45:16.042535+00:00,admin ,maaz,1305,habib c/ oil 1 ltr pouch ,3
+376,2937,2022-01-14 18:42:07.386337+00:00,admin ,jafar,113,nes milkpak 250ml uht milk,1
+376,2937,2022-01-14 18:42:07.386337+00:00,admin ,jafar,113,mountain dew can 250 ml,2
+377,2938,2022-04-09 14:24:51.762953+00:00,admin ,abbas,600,lipton gt pure classic tea bag (32.5 gm) (16),2
+378,2939,2022-12-24 20:29:25.417063+00:00,admin ,riyan,650,capri hand wash pink 450 ml pouch(07),2
+379,2944,2022-02-27 19:03:44.821176+00:00,admin ,mirza,297,rlx perfume soap 125 gm desire passion 125 gm(55),3
+380,2946,2022-03-15 21:26:06.054782+00:00,admin ,saif,147,olpers strawberry flavored milk 180 ml(64),3
+381,2950,2022-01-05 08:13:36.077055+00:00,admin ,abid,380,nestle cerelac wheat 25gm(57),2
+381,2950,2022-01-05 08:13:36.077055+00:00,admin ,abid,380,s3 gentle midnight190mm x 180mm (1y),1
+382,2952,2022-10-26 13:40:28.055879+00:00,admin ,sabir,840,kolson elbow macaroni 400gm,1
+382,2952,2022-10-26 13:40:28.055879+00:00,admin ,sabir,840,chai patti craft paper pack 250 gm(rmbt),2
+383,2959,2022-02-06 21:59:23.977496+00:00,admin ,khan,600,supreme mix bt pi1123 160 gm (rmbt) (16),2
+384,2960,2022-05-01 14:14:35.543074+00:00,admin ,saif,338,manpasand cooking oil 1 liter (old code),1
+385,2965,2022-08-18 09:38:14.997520+00:00,admin ,arbab,190,nivea bar soap cream care 100 gm box(59),1
+386,2974,2022-04-01 20:59:37.669135+00:00,admin ,asaf,3742,mezan tea hardum mixture 910 gm pouch(rmbt)(68),2
+386,2974,2022-04-01 20:59:37.669135+00:00,admin ,asaf,3742,aghaaz ghee 1 kg (for le/sa zone),3
+387,2975,2022-11-19 20:40:39.225254+00:00,admin ,sajid,730,t/ paste close up red 192 gm(55),2
+387,2975,2022-11-19 20:40:39.225254+00:00,admin ,sajid,730,benz fabric bleach 500ml(17),2
+388,2980,2022-03-23 13:10:48.494982+00:00,admin ,maaz,347,eva canola oil (1x5) ltr stand pch (for karachi zone),1
+389,2982,2022-10-09 16:01:37.210744+00:00,admin ,khan,877,"gastrail plus aamchorr tab 120,s(75)",2
+389,2982,2022-10-09 16:01:37.210744+00:00,admin ,khan,877,kisan sunflower oil 1,3
+390,2985,2022-10-03 18:07:08.740000+00:00,admin ,abid,470,vaseline lotion healthy white indonesia/uk 100 ml(55),2
+390,2985,2022-10-03 18:07:08.740000+00:00,admin ,abid,470,mango 1.5 ltr pet,2
+391,2986,2022-12-18 09:27:31.709747+00:00,admin ,khan,638,jazaa salty potato sticks 180 gm (1q),2
+391,2986,2022-12-18 09:27:31.709747+00:00,admin ,khan,638,picasso ball pen grip blue 10s (43),2
+392,2989,2022-04-06 17:23:20.243443+00:00,admin ,jafar,570,new h&s clean 200ml,3
+393,2990,2022-06-07 09:56:46.255909+00:00,admin ,Ali,2211,dunhill swith  20 hl (only for jails)(98),3
+393,2990,2022-06-07 09:56:46.255909+00:00,admin ,Ali,2211,raaz green tea mint 100 gm(42),2
+394,2991,2022-08-13 11:11:44.830322+00:00,admin ,qasim,290,jazaa white pepper powder 50 gm (1q),1
+395,2993,2022-07-13 11:35:42.464525+00:00,admin ,saif,425,school bottle md asst. kp,1
+395,2993,2022-07-13 11:35:42.464525+00:00,admin ,saif,425,toyo nasic kiran 300 ml,1
+396,2996,2022-03-17 16:12:45.815853+00:00,admin ,saif,228,peanut whole 250 gm (only for jails) (38),1
+396,2996,2022-03-17 16:12:45.815853+00:00,admin ,saif,228,tide excell\w\powder 75gms,1
+397,2997,2022-10-05 16:14:01.293314+00:00,admin ,Ali,540,sundas super basmati rice 2kg,1
+398,2998,2022-02-17 08:36:12.139912+00:00,admin ,waqas,1878,body spray fascino goal 200 ml(55),2
+398,2998,2022-02-17 08:36:12.139912+00:00,admin ,waqas,1878,tapal tea 950g (free evrydy),1
+399,3000,2022-05-14 09:06:10.767635+00:00,admin ,sabir,240,cobra coils (lavendar) jumbo,3
+399,3000,2022-05-14 09:06:10.767635+00:00,admin ,sabir,240,lu biscuts whtbl h/fbr,3
+400,3005,2022-03-21 14:57:24.044685+00:00,admin ,qasim,576,ls garlic 1 kg (lp)(f-s),1
+401,3012,2022-04-02 08:10:23.471669+00:00,admin ,abbas,505,dettol asl trigger 500 ml(04),1
+401,3012,2022-04-02 08:10:23.471669+00:00,admin ,abbas,505,nurpur i/cream soda f/m 200ml,3
+402,3016,2022-11-18 20:44:26.236994+00:00,admin ,khan,340,clean&cl/s/g/w/b hand150/200,1
+403,3017,2022-04-20 15:37:00.398668+00:00,admin ,maaz,718,melamine dinner plate  glaced 260 ,3
+403,3017,2022-04-20 15:37:00.398668+00:00,admin ,maaz,718,forhans t/pasteeconomy120gm,2
+404,3019,2022-07-11 20:31:05.466651+00:00,admin ,raza,3156,atta bag 20kg (sub) (rmat),2
+404,3019,2022-07-11 20:31:05.466651+00:00,admin ,raza,3156,nap cream 30 gm,2
+405,3024,2022-02-21 09:00:12.765994+00:00,admin ,abbas,4968,naturelle cooking oil 3 ltr btl(rmol)(1a),3
+405,3024,2022-02-21 09:00:12.765994+00:00,admin ,abbas,4968,qarshi tomato ketchup 1000 gm(45),2
+406,3026,2022-10-27 11:29:34.357517+00:00,admin ,salman,3516,dunhill swith  20 hl cigrate (only for jails),2
+406,3026,2022-10-27 11:29:34.357517+00:00,admin ,salman,3516,harpic toilet cleaner 700 ml orignal (04),3
+407,3029,2022-03-26 18:22:19.437702+00:00,admin ,abid,325,markhore b-i tota rice 1kg (141)(r),1
+407,3029,2022-03-26 18:22:19.437702+00:00,admin ,abid,325,dabur vatika h/oil150ml,1
+408,3030,2022-08-04 14:03:47.721032+00:00,admin ,moeez,124,tehwar biryani masla 50 gm (ob-v),2
+409,3031,2022-08-13 10:30:45.817408+00:00,admin ,waqas,2222,toyo victoria w/set prin,2
+409,3031,2022-08-13 10:30:45.817408+00:00,admin ,waqas,2222,italiano hair colour d/brown(09),1
+410,3037,2022-09-22 08:59:12.484290+00:00,admin ,sabir,412,plastic wiper small(24),1
+410,3037,2022-09-22 08:59:12.484290+00:00,admin ,sabir,412,ntri almond makhana 100gm,3
+411,3038,2022-10-27 20:02:39.637549+00:00,admin ,maaz,750,potato samosa280 gm,3
+411,3038,2022-10-27 20:02:39.637549+00:00,admin ,maaz,750,pureheven citrus juice drink 1 ltr,1
+412,3044,2022-06-22 19:42:14.000158+00:00,admin ,salman,901,nutri clove 50 gm (1w),3
+412,3044,2022-06-22 19:42:14.000158+00:00,admin ,salman,901,shangrila china salt 100 gm(26),1
+413,3046,2022-06-18 21:57:59.147095+00:00,admin ,khan,645,caresse lice guard anti lice shampoo large(95),2
+413,3046,2022-06-18 21:57:59.147095+00:00,admin ,khan,645,complete cavity protection t/paste- saver pack140 gm (41),1
+414,3048,2022-08-05 08:53:59.392114+00:00,admin ,abid,124,palmolive liquid h/wash antibac 200 ml refill pouch(05),1
+415,3058,2022-10-24 17:43:25.272606+00:00,admin ,qasim,600,nourishing body lotion 200ml,2
+416,3063,2022-02-11 12:37:24.424657+00:00,admin ,raza,2040,h/d s/cleanr 3 ltr,3
+417,3064,2022-06-26 18:41:08.830403+00:00,admin ,riyan,475,life style i. a. bukhara 800 ml red syrup(rmsp)(66),1
+418,3065,2022-01-25 18:07:04.394899+00:00,admin ,yahya,135,mehran soya sauce 300 ml(67),1
+419,3069,2022-06-11 16:23:10.488390+00:00,admin ,mirza,1680,dettol soap skincare 1x4 pack 110 gms (04),3
+420,3070,2022-03-26 11:52:41.599507+00:00,admin ,sabir,492,palmolive soap naturals white (moisturizing glow) 165 gm (05),3
+421,3072,2022-02-13 15:40:55.216594+00:00,admin ,khan,180,twitter lemon 140 gm,3
+421,3072,2022-02-13 15:40:55.216594+00:00,admin ,khan,180,kontrol mosquito repellent lotion 25 ml(59),2
+422,3074,2022-04-05 19:17:41.062076+00:00,admin ,arbab,356,tikka boti masala 100 gm (36),2
+423,3078,2022-06-24 15:55:51.511504+00:00,admin ,Ali,34,soap frutis orange indonesia 70 gm(55),1
+423,3078,2022-06-24 15:55:51.511504+00:00,admin ,Ali,34,usc tooth paste 70 gm (ob-v),3
+424,3081,2022-12-11 11:35:44.387989+00:00,admin ,khan,827,wiper siri std zg (clean max),3
+424,3081,2022-12-11 11:35:44.387989+00:00,admin ,khan,827,cloth brush lcl medium (clean max),1
+425,3082,2022-06-13 15:18:16.305701+00:00,admin ,arbab,276,ls potato white 1 kg (lp)(f-s),2
+426,3084,2022-02-25 12:04:48.612539+00:00,admin ,abid,3715,nutri chipsticks  mayo garlic 30 gm (1w),1
+426,3084,2022-02-25 12:04:48.612539+00:00,admin ,abid,3715,cerelac nature pome 350 gm(57),3
+427,3088,2022-02-28 09:02:59.307372+00:00,admin ,yahya,3685,cerelac nature pome 350 gm(57),3
+427,3088,2022-02-28 09:02:59.307372+00:00,admin ,yahya,3685,ebm  click snack pack  35.5 gm (13),2
+428,3093,2022-02-02 15:58:52.165498+00:00,admin ,sabir,850,garnier c/natrls  dark blonde(79),2
+429,3094,2022-12-14 13:55:22.082200+00:00,admin ,abid,1306,apple jelly 440 gms (shezan)(47),1
+429,3094,2022-12-14 13:55:22.082200+00:00,admin ,abid,1306,m/c gift box jungle,3
+430,3095,2022-03-30 14:56:06.518915+00:00,admin ,zubair,2886,orange candy pouch,1
+430,3095,2022-03-30 14:56:06.518915+00:00,admin ,zubair,2886,hasan badshah super rice 10kg(133)(r),1
+431,3096,2022-05-19 11:59:42.313640+00:00,admin ,waqas,423,eco ginger powder 100gm (88),1
+431,3096,2022-05-19 11:59:42.313640+00:00,admin ,waqas,423,tapal lemon green tea bag 45 gm rs-20/off(37),2
+432,3101,2022-11-17 08:14:37.729602+00:00,admin ,riyan,1762,fruitien pine apple necter 200 ml,1
+432,3101,2022-11-17 08:14:37.729602+00:00,admin ,riyan,1762,golden sun ghee 10k,1
+433,3103,2022-11-22 13:49:22.495238+00:00,admin ,sabir,133,knor pepper chicken 66g,3
+433,3103,2022-11-22 13:49:22.495238+00:00,admin ,sabir,133,whole wheat 167g sugar free,1
+434,3105,2022-11-19 17:16:03.369040+00:00,admin ,sajid,540,dettol soap cool 110 gm (04),3
+434,3105,2022-11-19 17:16:03.369040+00:00,admin ,sajid,540,samsool  cream s 28 gm ahsan,2
+435,3108,2022-08-01 18:30:56.207113+00:00,admin ,abid,37,nan khatai z/khoya 84 gm,1
+436,3109,2022-08-15 09:43:02.974961+00:00,admin ,yahya,96,shezan chilli sauce s 180 ml(47),1
+437,3112,2022-03-26 11:10:47.493972+00:00,admin ,Ali,465,marhaba kalongi oil 50 ml,3
+438,3117,2022-12-31 09:32:12.004312+00:00,admin ,Ali,2880,roylty cream crackers biscuits 200 gm,3
+438,3117,2022-12-31 09:32:12.004312+00:00,admin ,Ali,2880,zug washing powder 4 kg (89),3
+439,3118,2022-05-12 21:15:49.926727+00:00,admin ,yahya,164,phool vermiclies flavour 200 g,2
+439,3118,2022-05-12 21:15:49.926727+00:00,admin ,yahya,164,omroc fancy 300 ml,2
+440,3126,2022-04-08 08:24:43.179617+00:00,admin ,asfand yar,150,capri toilet soap peach 150 gms(07),1
+441,3127,2022-10-05 20:40:44.754927+00:00,admin ,maaz,15,kolson potato slanty (plain salted) 5 gm,3
+442,3128,2022-08-30 10:38:55.892173+00:00,admin ,jafar,1112,eva canola oil 3 ltr btl (for sr/le/mn/sa/qa zone),1
+442,3128,2022-08-30 10:38:55.892173+00:00,admin ,jafar,1112,hot & sour noodles 250 gm(59),1
+443,3135,2022-10-28 09:30:53.835691+00:00,admin ,bilal,511,dettol soap soothe 110 gm (04),3
+443,3135,2022-10-28 09:30:53.835691+00:00,admin ,bilal,511,ecial food peri peri ice 50 gm,1
+444,3137,2022-06-15 14:04:24.766581+00:00,admin ,asaf,462,divine foods dal chana 500 gm(137)(p),3
+445,3138,2022-03-14 08:11:33.433343+00:00,admin ,asaf,264,agro pak swiyyan u shap 200 gm (92),3
+446,3151,2022-08-27 16:09:32.965852+00:00,admin ,yahya,1296,dunhill swith  20 hl cigrate (only for jails)(99),2
+446,3151,2022-08-27 16:09:32.965852+00:00,admin ,yahya,1296,sunlight hs std powder pink a03 45 gms(08),3
+447,3153,2022-04-24 18:41:18.871036+00:00,admin ,riyan,480,marvel turmeric powder haldi 100 gm (63),3
+447,3153,2022-04-24 18:41:18.871036+00:00,admin ,riyan,480,apple sidra can 250ml,3
+448,3154,2022-03-21 16:14:42.145437+00:00,admin ,salman,874,iqra tukh malanga 200 gm (39),1
+448,3154,2022-03-21 16:14:42.145437+00:00,admin ,salman,874,peanut whole 250 gm (only for jails)(39),2
+449,3155,2022-12-21 16:14:52.874870+00:00,admin ,qasim,1725,golden sun cooking oil 3ltr (rmol),1
+449,3155,2022-12-21 16:14:52.874870+00:00,admin ,qasim,1725,rin washing powder new 500 gms(08),1
+450,3156,2022-09-30 16:09:30.727231+00:00,admin ,abid,745,nutri italian cracker 100gm100 gm (1w),1
+450,3156,2022-09-30 16:09:30.727231+00:00,admin ,abid,745,misk kitchen paper towel rolls(81),3
+451,3159,2022-06-27 10:18:25.447175+00:00,admin ,yahya,1458,sunsilk hair/f 200 ml,1
+451,3159,2022-06-27 10:18:25.447175+00:00,admin ,yahya,1458,nido milk pdr 900 gm (for flood relief package),1
+452,3165,2022-08-11 17:15:44.882545+00:00,admin ,waqas,682,shan pickle mix 400 gm jar (62),2
+452,3165,2022-08-11 17:15:44.882545+00:00,admin ,waqas,682,shan delve custard 250 gm vanilla (62),2
+453,3175,2022-02-08 14:40:07.666951+00:00,admin ,zubair,444,rooh afza 425 ml,2
+454,3176,2022-01-23 14:09:07.636464+00:00,admin ,yahya,555,medicam valentine body spray 120 ml(09),1
+455,3177,2022-08-24 19:46:10.013199+00:00,admin ,abid,902,mm steel wool 14 gm(19),1
+455,3177,2022-08-24 19:46:10.013199+00:00,admin ,abid,902,italiano hand washed 310 ml pearl glow(09),3
+456,3186,2022-11-23 12:54:35.764343+00:00,admin ,riyan,442,sunlight/p c/green 770 gm(08),2
+456,3186,2022-11-23 12:54:35.764343+00:00,admin ,riyan,442,marvel black chana roasted 100 gm (63),1
+457,3188,2022-02-24 13:52:58.225673+00:00,admin ,arbab,393,veet cream sensitike 50 ml reckit (04),1
+458,3189,2022-10-21 19:41:19.984756+00:00,admin ,salman,1814,"scotch brite  classic pad large,3pcs(28)",2
+458,3189,2022-10-21 19:41:19.984756+00:00,admin ,salman,1814,capri hand wash white 1000 ml pouch(07),2
+459,3193,2022-10-30 08:43:02.703775+00:00,admin ,Ali,3120,hasan white basmati rice (1121) 2kg(133)(r),3
+459,3193,2022-10-30 08:43:02.703775+00:00,admin ,Ali,3120,shoe brush (only for jails) (38),3
+460,3195,2022-05-01 19:08:58.329185+00:00,admin ,maaz,192,wiz laundry detergent 50ml sachet(60),3
+460,3195,2022-05-01 19:08:58.329185+00:00,admin ,maaz,192,super king tin polish l 30 ml black (80),2
+461,3201,2022-07-14 21:22:51.267417+00:00,admin ,qasim,5633,kontrol bleach liquid 1000 ml(59),2
+461,3201,2022-07-14 21:22:51.267417+00:00,admin ,qasim,5633,lipton yellow label tea 900 gm(rmbt) (16),3
+462,3207,2022-05-12 21:41:13.039922+00:00,admin ,maaz,5880,life/s mustard oil 200 ml (66),3
+462,3207,2022-05-12 21:41:13.039922+00:00,admin ,maaz,5880,mezan ghee 5 kg bkt old code,3
+463,3212,2022-09-06 08:46:00.100574+00:00,admin ,raza,1395,black cat talcum powder l 300 gm(59),3
+464,3215,2022-03-28 14:43:46.028108+00:00,admin ,abbas,165,shezan happy farms strawberry 200 ml(47),3
+465,3221,2022-10-08 08:59:42.011522+00:00,admin ,yahya,836,sunsilk thick & long 360 ml(08),1
+465,3221,2022-10-08 08:59:42.011522+00:00,admin ,yahya,836,bath mug asst. st,2
+466,3222,2022-09-17 13:23:13.602481+00:00,admin ,mirza,272,smart chicken spread smart pack 200gm(58),1
+467,3226,2022-01-21 18:02:17.357246+00:00,admin ,abid,1190,yellow label tea bags 100s 200 gms (16),1
+468,3229,2022-12-18 13:33:52.456746+00:00,admin ,salman,930,moong shell 1 kg mv(136),3
+469,3231,2022-07-14 09:01:31.215022+00:00,admin ,arbab,1086,pampers carry pack medium butterfly-pk(10),3
+469,3231,2022-07-14 09:01:31.215022+00:00,admin ,arbab,1086,complete cavity protection t/pasteeconomy 28 gm sarwana (41),2
+470,3235,2022-11-13 17:07:50.412338+00:00,admin ,yahya,472,shan khalis halde powder 100 gm (62),1
+470,3235,2022-11-13 17:07:50.412338+00:00,admin ,yahya,472,lipton yl blk dane 70 gm (rmbt) (16),2
+471,3236,2022-04-25 19:03:00.470749+00:00,admin ,arbab,1534,h&s refreshing menthol 185ml-g(10),1
+471,3236,2022-04-25 19:03:00.470749+00:00,admin ,arbab,1534,pantene shampoo smooth 200 ml(55),2
+472,3238,2022-11-08 09:44:03.530821+00:00,admin ,jafar,663,savannah london passion 75 gms (special fregrance),3
+472,3238,2022-11-08 09:44:03.530821+00:00,admin ,jafar,663,dettol soap  original 160 gm(04),3
+473,3241,2022-12-13 09:07:43.791161+00:00,admin ,salman,23,johar joshanda 6ack (45),1
+474,3242,2022-03-01 08:21:32.142586+00:00,admin ,arbab,162,mothercare prickly heat burf l,1
+474,3242,2022-03-01 08:21:32.142586+00:00,admin ,arbab,162,milkow tofee 125 pc,1
+475,3243,2022-08-11 18:18:49.492049+00:00,admin ,yahya,1260,forhans hairtonic l200ml,2
+475,3243,2022-08-11 18:18:49.492049+00:00,admin ,yahya,1260,shezan classic mayonnaise 400 gm (47),3
+476,3251,2022-05-15 20:52:42.154980+00:00,admin ,saif,146,shan chinese manchurain 50 gm (62),2
+477,3253,2022-09-22 09:28:54.658076+00:00,admin ,arbab,640,mezban dust 950g fre tray,1
+478,3255,2022-09-23 11:45:25.797591+00:00,admin ,jafar,4335,tresemme shampoo n&r 650 ml(08),3
+478,3255,2022-09-23 11:45:25.797591+00:00,admin ,jafar,4335,shangrila peri peri extra hot 150ml(26),2
+479,3260,2022-12-14 15:10:39.646102+00:00,admin ,qasim,416,mehran mix pickle 320 gm (67),1
+479,3260,2022-12-14 15:10:39.646102+00:00,admin ,qasim,416,dettol soap 95g l/fesh,3
+480,3264,2022-09-03 20:26:44.859570+00:00,admin ,saif,618,tapal 100gm jar ( fre t.b) jas,3
+480,3264,2022-09-03 20:26:44.859570+00:00,admin ,saif,618,nova carol 310 ml,3
+481,3267,2022-11-29 20:02:16.038439+00:00,admin ,salman,540,nutri pan masala sweet jar150 gm (1w),3
+482,3269,2022-07-24 21:43:22.644036+00:00,admin ,qasim,1335,divine foods white lobia 1kg(137)(p),2
+482,3269,2022-07-24 21:43:22.644036+00:00,admin ,qasim,1335,mach 3 hercules razor 1up(10),1
+483,3273,2022-04-24 15:27:09.922637+00:00,admin ,sabir,1160,best mix masala 200 gm(38),3
+483,3273,2022-04-24 15:27:09.922637+00:00,admin ,sabir,1160,olpers full cream milk powder 390x24 gm(64),1
+484,3280,2022-02-13 16:05:08.280090+00:00,admin ,yahya,585,nimko punjabi tarka (only for jails)(39),3
+485,3285,2022-02-10 14:50:47.165834+00:00,admin ,bilal,1393,kushboo c/ oil 5 ltr tin (1h),1
+485,3285,2022-02-10 14:50:47.165834+00:00,admin ,bilal,1393,lux bar velvet  touch trio 3 x 135 (cp save rs.30/- 140 gms(08),2
+486,3286,2022-07-01 16:38:46.547860+00:00,admin ,arbab,14,lu prince choco s/b,1
+487,3291,2022-07-17 09:54:18.669353+00:00,admin ,mirza,497,tang 220 gm,3
+487,3291,2022-07-17 09:54:18.669353+00:00,admin ,mirza,497,eco tukhmalanga 50gm (88),2
+488,3297,2022-10-01 10:54:07.230543+00:00,admin ,arbab,692,pakola ice cream syrup 800 ml 1x1 red syrup(rmsp),2
+488,3297,2022-10-01 10:54:07.230543+00:00,admin ,arbab,692,trista trim t brush,3
+489,3302,2022-04-26 17:44:53.288672+00:00,admin ,abbas,840,nutri pan parag gotta masala jar150 gm (1w),3
+489,3302,2022-04-26 17:44:53.288672+00:00,admin ,abbas,840,aghaz banaspati 1*16 kh pouch (for ad/pr zone),2
+490,3303,2022-08-05 15:49:08.136956+00:00,admin ,zubair,442,orange candy,1
+490,3303,2022-08-05 15:49:08.136956+00:00,admin ,zubair,442,knorr ketchup 800 gm ,2
+491,3307,2022-05-30 16:18:50.001681+00:00,admin ,riyan,150,treet  blade   black 10 s-trbc (20x60)(59),3
+492,3309,2022-09-26 08:56:15.770882+00:00,admin ,yahya,218,max scrub nail saver sponge (single)(05),2
+493,3310,2022-08-12 11:11:29.385327+00:00,admin ,asfand yar,109,disosable baby diaper m 8s,1
+494,3315,2022-03-27 10:51:09.668935+00:00,admin ,Ali,760,vital tea 170 gm(rmbt)(36),2
+494,3315,2022-03-27 10:51:09.668935+00:00,admin ,Ali,760,cfl peanut pik snack pack 23.7 gm (13),2
+495,3317,2022-07-25 12:23:23.746243+00:00,admin ,jafar,139,benz phenyl white perfumed 3ltr (damage)(17),1
+496,3318,2022-01-18 08:58:05.605229+00:00,admin ,yahya,240,4me soap  pearl 130 gm(55),2
+497,3319,2022-11-08 17:57:31.286798+00:00,admin ,mirza,1194,touchme talc pdr f/s(09),3
+498,3321,2022-02-05 13:25:24.218070+00:00,admin ,sabir,50,knorr noodles chicken single 72x50gm  ,1
+499,3323,2022-02-25 18:39:23.489191+00:00,admin ,maaz,1680,tapal tezdum 900 gm pch(rmbt)(37),1
+500,3328,2022-05-09 15:00:31.078613+00:00,admin ,abid,1435,dettol mpc lavender 1 ltr (consumer promotion get mpc 200 free worth(04),2
+500,3328,2022-05-09 15:00:31.078613+00:00,admin ,abid,1435,nutri plum sweet 100 gm (1w),1
+501,3330,2022-01-02 12:13:55.318679+00:00,admin ,saif,806,garnier men acno fight 100 ml(79),1
+502,3333,2022-01-06 21:19:54.992191+00:00,admin ,asaf,320,jazaa black pepper powder 100 gm (1q),1
+503,3335,2022-08-15 13:41:19.942448+00:00,admin ,waqas,29,zeera family pack 96(59),1
+504,3338,2022-11-15 19:04:47.739247+00:00,admin ,mirza,455,habib ghee 1kg  pouch(pg)(87),1
+505,3340,2022-01-29 18:40:32.709464+00:00,admin ,yahya,231,m.g moistuirising cream,2
+505,3340,2022-01-29 18:40:32.709464+00:00,admin ,yahya,231,vinegar white275 ml bake parlor(59),3
+506,3343,2022-07-10 14:20:07.018914+00:00,admin ,waqas,3436,tehwar anardana 50 gms (ob-s),2
+506,3343,2022-07-10 14:20:07.018914+00:00,admin ,waqas,3436,dalda cooking oil 3 ltr ept btl (old code)(1c),3
+507,3344,2022-07-04 16:57:22.044422+00:00,admin ,zubair,654,national kasuri methi 25 gm(56),3
+507,3344,2022-07-04 16:57:22.044422+00:00,admin ,zubair,654,tukhmalanga 125 gm,3
+508,3345,2022-01-26 18:06:49.246336+00:00,admin ,bilal,370,nutri pops long 40 gm (1w),2
+508,3345,2022-01-26 18:06:49.246336+00:00,admin ,bilal,370,fried onion 200 gm (36),1
+509,3346,2022-03-06 11:38:09.286840+00:00,admin ,arbab,342,caresse naturals hand wash (antibacterial moist) 450 ml(95),1
+510,3350,2022-01-07 15:12:51.189147+00:00,admin ,maaz,80,english biscuits rio chocolate 56 gm (13),2
+511,3353,2022-06-21 14:01:16.673410+00:00,admin ,asaf,205,rlx lotion 100 ml silky bright 100 ml(55),1
+512,3355,2022-07-13 16:41:32.353148+00:00,admin ,asaf,30,twitter strawberry 23 gm,2
+512,3355,2022-07-13 16:41:32.353148+00:00,admin ,asaf,30,mango fruit drink 250ml,2
+513,3357,2022-07-04 13:37:56.908503+00:00,admin ,waqas,290,shezan classic mayonnaise 400 gm (47),1
+514,3362,2022-11-15 08:18:37.042613+00:00,admin ,salman,739,kisan mutton handi masala 50 gm,1
+514,3362,2022-11-15 08:18:37.042613+00:00,admin ,salman,739,pnt  deep black 360ml -f(10),1
+515,3363,2022-08-07 14:22:09.136132+00:00,admin ,raza,429,"stillman,s freckle cream 28 gms",3
+515,3363,2022-08-07 14:22:09.136132+00:00,admin ,raza,429,cfl chocolate sandwich snack pack 24g (13),1
+516,3365,2022-09-05 10:00:31.184976+00:00,admin ,moeez,2592,hasan gold sella basmati rice 2kg(133)(r),3
+517,3366,2022-06-17 18:00:21.223769+00:00,admin ,asfand yar,670,eva cooking oil (1x5) ltr pillow pouch (for karachi zone),2
+518,3370,2022-10-30 15:45:45.261526+00:00,admin ,riyan,180,golden elbow colour macroni 400 gm(32),1
+519,3374,2022-05-02 19:39:20.743944+00:00,admin ,Ali,384,mehran haleem 50 gm (67),3
+520,3377,2022-03-12 20:34:32.993260+00:00,admin ,zubair,1115,lifebuoy herbal 175ml shmpo,1
+520,3377,2022-03-12 20:34:32.993260+00:00,admin ,zubair,1115,wet mop refil polyster 400 gms(24),2
+521,3382,2022-06-14 12:27:06.454459+00:00,admin ,arbab,2551,atta 20 kg bag  (cong) al-mumtaz fm,1
+521,3382,2022-06-14 12:27:06.454459+00:00,admin ,arbab,2551,always s5 duo pack (prospera)(10),1
+522,3383,2022-08-06 15:19:13.381638+00:00,admin ,maaz,150,claree anti dandruff shampoo (ginger & lemon) 200 ml(75),1
+523,3384,2022-04-24 13:04:36.895247+00:00,admin ,zubair,254,choco chip snack pack,1
+523,3384,2022-04-24 13:04:36.895247+00:00,admin ,zubair,254,shafay black peper whole 50 gm (2a),2
+524,3386,2022-05-18 11:58:58.623338+00:00,admin ,bilal,855,air freshner relax jasmine 300 ml(55),3
+525,3387,2022-06-02 19:37:23.893161+00:00,admin ,moeez,1334,nutri ginger powder 100gm (1w),2
+525,3387,2022-06-02 19:37:23.893161+00:00,admin ,moeez,1334,bath stool j/ st,3
+526,3388,2022-12-08 12:13:38.650945+00:00,admin ,salman,1095,marvel fennle snoof 100 gm (63),2
+526,3388,2022-12-08 12:13:38.650945+00:00,admin ,salman,1095,misk kitchen paper towel rolls(81),3
+527,3394,2022-11-03 15:33:46.338003+00:00,admin ,moeez,540,tea stainer double lyer m,3
+528,3395,2022-06-27 11:56:39.866830+00:00,admin ,salman,3159,kinza lemon squash 800ml,3
+528,3395,2022-06-27 11:56:39.866830+00:00,admin ,salman,3159,florence fruit set 917918,3
+529,3396,2022-07-09 20:52:38.982340+00:00,admin ,waqas,687,crispo custard powder strawberry 300 gm(59),3
+529,3396,2022-07-09 20:52:38.982340+00:00,admin ,waqas,687,puff marshmallow (color party)24 bags 200(61),3
+530,3397,2022-03-23 14:50:25.386941+00:00,admin ,zubair,4350,mughal gold 5 kg(135)(r),3
+531,3400,2022-03-26 13:04:31.994761+00:00,admin ,Ali,132,habib bombay biryani masala 65 gm h/p,3
+532,3403,2022-10-06 08:38:49.979511+00:00,admin ,asfand yar,2928,omroc gala gold w\set,3
+533,3405,2022-03-21 11:24:55.105388+00:00,admin ,abid,3676,shang chili garlic 1kg 20/of,2
+533,3405,2022-03-21 11:24:55.105388+00:00,admin ,abid,3676,maan b/pati 10 kg bkt e,1
+534,3410,2022-03-14 19:37:29.146619+00:00,admin ,abbas,566,iqra javitri 25 gm (39),1
+534,3410,2022-03-14 19:37:29.146619+00:00,admin ,abbas,566,english regular mint toothpaste brush pack 65 gms (sarwana)(41),2
+535,3412,2022-04-12 14:34:55.617481+00:00,admin ,asaf,574,caresse hair remover lotion large rosette 120 ml(95),2
+536,3413,2022-01-14 20:07:54.326922+00:00,admin ,abbas,1204,marhaba sharbat elaichi 1800,1
+536,3413,2022-01-14 20:07:54.326922+00:00,admin ,abbas,1204,mophin trey with 12 hole,3
+537,3417,2022-10-29 19:56:56.538178+00:00,admin ,arbab,946,he cd moroccan argan oil 400ml- set b(10),1
+537,3417,2022-10-29 19:56:56.538178+00:00,admin ,arbab,946,naphthalene balls 200 gm(17),2
+538,3418,2022-05-20 13:17:11.683276+00:00,admin ,abbas,380,best food sagona dana 200 gm(38),2
+538,3418,2022-05-20 13:17:11.683276+00:00,admin ,abbas,380,good goodies cup cake strawberry (1x),2
+539,3424,2022-05-05 19:33:40.000078+00:00,admin ,bilal,3053,ptcl-250,2
+539,3424,2022-05-05 19:33:40.000078+00:00,admin ,bilal,3053,soya supreme banaspati 10 kg tin(pg),1
+540,3430,2022-10-26 20:16:48.821659+00:00,admin ,bilal,360,polar mint 6 mg velo - 12s(only for jails)(98),3
+541,3433,2022-04-28 19:45:23.728599+00:00,admin ,abid,1810,jazaa  assorted cookies 240 gm (1q),3
+541,3433,2022-04-28 19:45:23.728599+00:00,admin ,abid,1810,dolly mop set,2
+542,3434,2022-10-27 09:14:26.638818+00:00,admin ,saif,1131,ponds pure white face wash 100gms(08),3
+542,3434,2022-10-27 09:14:26.638818+00:00,admin ,saif,1131,swaad fish frymasala 50 gm  (70),1
+543,3439,2022-10-02 13:47:49.573915+00:00,admin ,asfand yar,596,serving oon asst. off white,2
+543,3439,2022-10-02 13:47:49.573915+00:00,admin ,asfand yar,596,vegetable samosa 280 gm,2
+544,3440,2022-10-11 08:53:45.963623+00:00,admin ,qasim,5490,manpadand c/ oil 1 ltr  (old code),3
+544,3440,2022-10-11 08:53:45.963623+00:00,admin ,qasim,5490,(wrong code)mach 3 sen cart 4(10),3
+545,3441,2022-12-24 15:00:54.952215+00:00,admin ,abbas,460,"mitchell,s chilli garlic sauce 400 gm",2
+546,3444,2022-06-30 20:10:10.781831+00:00,admin ,sabir,170,macaroni italia 400 gm(32),1
+547,3447,2022-10-20 09:00:35.442492+00:00,admin ,asaf,319,colgate protex aloe soap  95 gms(05),1
+547,3447,2022-10-20 09:00:35.442492+00:00,admin ,asaf,319,florence s candy 155,1
+548,3448,2022-09-27 14:44:16.736787+00:00,admin ,jafar,304,dettol soap re-energize 170 gm (04),1
+548,3448,2022-09-27 14:44:16.736787+00:00,admin ,jafar,304,english tooth brush zigzag better night sleep hard(41),2
+549,3453,2022-07-21 12:49:41.052957+00:00,admin ,bilal,800,bath mat l,1
+550,3454,2022-03-03 16:49:13.750080+00:00,admin ,jafar,640,anti dandruff shamoo sooth (2 in 1),3
+550,3454,2022-03-03 16:49:13.750080+00:00,admin ,jafar,640,lifebuoy total 112g t/p,1
+551,3456,2022-05-11 09:36:57.652078+00:00,admin ,Ali,1165,eedy chopper l,1
+551,3456,2022-05-11 09:36:57.652078+00:00,admin ,Ali,1165,capri toilet soap white 150 gms(07),3
+552,3458,2022-06-06 18:06:57.524464+00:00,admin ,asfand yar,1680,parizad zeera 200 gm,3
+553,3459,2022-09-22 09:11:56.727106+00:00,admin ,asfand yar,881,nutri red chilli darah 200 gm (1w),3
+553,3459,2022-09-22 09:11:56.727106+00:00,admin ,asfand yar,881,delhi nihari masala 100 gm (36),2
+554,3461,2022-03-13 15:50:44.047517+00:00,admin ,mirza,1380,wet mop 350gram set,3
+555,3463,2022-07-20 12:19:04.957260+00:00,admin ,saif,1475,english herbal t/paste- value pack140 gm (41),2
+555,3463,2022-07-20 12:19:04.957260+00:00,admin ,saif,1475,kiwi kleen toilet cleaner500ml+500 ml bleach power(59),3
+556,3465,2022-06-06 17:58:43.448015+00:00,admin ,zubair,670,tetely gold tea bag(100s 2g,2
+556,3465,2022-06-06 17:58:43.448015+00:00,admin ,zubair,670,gt mobile calling card,1
+557,3467,2022-11-10 18:15:42.127840+00:00,admin ,maaz,648,sultan dried apricot sukhi khubani ) 100 gm),3
+557,3467,2022-11-10 18:15:42.127840+00:00,admin ,maaz,648,asli milk 240 ml (haleeb food)uht milk(rmum)(51),3
+558,3473,2022-08-12 20:38:41.306994+00:00,admin ,bilal,512,pan rush 10 mg velo 20s(only for jails)(97),3
+558,3473,2022-08-12 20:38:41.306994+00:00,admin ,bilal,512,capri pro h75g(07),2
+559,3475,2022-07-24 20:54:23.850211+00:00,admin ,maaz,510,cleeno steel ball 20 grm (ob-v),2
+559,3475,2022-07-24 20:54:23.850211+00:00,admin ,maaz,510,ut green chilli premium 1 kg (lp)(skt),1
+560,3483,2022-05-19 20:46:34.898015+00:00,admin ,bilal,870,s7 gentle harmony 190mm x 180mm (1y),3
+561,3485,2022-09-14 11:57:19.463186+00:00,admin ,asaf,384,star mixer mango pouch 375 gm(69),2
+562,3486,2022-02-17 16:57:31.644934+00:00,admin ,salman,135,knoor noodles iron+masala/chaska 31 gm,3
+562,3486,2022-02-17 16:57:31.644934+00:00,admin ,salman,135,iodize salt raw powder bulk (ob-r),1
+563,3489,2022-07-14 11:52:37.921378+00:00,admin ,qasim,480,cobra liquid refil (rose),3
+564,3494,2022-09-19 08:21:42.682002+00:00,admin ,maaz,1,freight sugar sub warehouse (skardu) (service product) old,1
+565,3498,2022-08-02 16:07:25.026388+00:00,admin ,sajid,115,now chocolate paste(61),3
+565,3498,2022-08-02 16:07:25.026388+00:00,admin ,sajid,115,aspine liquid bathroom cleaner  600 ml(18),1
+566,3499,2022-08-26 20:48:46.416875+00:00,admin ,khan,1504,shield feeder wide neck 260 ml(53),2
+567,3500,2022-10-04 10:59:13.845013+00:00,admin ,abid,335,chai shai  170 gm tea hp box(rmbt)(03),1
+568,3507,2022-12-27 19:48:15.415096+00:00,admin ,abid,246,knorr soups chinese cream of chk 50gm ,2
+569,3508,2022-04-10 18:49:31.571972+00:00,admin ,jafar,135,shezan soya sauce 300 ml (47),1
+570,3520,2022-06-22 10:45:23.842280+00:00,admin ,asaf,152,picasso permanent marker ink 12s (43),3
+570,3520,2022-06-22 10:45:23.842280+00:00,admin ,asaf,152,doughstory  regular bread plain 340 gm (94),1
+571,3522,2022-02-20 13:17:26.305170+00:00,admin ,jafar,140,ponds cold cream 60 ml new(08),1
+572,3523,2022-06-28 15:18:53.201026+00:00,admin ,qasim,600,bonus active 1000 gms(05),2
+573,3525,2022-09-03 10:04:42.528597+00:00,admin ,qasim,745,shangrilla mustard honey sauce 227 gm(26),1
+574,3526,2022-07-22 21:38:49.575981+00:00,admin ,saif,605,cocomo stand up pch(59),1
+574,3526,2022-07-22 21:38:49.575981+00:00,admin ,saif,605,dalda (fortified) banaspati 1 kg pouch(pg)(1c),1
+575,3528,2022-08-05 12:03:09.679504+00:00,admin ,Ali,652,petal fresh facial surb/t200ml,2
+575,3528,2022-08-05 12:03:09.679504+00:00,admin ,Ali,652,olympia match l  pkt (34),2
+576,3535,2022-11-01 08:33:34.085649+00:00,admin ,abid,165,neem face wash 100ml,1
+577,3538,2022-04-18 10:23:04.654893+00:00,admin ,abbas,249,samosa patti 48 pcs (yes mom),3
+578,3549,2022-12-29 11:03:10.557371+00:00,admin ,Ali,1382,shield feeder (zoo)125ml,2
+578,3549,2022-12-29 11:03:10.557371+00:00,admin ,Ali,1382,finis multi s/cleanr ocean escape 1000 ml(59),2
+579,3551,2022-11-27 11:21:27.345080+00:00,admin ,yahya,1343,national garam masala powder 25 gm(56),3
+579,3551,2022-11-27 11:21:27.345080+00:00,admin ,yahya,1343,mortein aik dual lemon 550 ml (04),1
+580,3552,2022-11-11 17:44:16.191064+00:00,admin ,sajid,950,anjeer 125 gm,2
