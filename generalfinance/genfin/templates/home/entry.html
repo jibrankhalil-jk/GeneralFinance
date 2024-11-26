@@ -80,6 +80,21 @@ Genfin{% endblock %} {%block body %}
           </li>
         </ul>
       </div>
+
+      <div class="d-flex flex-row mt-3">
+        <div class="form-check me-3">
+          <input class="form-check-input" type="radio" name="transaction_type" id="Cash" checked />
+          <label class="form-check-label" for="transaction_type">Cash</label>
+        </div>
+        <div class="form-check me-3">
+          <input class="form-check-input" type="radio" name="transaction_type" id="Loan" />
+          <label class="form-check-label" for="transaction_type">Loan</label>
+        </div>
+        <div class="form-check me-3">
+          <input class="form-check-input" type="radio" name="transaction_type" id="Online" />
+          <label class="form-check-label" for="transaction_type">Online</label>
+        </div>
+      </div>
       <div class="container orderActions">
         <button id="cancelOrder" type="button" class="btn btn-danger mt-4 px-5 py-2">Cancel</button>
         <button id="placeOrder" type="button" class="btn btn-success mt-4 px-5 py-2">Submit</button>
@@ -100,6 +115,7 @@ Genfin{% endblock %} {%block body %}
   currentUser = "";
   itemsList = [];
   itemindex = 0;
+  current_transaction_type = "Cash";
 
   $(document).ready(function () {
     // show user on type
@@ -174,7 +190,11 @@ Genfin{% endblock %} {%block body %}
                 if (prod[1] >= 1) {
                   item_list.append('<li class="list-group-item">' + prod[0] + "</li>");
                 } else {
-                    item_list.append('<li class="list-group-item disabled" style="color:red"> <span style="font-size: 10px;">Not in Stock </span>' + prod[0] + "</li>");
+                  item_list.append(
+                    '<li class="list-group-item disabled" style="color:red"> <span style="font-size: 10px;">Not in Stock </span>' +
+                      prod[0] +
+                      "</li>"
+                  );
                 }
               });
             } else {
@@ -263,11 +283,18 @@ Genfin{% endblock %} {%block body %}
       $("#totalItemslabel").text("Items : " + itemindex);
     }
 
+    $("input[type=radio][name=transaction_type]").change(function () {
+      $("#selectedPayment").text(this.id);
+console.log(this.id);
+      current_transaction_type = this.id;
+    });
+
     $("#placeOrder").on("click", function () {
       if (currentUser.length != 0 && itemsList.length != 0) {
         var formData = {
           user: currentUser,
           items: [itemsList],
+          current_transaction_type: current_transaction_type,
         };
         window.location.href = "{% url 'order_entry' %}?" + $.param(formData);
       } else {

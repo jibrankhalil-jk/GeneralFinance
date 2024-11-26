@@ -53,32 +53,6 @@ def createUser(request):
     return JsonResponse({'data': user_id})
 
 
-# def createUser(request):
-#     username = 'usman'.lower()
-#     pn = 3125452445
-#     ad = 'gilgi,Pakistan'
-#     username = username.lower()
-#     user = User.objects.create(username=username,email=f"{username}@gmail.com")
-#     user.set_password(f"{username}@gmail.com")
-#     user.save()
-#     customer = models.Customer.objects.create(user_id=user ,customer_name =username,phone_number=pn,address = ad)
-#     customer.save()
-#     return render(request,'home/home.html')
-
-# def add_user(request):
-#     if request.method == 'POST':
-#         name = request.POST.get('name')
-#         number = request.POST.get('number')
-#         address = request.POST.get('address')
-#         username = get_random_string(10)
-
-#         # Create the user
-#         user = User.objects.create_user(username, number, address)
-#         user.first_name = name
-#         user.save()
-#         return JsonResponse({'success': True, 'user': {'name': name, 'number': number, 'address': address}})
-#     return JsonResponse({'success': False})
-
 
 def Login(request):
     if request.user.is_authenticated:
@@ -241,6 +215,10 @@ def get_product_info(request):
 @login_required
 def order_entry(request):
     username = request.GET.get('user')
+    current_transaction_type = request.GET.get('current_transaction_type')
+    print("------------------------------- )))))))))))))))))))))))))))))")
+    print(current_transaction_type)
+    print("------------------------------- )))))))))))))))))))))))))))))")
     final_items = []
     total_price = 0
     for key, _ in request.GET.items():
@@ -264,7 +242,7 @@ def order_entry(request):
                             curr_product.save()
                     total_price += int(item_values[2])
     current_transaction = models.Transactions.objects.create(
-        total_amount=total_price, status=0)
+        total_amount=total_price, status=0,transaction_type=current_transaction_type)
     current_transaction.save()
     current_logedin_user = User.objects.filter(username=request.user).first()
     if current_logedin_user:

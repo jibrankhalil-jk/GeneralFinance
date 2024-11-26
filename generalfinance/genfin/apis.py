@@ -50,11 +50,11 @@ def get_today_payement_sources():
         sources_with_counts = dict(zip(df_grouped['transaction_type'], df_grouped['count']))
         
     except Exception as e:
-        sources_with_counts = {'Cash': 0, 'online': 0, 'loan': 0}
-    return {
-        'Cash': sources_with_counts.get('Cash', 0),
-        'Online': sources_with_counts.get('online', 0),
-        'Loan': sources_with_counts.get('loan', 0),
+        sources_with_counts = {'Cash': 0, 'Online': 0, 'Loan': 0}
+    return { 
+        'Cash': sources_with_counts['Cash'],
+        'Online': sources_with_counts['Online'],
+        'Loan': sources_with_counts['Loan'],
         # 'today_payement_sources': sources_with_counts
     }
 
@@ -102,9 +102,10 @@ def top_selling_products():
                                 key=lambda x: x[1], reverse=True)
         top_products = sorted_products[:5]  # Changed from 4 to 5
 
-        labels = str([product[0] for product in top_products]).replace("'", '"')
+        labels = str([str(product[0])[:len(str(product[0]))//2] for product in top_products]).replace("'", '"')
+        labels = ''.join(char for char in labels if char.isalpha() or char in '[]," ')
         values = [product[1] for product in top_products]
     except Exception as e:
         labels = []
         values = []
-    return {'labels': labels, 'values': values}
+    return {'error':'dsfasd','labels': labels, 'values': values}
