@@ -8,6 +8,8 @@ from django.http import JsonResponse
 from django.contrib.auth import authenticate     
 import pandas as pd
 import datetime
+from django.utils.crypto import get_random_string
+
 
 
 def Index(request):
@@ -31,23 +33,21 @@ def createUser(request):
             user_id=current_logedin_user).first()
 
         df = pd.read_csv(
-            '/Users/jibrankhalil/Dev/Projects/GeneralFinance/SourceCode/genfin/scrapping_data/Sales.csv')
-        for i, d in df.iterrows():
+            '/Users/jibrankhalil/Dev/Projects/GeneralFinance/SourceCode/genfin/scrapping_data/entry/final.csv')
+        for _, d in df.iterrows():
             date = datetime.datetime.strptime(
-                d['date'], '%Y-%m-%d %H:%M:%S.%f')
+                d['date'].split('+')[0], '%Y-%m-%d %H:%M:%S.%f')
             items = d['items']
-            sales_id = 1,
             user_id = d['user_id'],
             total = d['total']
+            tn_type = d['transaction_type']
 
-            current_transaction = models.Transactions.objects.create(
-                total_amount=total, status=0, transaction_date=date)
+            current_transaction = models.Transactions.objects.create(total_amount=total, status=0, transaction_date=date,transaction_type=tn_type)
             current_transaction.save()
 
             c_user = models.Customer.objects.filter(id=user_id[0]).first()
             if c_user:
-                sale = models.Sales.objects.create(user_id=c_user, date_time=date, items=items,
-                                                   sales_manager_id=sales_manager, total_amount=total, transactions_id=current_transaction)
+                sale = models.Sales.objects.create(user_id=c_user, date_time=date, items=items,sales_manager_id=sales_manager, total_amount=total, transactions_id=current_transaction)
                 sale.save()
         return JsonResponse({'data': f"done"})
     return JsonResponse({'data': user_id})
@@ -136,10 +136,9 @@ def Home(request):
     data = apis.get_today_sales_data()
     sources = apis.get_today_payement_sources()
     monthly_sales = apis.get_monthly_sales()
-    top_selling_products = apis.top_selling_products()
-    current_user = request.user
+    top_selling_products = apis.top_selling_products() 
     data = {'active': 'home',
-            'username': current_user,
+            'username': request.user,
             'sources': sources,
             'today_sales': data,
             'monthly_sales': monthly_sales,
@@ -288,3 +287,106 @@ def order_entry(request):
 
     return JsonResponse({"data": [str(curr_customer)
                                   ], "message": 'no product'})
+
+
+#Inventory Product 
+@login_required
+def add_customer(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        number = request.POST.get('number')
+        address = request.POST.get('address')
+        username = name
+
+        try:
+            user = User.objects.create_user(username=username, password='defaultpassword')
+            user.first_name = name
+            user.save()
+
+            # Create the customer
+            customer = models.Customer.objects.create(user_id=user, customer_name=name, phone_number=number, address=address)
+            return JsonResponse({'success': True, 'user': {'id': customer.id, 'name': name, 'number': number, 'address': address}})
+        
+        except Exception:
+            return JsonResponse({'success': False ,'message':'Dublicate user name'})
+        
+    return JsonResponse({'success': False ,'message':'Error adding the user'})
+
+@login_required
+def get_customer(request):
+    username = request.GET.get('username')
+    user_id = request.GET.get('user_id')
+
+    if username:
+        customers = models.Customer.objects.filter(user_id__username__icontains=username)[:5]
+        data = [
+            {
+                'id': customer.id,
+                'name': customer.customer_name,
+                'address': customer.address,
+                'phone': customer.phone_number,
+            }
+            for customer in customers
+        ]
+        return JsonResponse({'success': True, 'data': data})
+
+    if user_id:
+        try:
+            customer = models.Customer.objects.get(id=user_id)
+            data = {
+                'id': customer.id,
+                'name': customer.customer_name,
+                'address': customer.address,
+                'phone': customer.phone_number,
+            }
+            return JsonResponse({'success': True, 'data': data})
+        except models.Customer.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'Customer not found'})
+
+    return JsonResponse({'success': False, 'error': 'No valid parameters provided'})
+
+@login_required
+def add_product(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        # expire_date = request.POST.get('expire_date')
+        stock_quantity = int(request.POST.get('quantity'))
+        category_id = request.POST.get('category')
+
+        category = models.Categories.objects.get(id=category_id)
+        product, created = models.Product.objects.get_or_create(
+            product_name=name,
+            categorie_id=category,
+            defaults={'price': price, 'stock_quantity': stock_quantity}
+        )
+
+        if not created:
+            product.stock_quantity += stock_quantity
+            product.save()
+
+        return JsonResponse({
+            'success': True,
+            'product': {
+                'id': product.id,
+                'name': name,
+                'price': price,
+                'quantity': product.stock_quantity,
+                'category': category.categorie_name
+            },
+            'created': created
+        })
+    return JsonResponse({'success': False})
+
+@login_required
+def inventory(request):
+    categories = models.Categories.objects.all()
+    return render(request, 'inventory.html', {'categories': categories})
+
+@login_required
+def add_category(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        category = models.Categories.objects.create(categorie_name=name)
+        return JsonResponse({'success': True, 'category': {'id': category.id, 'name': name}})
+    return JsonResponse({'success': False})

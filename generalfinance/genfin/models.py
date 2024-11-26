@@ -39,6 +39,7 @@ class Product(models.Model):
     categorie_id = models.ForeignKey(Categories, on_delete=models.CASCADE)
     product_name = models.CharField(max_length=500)
     price = models.IntegerField(default=0)
+    cost_price = models.IntegerField(default=0)
     stock_quantity = models.IntegerField(default=0)
     bar_code = models.CharField(max_length=100)
     image = models.ImageField(  upload_to="products/images/", blank=True, null=True)

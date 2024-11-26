@@ -23,14 +23,13 @@
     <div class="card-body justify-content-between align-items-center">
       <div class="chart-area" style="height: 28vh">
         <canvas
-          data-bss-chart='{"type":"doughnut","data":{"labels":["Cash","Loan","Online"],"datasets":[{"label":"","backgroundColor":["#1cc88a","#663EDCCE","#36b9cc"],"borderColor":["#ffffff","#ffffff","#ffffff"],"data":{{sources.data}}}]},"options":{"maintainAspectRatio":false,"legend":{"display":false,"labels":{"fontStyle":"normal"}},"title":{"fontStyle":"normal"}}}'
+          data-bss-chart='{"type":"doughnut","data":{"labels":["Cash","Loan","Online"],"datasets":[{"label":"","backgroundColor":["#1cc88a","#663EDCCE","#36b9cc"],"borderColor":["#ffffff","#ffffff","#ffffff"],"data":[{{sources.Cash}},{{sources.Online}},{{sources.Loan}}]}]},"options":{"maintainAspectRatio":false,"legend":{"display":false,"labels":{"fontStyle":"normal"}},"title":{"fontStyle":"normal"}}}'
         ></canvas>
       </div>
       <div class="text-center small mt-4">  
         <span class="me-2"><i class="fas fa-circle" style="color: #1cc88a;"></i>&nbsp;Cash</span>
         <span class="me-2"><i class="fas fa-circle" style="color: #663EDCCE;"></i>&nbsp;Loan</span>
         <span class="me-2"><i class="fas fa-circle" style="color: #36b9cc;"></i>&nbsp;Online</span>
- {{sources.labels}}
       </div>
     </div>
   </div>
