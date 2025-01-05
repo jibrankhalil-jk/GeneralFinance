@@ -53,7 +53,6 @@ def createUser(request):
     return JsonResponse({'data': user_id})
 
 
-
 def Login(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -265,7 +264,6 @@ def order_entry(request):
 
     return JsonResponse({"data": [str(curr_customer)
                                   ], "message": 'no product'})
-
 
 #Inventory Product 
 @login_required
