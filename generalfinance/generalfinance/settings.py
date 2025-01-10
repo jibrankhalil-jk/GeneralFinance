@@ -45,7 +45,7 @@ ROOT_URLCONF = 'generalfinance.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR /'templates'],  
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,7 +65,7 @@ WSGI_APPLICATION = 'generalfinance.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-   'default': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'generalfinance',
         'USER': 'root',
@@ -74,7 +74,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
 
 
 # Password validation
@@ -123,3 +122,6 @@ LOGOUT_REDIRECT_URL = 'login'
 LOGIN_URL = 'login'
 
 ERROR_404_TEMPLATE_NAME = 'erro_404.html'
+
+
+ 

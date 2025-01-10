@@ -1,0 +1,42 @@
+ // itemsList.forEach((item, index) => {
+              //   if (item[1] === response.data[1]) {
+              //     existingItem = true;
+              //     // Update quantity and total price in table
+              //     let row = items_table.find("tr").eq(index);
+              //     let currentQty = parseInt(row.find("td").eq(2).text());
+              //     row
+              //       .find("td")
+              //       .eq(2)
+              //       .text(currentQty + 1);
+              //     // Update quantity in itemsList
+              //     item[3] = currentQty + 1;
+              //     // Update individual item price
+              //     row
+              //       .find("td")
+              //       .eq(4)
+              //       .text("Rs " + parseFloat(response.data[2]) * (currentQty + 1));
+              //   }
+              // });
+              // if (!existingItem) {
+              //   response.data[3] = 1; // Set initial quantity
+              //   itemsList.push(response.data);
+              //   itemindex++;
+              //   items_table.append(
+              //     "<tr><td>" +
+              //       itemindex +
+              //       "</td><td>" +
+              //       response.data[1] +
+              //       "</td><td>1</td><td>1</td><td>Rs " +
+              //       response.data[2] +
+              //       '</td><td><button class="btn btn-danger delete-row">X</button></td></tr>'
+              //   );
+              // }
+              // // Delete button handler
+              // $(".delete-row").click(function () {
+              //   $(this).closest("tr").remove();
+              //   itemindex = Math.max(0, itemindex - 1);
+              //   let rowIndex = $(this).closest("tr").index();
+              //   itemsList.splice(rowIndex, 1);
+              //   updateTotals();
+              // });
+              // updateTotals();

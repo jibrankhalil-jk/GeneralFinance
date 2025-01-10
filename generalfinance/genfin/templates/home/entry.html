@@ -1,9 +1,23 @@
 {% extends 'home/components/dashboard_base.html' %} {% load static %} {% block title %}Entry -
 Genfin{% endblock %} {%block body %}
+
+<style>
+  .item-hover-effect:hover {
+    color: #3e3c50;
+    background-color: #feebc1;
+    border: solid 3px #3e3c50;
+  }
+  .quantitybutton {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+  }
+</style>
+
 <div class="row mx-4">
   <h1>Entry</h1>
+
   <div class="row row-xl-4">
-    <!-- Left Column -->
     <div class="col-lg-6">
       <input
         type="text"
@@ -31,7 +45,6 @@ Genfin{% endblock %} {%block body %}
                   <th scope="col">Qty</th>
                   <th scope="col">Qly</th>
                   <th scope="col">Price</th>
-                  <th scope="col">Remove</th>
                 </tr>
               </thead>
               <tbody id="items_table">
@@ -50,6 +63,7 @@ Genfin{% endblock %} {%block body %}
         id="name"
         placeholder="Type a username"
         class="mb-3 px-4 py-2 rounded-3 border border-0"
+        maxlength="20"
       />
       <ul
         class="list-group position-absolute bg-white shadow-lg"
@@ -83,15 +97,33 @@ Genfin{% endblock %} {%block body %}
 
       <div class="d-flex flex-row mt-3">
         <div class="form-check me-3">
-          <input class="form-check-input" type="radio" name="transaction_type" id="Cash" checked />
+          <input
+            class="form-check-input"
+            type="radio"
+            name="transaction_type"
+            id="Cash"
+            {{default_source.Cash}}
+          />
           <label class="form-check-label" for="transaction_type">Cash</label>
         </div>
         <div class="form-check me-3">
-          <input class="form-check-input" type="radio" name="transaction_type" id="Loan" />
+          <input
+            class="form-check-input"
+            type="radio"
+            name="transaction_type"
+            id="Loan"
+            {{default_source.Loan}}
+          />
           <label class="form-check-label" for="transaction_type">Loan</label>
         </div>
         <div class="form-check me-3">
-          <input class="form-check-input" type="radio" name="transaction_type" id="Online" />
+          <input
+            class="form-check-input"
+            type="radio"
+            name="transaction_type"
+            id="Online"
+            {{default_source.Online}}
+          />
           <label class="form-check-label" for="transaction_type">Online</label>
         </div>
       </div>
@@ -112,27 +144,189 @@ Genfin{% endblock %} {%block body %}
 </div>
 
 <script>
-  currentUser = "";
-  itemsList = [];
-  itemindex = 0;
+  current_selected_user = [];
   current_transaction_type = "Cash";
+
+  class Inventory {
+    items = []; // [item1,item2,item3]
+    all_items = {}; // { 'item1':{'price','quantity'} , .... }
+
+    constructor() {
+      this.items = [];
+      this.all_items = {};
+    }
+    Inventory() {
+      this.items = [];
+      this.items = {};
+    }
+
+    insert_item(name, price) {
+      if (this.items.includes(name)) {
+        this.increment_item(name);
+      } else {
+        this.items.push(name);
+        this.all_items[name] = { name: name, price: price, quantity: 1 };
+      }
+      this.update();
+    }
+
+    update_item(name, quantity) {
+      if (this.items.includes(name)) {
+        this.all_items[name] = {
+          name: name,
+          price: this.all_items[name].price,
+          quantity: quantity,
+        };
+      }
+      this.update();
+    }
+
+    delete_item(name) {
+      if (this.items.includes(name)) {
+        const index = this.items.indexOf(name);
+        this.items.splice(index, 1);
+        delete this.all_items[name];
+      }
+      this.update();
+    }
+
+    increment_item(name) {
+      if (this.items.includes(name)) {
+        if (this.all_items[name].quantity < 10) {
+          this.all_items[name].quantity += 1;
+        } else {
+          this.all_items[name].quantity = 10;
+        }
+      }
+      this.update();
+    }
+
+    decrement_item(name) {
+      if (this.items.includes(name)) {
+        if (this.all_items[name].quantity <= 1) {
+          this.all_items[name].quantity = 0;
+        } else {
+          this.all_items[name].quantity -= 1;
+        }
+      }
+      this.update();
+    }
+
+    update_table() {
+      var index = 0;
+      var items_table = $("#items_table");
+      items_table.empty();
+
+      for (var i = 0; i < this.items.length; i++) {
+        var curr = this.items[i];
+        var element = this.all_items[curr];
+        index += 1;
+        if (element.quantity >= 1) {
+          items_table.append(`
+            <tr>
+              <td>${index}</td>
+              <td>${element.name}</td>
+              <td>
+                <svg xmlns="http://www.w3.org/2000/svg" id="decrement_item" class="decrement_item quantitybutton bi bi-dash-square-fill" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm2.5 7.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1"/></svg>
+                ${element.quantity}
+                <svg xmlns="http://www.w3.org/2000/svg" id="increment_item" class="increment_item quantitybutton bi bi-plus-square-fill m-1" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0"/></svg>
+              </td>
+              <td>1</td>
+              <td>Rs${element.quantity * element.price}</td>
+            </tr>
+          `);
+
+          this.update_total_price();
+        }
+      }
+    }
+
+    update_total_price() {
+      var current_total_price = 0;
+      var current_sub_total = 0;
+      var current_total_items = 0;
+
+      for (var i = 0; i < this.items.length; i++) {
+        var curr = this.items[i];
+        var element = this.all_items[curr];
+
+        if (element.quantity <= 0) {
+          continue;
+        }
+
+        current_total_items += 1;
+        current_total_price += element.quantity * element.price;
+        current_sub_total += element.quantity;
+      }
+
+      $("#totalPrice").text(current_total_price);
+      $("#totalItemslabel").text("Items : " + current_total_items + " [" + current_sub_total + "]");
+    }
+
+    print() {
+      for (let index = 0; index < this.items.length; index++) {
+        const element = this.items[index];
+        console.log(this.all_items[element]);
+        // console.log(
+        //   "Name : " +
+        //     this.all_items[element].name +
+        //     " Price : " +
+        //     this.all_items[element].price +
+        //     " Quantity : " +
+        //     this.all_items[element].quantity +
+        //     "\n/n"
+        // );
+      }
+    }
+
+    update() {
+      this.update_table();
+    }
+  }
+
+  function inc_dec_actions() {
+    $("#items_table")
+      .off("click", ".increment_item")
+      .on("click", ".increment_item", function () {
+        var current_item = $(this).closest("tr").find("td").eq(1).text();
+        curr_Inventory.increment_item(current_item);
+        console.log(current_item);
+      });
+
+    $("#items_table")
+      .off("click", ".decrement_item")
+      .on("click", ".decrement_item", function () {
+        var current_item = $(this).closest("tr").find("td").eq(1).text();
+        curr_Inventory.decrement_item(current_item);
+        console.log(current_item);
+      });
+  }
+
+  curr_Inventory = new Inventory();
 
   $(document).ready(function () {
     // show user on type
     $("#name").on("input", function () {
-      var query = $(this).val();
-      if (query.length > 0) {
+      var userList = $("#userList"); // serched user name list
+      var search_name = $(this).val().toLowerCase(); // search name
+      userList.empty();
+
+      if (search_name.length > 0) {
         $.ajax({
-          url: "{% url 'get_user' %}?username=" + query.toLowerCase(),
+          url: "{% url 'get_user' %}",
+          data: { username: search_name },
           success: function (response) {
-            var userList = $("#userList");
-            userList.empty();
             if (response.data && response.data.length > 0) {
-              response.data.forEach(function (username) {
-                userList.append('<li class="list-group-item">' + username + "</li>");
+              response.data.forEach(function (user) {
+                userList.append(
+                  '<div class="list-group-item item-hover-effect" > <li class="name">' +
+                    user[0] +
+                    '  </li> <li class="number"> \t' +
+                    user[1] +
+                    "</li> </div>"
+                );
               });
             } else {
-              userList.append('<div class="user-item">No users found</div>');
               userList.empty();
             }
           },
@@ -140,66 +334,63 @@ Genfin{% endblock %} {%block body %}
             console.log("Error: " + error);
           },
         });
-      } else {
-        $("#userList").empty();
       }
     });
 
     // selectng a user
     $("#userList").on("click", ".list-group-item", function () {
-      currentUser = $(this).text();
-      $("#name").val("");
-      $("#userList").empty();
+      current_selected_user[0] = $(this).children(".name").text();
+      current_selected_user[1] = $(this).children(".number").text().trimLeft();
+
+      $("#name").val(""); // clear the input field
+      $("#userList").empty(); // clear the list
+
       console.log($(this).text());
-      var query = $(this).text();
-      $.ajax({
-        url: "{% url 'get_user_info' %}?username=" + query.toLowerCase(),
-        success: function (response) {
-          var userinfos = $(".currentuserInfo");
-          userinfos.empty();
-          if (response.data.length > 0) {
-            // console.log(" "+response.data[0]);
-            // console.log(" "+response.data[1]);
-            userinfos.append('<li class="list-group-item">Name : ' + response.data[0] + "</li>");
-            userinfos.append(
-              '<li class="list-group-item">Phone Number : ' + response.data[1] + "</li>"
-            );
-          } else {
-            console.log("no data");
-          }
-        },
-        error: function (xhr, status, error) {
-          console.log("Error Used not found: " + error);
-        },
-      });
+
+      var userinfos = $(".currentuserInfo");
+
+      userinfos.empty(); // clear the list
+      userinfos.append(
+        '<li class="list-group-item">Name : ' +
+          current_selected_user[0] +
+          '</li> <li class="list-group-item">Phone Number : ' +
+          current_selected_user[1] +
+          "</li>"
+      );
     });
 
-    //--------------------------------------------------------------------------------------------
-    // show items on type --------------------------------------------------------------------------------------------
+    // show items on type
     $("#item_name").on("input", function () {
       var query = $(this).val();
+      var item_list = $("#searched_items_List");
+      item_list.empty();
+
       if (query.length > 0) {
         $.ajax({
           url: "{% url 'get_product' %}",
           data: { product: query.toLowerCase() },
           success: function (response) {
-            var item_list = $("#searched_items_List");
-            item_list.empty();
             if (response.data && response.data.length > 0) {
               response.data.forEach(function (prod) {
                 if (prod[1] >= 1) {
-                  item_list.append('<li class="list-group-item">' + prod[0] + "</li>");
+                  // if item is in stock
+                  item_list.append(
+                    '<li class="list-group-item d-flex justify-content-between item-hover-effect">' +
+                      prod[0] +
+                      '<div style="color:#3CD757">' +
+                      prod[1] +
+                      '<div style="color: #BE87FA ">Rs.' +
+                      prod[2] +
+                      "</div></div> </li>"
+                  );
                 } else {
                   item_list.append(
                     '<li class="list-group-item disabled" style="color:red"> <span style="font-size: 10px;">Not in Stock </span>' +
                       prod[0] +
-                      "</li>"
+                      " <p>less stock</p> </li>"
                   );
                 }
               });
-            } else {
-              // userList.append('<div class="user-item">No prod found</div>');
-              item_list.empty();
             }
           },
           error: function (xhr, status, error) {
@@ -214,61 +405,26 @@ Genfin{% endblock %} {%block body %}
 
     // selectng an item
     $("#searched_items_List").on("click", ".list-group-item", function () {
+      var current_item = $(this).contents().get(0).nodeValue; // get the item name
+      var current_item_stock = $(this).contents().get(1).nodeValue; // get the item name
+
+      var items_table = $("#items_table");
+
       $("#item_name").val("");
       $("#searched_items_List").empty();
-      var query = $(this).text();
+
       $.ajax({
-        url: "{% url 'get_product_info' %}?product=" + query.toLowerCase(),
+        url: "{% url 'get_product_info' %}",
+        data: { product: current_item.toLowerCase() },
         success: function (response) {
-          var items_table = $("#items_table");
-          if (response.data.length > 0) {
-            // Check if item already exists
-            let existingItem = false;
-            itemsList.forEach((item, index) => {
-              if (item[1] === response.data[1]) {
-                existingItem = true;
-                // Update quantity and total price in table
-                let row = items_table.find("tr").eq(index);
-                let currentQty = parseInt(row.find("td").eq(2).text());
-                row
-                  .find("td")
-                  .eq(2)
-                  .text(currentQty + 1);
-                // Update quantity in itemsList
-                item[3] = currentQty + 1;
-                // Update individual item price
-                row
-                  .find("td")
-                  .eq(4)
-                  .text("Rs " + parseFloat(response.data[2]) * (currentQty + 1));
-              }
-            });
-
-            if (!existingItem) {
-              response.data[3] = 1; // Set initial quantity
-              itemsList.push(response.data);
-              itemindex++;
-              items_table.append(
-                "<tr><td>" +
-                  itemindex +
-                  "</td><td>" +
-                  response.data[1] +
-                  "</td><td>1</td><td>1</td><td>Rs " +
-                  response.data[2] +
-                  '</td><td><button class="btn btn-danger delete-row">X</button></td></tr>'
-              );
-            }
-
-            // Delete button handler
-            $(".delete-row").click(function () {
-              $(this).closest("tr").remove();
-              itemindex = Math.max(0, itemindex - 1);
-              let rowIndex = $(this).closest("tr").index();
-              itemsList.splice(rowIndex, 1);
-              updateTotals();
-            });
-
-            updateTotals();
+          if (response.data) {
+            curr_Inventory.insert_item(
+              response.data.name,
+              response.data.price,
+              response.data.quantity
+            );
+            curr_Inventory.print();
+            inc_dec_actions();
           }
         },
         error: function (xhr, status, error) {
@@ -277,15 +433,9 @@ Genfin{% endblock %} {%block body %}
       });
     });
 
-    function updateTotals() {
-      let total = itemsList.reduce((sum, item) => sum + parseFloat(item[2] * item[3]), 0);
-      $("#totalPrice").text(total);
-      $("#totalItemslabel").text("Items : " + itemindex);
-    }
-
     $("input[type=radio][name=transaction_type]").change(function () {
       $("#selectedPayment").text(this.id);
-console.log(this.id);
+      console.log(this.id);
       current_transaction_type = this.id;
     });
 

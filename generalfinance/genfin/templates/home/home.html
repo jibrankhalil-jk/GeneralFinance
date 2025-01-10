@@ -1,37 +1,30 @@
-{% extends 'home/components/dashboard_base.html' %}  
+{% extends 'home/components/dashboard_base.html' %}
+<!-- Title -->
+{% block title%}Home - Genfin{%endblock%}
 
-{% block title%}Home - Genfin{%endblock%} {% block body %}
-{% load static %}
- 
+<!-- Body -->
+{%block body %} {% load static %}
+
 <div class="container-fluid">
   <div class="d-sm-flex justify-content-between align-items-center mb-4">
     <h3 class="text-dark mb-0">Dashboard</h3>
-    <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#">
-      <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a
-    >
+    <!-- <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#">
+      <i class="fas fa-download fa-sm text-white-50"></i>
+      Generate Report</a
+    > -->
   </div>
   <div class="row">
-    <!-- first row -->
     <div class="row row-xl-4">
-      {% include 'home/components/home_card_box.html' %} {% include 'home/components/pie_chart_home.html' %}
+      <!--  Sales Board -->
+      {% include 'home/components/home_card_box.html' %}
+      <!-- Payement Sources -->
+      {% include 'home/components/pie_chart_home.html' %}
     </div>
-
-    <!-- second row -->
-
     <div class="row row-xl-4">
-        {% include 'home/components/line_chart.html' %}
-        {% include 'home/components/bar_chart.html' %}
-    </div>
-
-
-
-    <!-- End: Chart -->
-    <div class="row">
-      <div class="col-lg-6 mb-4">
-        
-        
-      </div>
-       
+      <!-- Earnings Overview -->
+      {% include 'home/components/line_chart.html' %}
+      <!-- Revenue Sources -->
+      {% include 'home/components/bar_chart.html' %}
     </div>
   </div>
 

@@ -1,22 +1,120 @@
+import sys
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from . import  models, apis,analysis
+from . import models, apis, analysis
 from django.http import JsonResponse
-from django.contrib.auth import authenticate     
-import pandas as pd
+from django.contrib.auth import authenticate
 import datetime
-from django.utils.crypto import get_random_string
+
+from colorama import Fore, Style
 
 
+def log(text):
+    print(f"{Fore.RED}{text}{Style.RESET_ALL}")
 
-def Index(request):
+
+def redirect_to_home(request):
+    # if user is not signed in then redirect to login page
     if not request.user.is_authenticated:
         return redirect('login')
     else:
         return redirect('home')
+
+
+# ----------------------------------- Home  ----------------------------------------------------------------------
+
+@login_required
+def Home(request):
+    data = get_home_data(request)
+    return render(request, 'home/home.html', context=data)
+
+
+def get_home_data(request):
+    data = {'active': 'home',
+            'username': request.user,
+            'sources': {'Cash': 0, 'Online': 0, 'Loan': 0},
+            'today_sales': {'total_sales_today': 0, 'today_sales_cash': 0, 'total_items': 0, 'total_loans_today': 0},
+            'monthly_sales': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            'top_selling_producs': None
+            }
+    try:
+        data['today_sales'] = apis.get_today_sales_data()
+        data['sources'] = apis.get_today_payement_sources()
+        data['monthly_sales'] = apis.get_monthly_sales()
+        data['top_selling_producs'] = apis.top_selling_products()
+
+    except Exception:
+        pass
+
+    # log(data['today_sales'])
+    # log(data['sources'])
+    # log(data['monthly_sales'])
+    # log(data['top_selling_producs'])
+
+    return data
+
+# ----------------------------------- Entry  ----------------------------------------------------------------------
+
+
+@login_required
+def Entry(request):
+    data = get_entry_data()
+    log(data)
+    # apis.get_user()
+    return render(request, 'home/entry.html', context=data)
+
+
+def get_entry_data():
+    data = apis.default_payement_source()
+    default_source = {'Online': '', 'Loan': '', 'Cash': ''}
+
+    if (data == 'Online'):
+        default_source['Online'] = 'checked'
+    elif (data == 'Loan'):
+        default_source['Loan'] = 'checked'
+    else:
+        default_source['Cash'] = 'checked'
+
+    return {'active': 'entry', 'default_source': default_source}
+
+# ----------------------------------- Inventory  ----------------------------------------------------------------------
+
+
+@login_required
+def Inventory(request):
+    data = {'active': 'inventory'}
+    return render(request, 'home/inventory.html', context=data)
+
+# ----------------------------------- Khata  ----------------------------------------------------------------------
+
+
+@login_required
+def Khata(request):
+    data = {'active': 'khata'}
+    return render(request, 'home/khata.html', context=data)
+
+# ----------------------------------- Analysis  ----------------------------------------------------------------------
+
+
+@login_required
+def Analysis(request):
+    data = {'active': 'analysis'}
+    analysis.analyis_monthly_sales(request)
+    return render(request, 'home/analysis.html', context=data)
+
+# ----------------------------------- Settings  ----------------------------------------------------------------------
+
+
+@login_required
+def Settings(request):
+    data = {'active': 'settings'}
+    return render(request, 'home/settings.html', context=data)
+
+
+# ----------------------------------- Other  ----------------------------------------------------------------------
 
 
 def createCategorie(request):
@@ -42,12 +140,14 @@ def createUser(request):
             total = d['total']
             tn_type = d['transaction_type']
 
-            current_transaction = models.Transactions.objects.create(total_amount=total, status=0, transaction_date=date,transaction_type=tn_type)
+            current_transaction = models.Transactions.objects.create(
+                total_amount=total, status=0, transaction_date=date, transaction_type=tn_type)
             current_transaction.save()
 
             c_user = models.Customer.objects.filter(id=user_id[0]).first()
             if c_user:
-                sale = models.Sales.objects.create(user_id=c_user, date_time=date, items=items,sales_manager_id=sales_manager, total_amount=total, transactions_id=current_transaction)
+                sale = models.Sales.objects.create(user_id=c_user, date_time=date, items=items,
+                                                   sales_manager_id=sales_manager, total_amount=total, transactions_id=current_transaction)
                 sale.save()
         return JsonResponse({'data': f"done"})
     return JsonResponse({'data': user_id})
@@ -104,57 +204,12 @@ def Logout(request):
     logout(request)
     return redirect('login')
 
-@login_required
-def Home(request):
-    data = apis.get_today_sales_data()
-    sources = apis.get_today_payement_sources()
-    monthly_sales = apis.get_monthly_sales()
-    top_selling_products = apis.top_selling_products() 
-    data = {'active': 'home',
-            'username': request.user,
-            'sources': sources,
-            'today_sales': data,
-            'monthly_sales': monthly_sales,
-            'top_selling_producs':top_selling_products
-            }
-    return render(request, 'home/home.html', context=data)
-
-@login_required
-def Entry(request):
-    return render(request, 'home/entry.html', context={'active': 'entry'})
-
-@login_required
-def Inventory(request):
-    return render(request, 'home/inventory.html', context={'active': 'inventory'})
-
-@login_required
-def Khata(request):
-    return render(request, 'home/khata.html', context={'active': 'khata'})
-
-@login_required
-def Analysis(request):
-    analysis.analyis_monthly_sales(request)
-    return render(request, 'home/analysis.html', context={'active': 'analysis'})
-
-@login_required
-def Settings(request):
-    return render(request, 'home/settings.html', context={'active': 'settings'})
 
 def custom_404_view(request):
     return render(request, '404.html')
 
 # -------------------------------------- Request views --------------------------------------
 
-@login_required
-def get_user(request):
-    username_prefix = request.GET["username"]
-    if username_prefix:
-        customers = models.User.objects.filter(
-            username__startswith=username_prefix)[:4]
-        customer_usernames = [customer.username for customer in customers]
-    else:
-        customer_usernames = []
-    return JsonResponse({"data": customer_usernames})
 
 @login_required
 def get_user_info(request):
@@ -175,41 +230,7 @@ def get_user_info(request):
             pass
     return JsonResponse({"data": []})
 
-@login_required
-def get_product(request):
-    product_prefix = request.GET["product"]
-    print('>>>>>>> ', product_prefix)
-    if product_prefix:
-        found_products = models.Product.objects.filter(
-            product_name__icontains=product_prefix)[:5]
-        product_names = [[prdct.product_name, prdct.stock_quantity]
-                         for prdct in found_products]
-    else:
-        product_names = []
-    return JsonResponse({"data": product_names})
 
-@login_required
-def get_product_info(request):
-    prouct_name = request.GET["product"]
-    if prouct_name:
-        try:
-            found_products = models.Product.objects.filter(
-                product_name=prouct_name).first()
-            # print(type(found_products.stock_quantity))
-            if found_products:
-                if int(str(found_products.stock_quantity)) >= 1:
-                    return JsonResponse({"data": [found_products.pk,
-                                                  found_products.product_name,
-                                                  found_products.price,
-                                                  found_products.stock_quantity]})
-                else:
-                    return JsonResponse({"data": [], "message": 'stock full'})
-        except Exception as e:
-            print("+_+_+_+_+_+_+_+_++_+ ", e)
-        else:
-            pass
-    # print("+++++++++ no product +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-    return JsonResponse({"data": [], "message": 'no product'})
 
 @login_required
 def order_entry(request):
@@ -241,7 +262,7 @@ def order_entry(request):
                             curr_product.save()
                     total_price += int(item_values[2])
     current_transaction = models.Transactions.objects.create(
-        total_amount=total_price, status=0,transaction_type=current_transaction_type)
+        total_amount=total_price, status=0, transaction_type=current_transaction_type)
     current_transaction.save()
     current_logedin_user = User.objects.filter(username=request.user).first()
     if current_logedin_user:
@@ -265,7 +286,9 @@ def order_entry(request):
     return JsonResponse({"data": [str(curr_customer)
                                   ], "message": 'no product'})
 
-#Inventory Product 
+# Inventory Product
+
+
 @login_required
 def add_customer(request):
     if request.method == 'POST':
@@ -275,18 +298,21 @@ def add_customer(request):
         username = name
 
         try:
-            user = User.objects.create_user(username=username, password='defaultpassword')
+            user = User.objects.create_user(
+                username=username, password='defaultpassword')
             user.first_name = name
             user.save()
 
             # Create the customer
-            customer = models.Customer.objects.create(user_id=user, customer_name=name, phone_number=number, address=address)
+            customer = models.Customer.objects.create(
+                user_id=user, customer_name=name, phone_number=number, address=address)
             return JsonResponse({'success': True, 'user': {'id': customer.id, 'name': name, 'number': number, 'address': address}})
-        
+
         except Exception:
-            return JsonResponse({'success': False ,'message':'Dublicate user name'})
-        
-    return JsonResponse({'success': False ,'message':'Error adding the user'})
+            return JsonResponse({'success': False, 'message': 'Dublicate user name'})
+
+    return JsonResponse({'success': False, 'message': 'Error adding the user'})
+
 
 @login_required
 def get_customer(request):
@@ -294,7 +320,8 @@ def get_customer(request):
     user_id = request.GET.get('user_id')
 
     if username:
-        customers = models.Customer.objects.filter(user_id__username__icontains=username)[:5]
+        customers = models.Customer.objects.filter(
+            user_id__username__icontains=username)[:5]
         data = [
             {
                 'id': customer.id,
@@ -320,6 +347,7 @@ def get_customer(request):
             return JsonResponse({'success': False, 'error': 'Customer not found'})
 
     return JsonResponse({'success': False, 'error': 'No valid parameters provided'})
+
 
 @login_required
 def add_product(request):
@@ -354,10 +382,12 @@ def add_product(request):
         })
     return JsonResponse({'success': False})
 
+
 @login_required
 def inventory(request):
     categories = models.Categories.objects.all()
     return render(request, 'inventory.html', {'categories': categories})
+
 
 @login_required
 def add_category(request):
