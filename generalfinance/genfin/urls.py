@@ -27,8 +27,7 @@ urlpatterns = [
     # path('get_user_info/', views.get_user_info, name='get_user_info'),
     path('get-product/', apis.get_product, name='get_product'),
     path('get_product_info/', apis.get_product_info, name='get_product_info'),
-
-    path('order_entry/', views.order_entry, name='order_entry'),
+    path('order_entry/', apis.order_entry, name='order_entry'),
 
 
 

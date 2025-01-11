@@ -95,39 +95,45 @@ Genfin{% endblock %} {%block body %}
         </ul>
       </div>
 
-      <div class="d-flex flex-row mt-3">
-        <div class="form-check me-3">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="transaction_type"
-            id="Cash"
-            {{default_source.Cash}}
-          />
-          <label class="form-check-label" for="transaction_type">Cash</label>
+      <div class="card mt-3" style="background-color: #3e3c50; border: none">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h6 class="text-primary fw-bold m-0">Payement Source</h6>
         </div>
-        <div class="form-check me-3">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="transaction_type"
-            id="Loan"
-            {{default_source.Loan}}
-          />
-          <label class="form-check-label" for="transaction_type">Loan</label>
-        </div>
-        <div class="form-check me-3">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="transaction_type"
-            id="Online"
-            {{default_source.Online}}
-          />
-          <label class="form-check-label" for="transaction_type">Online</label>
+        <div class="d-flex flex-row m-3">
+          <div class="form-check me-3">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="transaction_type"
+              id="Cash"
+              {{default_source.Cash}}
+            />
+            <label class="form-check-label" for="transaction_type">Cash</label>
+          </div>
+          <div class="form-check me-3">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="transaction_type"
+              id="Loan"
+              {{default_source.Loan}}
+            />
+            <label class="form-check-label" for="transaction_type">Loan</label>
+          </div>
+          <div class="form-check me-3">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="transaction_type"
+              id="Online"
+              {{default_source.Online}}
+            />
+            <label class="form-check-label" for="transaction_type">Online</label>
+          </div>
         </div>
       </div>
-      <div class="container orderActions">
+
+      <div class="container orderActions d-flex justify-content-between align-items-center">
         <button id="cancelOrder" type="button" class="btn btn-danger mt-4 px-5 py-2">Cancel</button>
         <button id="placeOrder" type="button" class="btn btn-success mt-4 px-5 py-2">Submit</button>
       </div>
@@ -144,6 +150,29 @@ Genfin{% endblock %} {%block body %}
 </div>
 
 <script>
+  function showElert(message) {
+     $(".alert").empty();
+    $(".alert").removeClass("alert-success").addClass("alert-danger");
+    $(".alert").show();
+    $(".alert").append(`<strong>` + message + `</strong>`);
+    $(".alert")
+      .fadeTo(2000, 500)
+      .slideUp(500, function () {
+      $(".alert").slideUp(500);
+      });
+  }
+
+  function showSucessElert(message) {
+    $(".alert").empty();
+    $(".alert").removeClass("alert-danger").addClass("alert-success");
+    $(".alert").show();
+    $(".alert").append(`<strong>` + message + `</strong>`);
+    $(".alert")
+      .fadeTo(2000, 500)
+      .slideUp(500, function () {
+      $(".alert").slideUp(500);
+      });
+  }
   current_selected_user = [];
   current_transaction_type = "Cash";
 
@@ -160,12 +189,12 @@ Genfin{% endblock %} {%block body %}
       this.items = {};
     }
 
-    insert_item(name, price) {
+    insert_item(name, price, stock) {
       if (this.items.includes(name)) {
         this.increment_item(name);
       } else {
         this.items.push(name);
-        this.all_items[name] = { name: name, price: price, quantity: 1 };
+        this.all_items[name] = { name: name, price: price, quantity: 1, stock: stock };
       }
       this.update();
     }
@@ -192,13 +221,17 @@ Genfin{% endblock %} {%block body %}
 
     increment_item(name) {
       if (this.items.includes(name)) {
-        if (this.all_items[name].quantity < 10) {
-          this.all_items[name].quantity += 1;
+        if (this.all_items[name].quantity < this.all_items[name].stock) {
+          if (this.all_items[name].quantity < 10) {
+            this.all_items[name].quantity += 1;
+          } else {
+            this.all_items[name].quantity = 10;
+          }
         } else {
-          this.all_items[name].quantity = 10;
+          showElert("Stock Limit Reached");
         }
+        this.update();
       }
-      this.update();
     }
 
     decrement_item(name) {
@@ -223,18 +256,18 @@ Genfin{% endblock %} {%block body %}
         index += 1;
         if (element.quantity >= 1) {
           items_table.append(`
-            <tr>
-              <td>${index}</td>
-              <td>${element.name}</td>
-              <td>
-                <svg xmlns="http://www.w3.org/2000/svg" id="decrement_item" class="decrement_item quantitybutton bi bi-dash-square-fill" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm2.5 7.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1"/></svg>
-                ${element.quantity}
-                <svg xmlns="http://www.w3.org/2000/svg" id="increment_item" class="increment_item quantitybutton bi bi-plus-square-fill m-1" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0"/></svg>
-              </td>
-              <td>1</td>
-              <td>Rs${element.quantity * element.price}</td>
-            </tr>
-          `);
+                  <tr>
+                    <td>${index}</td>
+                    <td>${element.name}</td>
+                    <td>
+                      <svg xmlns="http://www.w3.org/2000/svg" id="decrement_item" class="decrement_item quantitybutton bi bi-dash-square-fill" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm2.5 7.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1"/></svg>
+                      ${element.quantity}
+                      <svg xmlns="http://www.w3.org/2000/svg" id="increment_item" class="increment_item quantitybutton bi bi-plus-square-fill m-1" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0"/></svg>
+                    </td>
+                    <td>1</td>
+                    <td>Rs${element.quantity * element.price}</td>
+                  </tr>
+                `);
 
           this.update_total_price();
         }
@@ -281,6 +314,7 @@ Genfin{% endblock %} {%block body %}
 
     update() {
       this.update_table();
+      this.update_total_price();
     }
   }
 
@@ -367,7 +401,7 @@ Genfin{% endblock %} {%block body %}
 
       if (query.length > 0) {
         $.ajax({
-          url: "{% url 'get_product' %}",
+          url: `{% url 'get_product' %}`,
           data: { product: query.toLowerCase() },
           success: function (response) {
             if (response.data && response.data.length > 0) {
@@ -375,19 +409,19 @@ Genfin{% endblock %} {%block body %}
                 if (prod[1] >= 1) {
                   // if item is in stock
                   item_list.append(
-                    '<li class="list-group-item d-flex justify-content-between item-hover-effect">' +
+                    `<li class="list-group-item d-flex justify-content-between item-hover-effect">` +
                       prod[0] +
-                      '<div style="color:#3CD757">' +
+                      `<div style="color:#3CD757">` +
                       prod[1] +
-                      '<div style="color: #BE87FA ">Rs.' +
+                      `<div style="color: #BE87FA ">Rs.` +
                       prod[2] +
-                      "</div></div> </li>"
+                      `</div></div> </li>`
                   );
                 } else {
                   item_list.append(
-                    '<li class="list-group-item disabled" style="color:red"> <span style="font-size: 10px;">Not in Stock </span>' +
+                    `<li class="list-group-item disabled d-flex justify-content-between" style="color:red">` +
                       prod[0] +
-                      " <p>less stock</p> </li>"
+                      `<span style="font-size: 10px;">Not in Stock </span> </li>`
                   );
                 }
               });
@@ -418,9 +452,11 @@ Genfin{% endblock %} {%block body %}
         data: { product: current_item.toLowerCase() },
         success: function (response) {
           if (response.data) {
+            // console.log(response.data);
             curr_Inventory.insert_item(
               response.data.name,
               response.data.price,
+              response.data.quantity,
               response.data.quantity
             );
             curr_Inventory.print();
@@ -433,20 +469,68 @@ Genfin{% endblock %} {%block body %}
       });
     });
 
+    // change payment source
     $("input[type=radio][name=transaction_type]").change(function () {
       $("#selectedPayment").text(this.id);
       console.log(this.id);
       current_transaction_type = this.id;
     });
 
+    // place order button
+    $("#cancelOrder").on("click", function () {
+      curr_Inventory = new Inventory();
+      $("#currentuserInfo").empty();
+      $("#items_table").empty();
+      $("#totalPrice").text("");
+      $("#totalItemslabel").text("Items : ");
+    });
+
     $("#placeOrder").on("click", function () {
-      if (currentUser.length != 0 && itemsList.length != 0) {
-        var formData = {
-          user: currentUser,
-          items: [itemsList],
-          current_transaction_type: current_transaction_type,
-        };
-        window.location.href = "{% url 'order_entry' %}?" + $.param(formData);
+      if (current_selected_user.length != 0 && curr_Inventory.items.length != 0) {
+        $.ajax({
+          url: "{% url 'order_entry' %}",
+          method: "POST",
+          data: {
+            orderby: current_selected_user[0],
+            items: JSON.stringify(curr_Inventory.all_items),
+            current_transaction_type: current_transaction_type,
+            csrfmiddlewaretoken: "{{ csrf_token }}",
+          },
+          success: function (orderresponse) {
+            console.log("Response received:", orderresponse);
+            try {
+              if (typeof orderresponse === "string") {
+                orderresponse = JSON.parse(orderresponse);
+              }
+
+              if (orderresponse.status === "success") {
+                showSucessElert("Order Placed Successfully");
+                curr_Inventory = new Inventory();
+
+                var userinfos = $(".currentuserInfo");
+                userinfos.empty(); // clear the list
+                userinfos.append(
+                  `<li class="list-group-item"> Name :</li> <li class="list-group-item">Phone Number : </li>`
+                );
+                $("#totalPrice").text(0);
+                $("#totalItemslabel").text("Items : " + 0 + " [" + 0 + "]");
+
+                $("#items_table").empty();
+
+                current_selected_user = [];
+              } else {
+                showElert(orderresponse.message || "Failed to place order");
+              }
+            } catch (e) {
+              console.error("Error parsing response:", e);
+              showElert("Error processing server response");
+            }
+          },
+          error: function (xhr, status, error) {
+            console.error("AJAX Error:", status, error);
+            showElert("Failed to communicate with server");
+          },
+        });
       } else {
         $(".alert").empty();
         $(".alert").show();

@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
+from django.contrib.auth.models import User
 from . import models
 import datetime
 from colorama import Fore, Style
@@ -170,7 +172,8 @@ def get_product_info(request):
     data = {'id': '', 'name': '', 'price': '', 'quantity': ''}
     if prouct_name:
         try:
-            found_products = models.Product.objects.filter( product_name=prouct_name).first()
+            found_products = models.Product.objects.filter(
+                product_name=prouct_name).first()
             if found_products:
                 if int(str(found_products.stock_quantity)) >= 1:
                     data['id'] = found_products.pk
@@ -184,3 +187,96 @@ def get_product_info(request):
     else:
         pass
     return JsonResponse({"data": data})
+
+
+# @login_required
+# def order_entry(request):
+#     log(request.method)
+#     if request.method == 'POST':
+#         return JsonResponse({'status': 'success'})
+#     return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+
+@login_required
+def order_entry(request):
+    if request.method == 'POST':
+        curr_user = request.POST.get('orderby')
+        order_user = str(curr_user).strip()
+
+        order_items = request.POST.get('items')
+        order_payement_type = request.POST.get('current_transaction_type')
+
+        log(order_user)
+        log(order_items)
+        log(order_payement_type)
+
+        final_items = []
+        total_price = 0
+        try:
+            data = eval(str(order_items))  # Convert string to dictionary
+            for item_key, item_data in data.items():
+                final_items.append({
+                    'name': item_data['name'],
+                    'quantity': item_data['quantity']
+                })
+                total_price += item_data['price'] * item_data['quantity']
+        except Exception as e:
+            log(f"Error parsing order items: {e}")
+            return JsonResponse({'status': 'error', 'message': 'Unknown Error'})
+
+        try:
+
+            temp_customer = User.objects.filter(username=order_user).first()
+            curr_customer = models.Customer.objects.filter(
+                user_id=temp_customer).first()
+
+            if not curr_customer:
+                return JsonResponse({'status': 'failed', 'message': 'unknown user order'})
+
+            temp_sales = User.objects.filter(username=request.user).first()
+            current_sales_man = models.Admin.objects.filter(
+                user_id=temp_sales).first()  # sales man
+
+            if not curr_customer:
+                return JsonResponse({'status': 'failed', 'message': 'unknown salesman loged in '})
+
+            # if found a correct user and salesman then continue placing the order
+
+            current_transaction = models.Transactions.objects.create(
+                total_amount=total_price, status=0,
+                transaction_type=order_payement_type)
+            current_transaction.save()
+
+            if not current_transaction:
+                return JsonResponse({'status': 'failed', 'message': 'Error with the Transaction'})
+
+            place_item = models.Sales.objects.create(
+                sales_manager_id=current_sales_man,
+                total_amount=total_price,
+                user_id=curr_customer,
+                transactions_id=current_transaction,
+                items=final_items
+            )
+            if not place_item:
+                current_transaction.delete()
+                return JsonResponse({'status': 'failed', 'message': 'Error in order placement'})
+
+            place_item.save()
+
+            for item in final_items:
+                try:
+                    curr_prod = models.Product.objects.filter(
+                        product_name=item['name']).first()
+                    if curr_prod and curr_prod.stock_quantity >= int(item['quantity']):
+                        curr_prod.stock_quantity = curr_prod.stock_quantity - \
+                            int(item['quantity'])
+                        curr_prod.save()
+                except Exception as e:
+                    log(f'error in {item}')
+                    pass
+
+        except Exception as e:
+            log(f"Error processing order: {e}")
+            return JsonResponse({'status': 'error', 'message': 'Unknown Error'})
+
+        log('order places sucesfully')
+        return JsonResponse({'status': 'success', 'message': 'Sucesfull placed the order'})
