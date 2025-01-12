@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from . import models
 import datetime
 from colorama import Fore, Style
+from django.db import connection
+from django.conf import settings
 
 
 def log(message):
@@ -46,27 +48,32 @@ def get_today_sales_data():
 
 
 def get_today_payement_sources():
-
     today = datetime.datetime.now().date()
     start_date = datetime.datetime.combine(today, datetime.time.min)
     end_date = datetime.datetime.combine(today, datetime.time.max)
-    today_transaction = models.Transactions.objects.filter(
-        transaction_date__range=(start_date, end_date))
-    df = pd.DataFrame(list(today_transaction.values()))
-    try:
 
-        df_grouped = df.groupby(
-            'transaction_type').size().reset_index(name='count')
-        sources_with_counts = dict(
-            zip(df_grouped['transaction_type'], df_grouped['count']))
+    try:
+        today_transactions = models.Transactions.objects.filter(
+            transaction_date__range=(start_date, end_date))
+
+        sources_with_counts = {
+            'Cash': 0,
+            'Online': 0,
+            'Loan': 0
+        }
+
+        for transaction in today_transactions:
+            transaction_type = transaction.transaction_type
+            if transaction_type in sources_with_counts:
+                sources_with_counts[transaction_type] += 1
 
     except Exception as e:
         sources_with_counts = {'Cash': 0, 'Online': 0, 'Loan': 0}
+
     return {
         'Cash': sources_with_counts['Cash'],
         'Online': sources_with_counts['Online'],
         'Loan': sources_with_counts['Loan'],
-        # 'today_payement_sources': sources_with_counts
     }
 
 
@@ -131,7 +138,6 @@ def default_payement_source():
 # ----------------------------------- Entry  ----------------------------------------------------------------------
 
 @login_required
-# def get_user():
 def get_user(request):
     # username_prefix = "s"/
     username_prefix = request.GET["username"]
@@ -188,13 +194,6 @@ def get_product_info(request):
         pass
     return JsonResponse({"data": data})
 
-
-# @login_required
-# def order_entry(request):
-#     log(request.method)
-#     if request.method == 'POST':
-#         return JsonResponse({'status': 'success'})
-#     return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 
 @login_required
 def order_entry(request):
@@ -280,3 +279,105 @@ def order_entry(request):
 
         log('order places sucesfully')
         return JsonResponse({'status': 'success', 'message': 'Sucesfull placed the order'})
+
+
+@login_required
+def check_db_status(request):
+    try:
+        # Get database size based on database backend
+        with connection.cursor() as cursor:
+            if connection.vendor == 'postgresql':
+                cursor.execute("SELECT pg_database_size(current_database())")
+            elif connection.vendor == 'mysql':
+                cursor.execute(
+                    "SELECT SUM(data_length + index_length) FROM information_schema.tables WHERE table_schema = DATABASE()")
+            else:
+                cursor.execute("SELECT 0")  # Fallback for other databases
+            db_size = cursor.fetchone()[0] or 0
+            db_size_mb = round(db_size / (1024 * 1024), 2)
+
+        status_info = {
+            'status': 'ok',
+            'datetime': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'database_size_mb': db_size_mb,
+            # 'total_records': {
+            #     'sales': models.Sales.objects.count(),
+            #     'products': models.Product.objects.count(),
+            #     'transactions': models.Transactions.objects.count(),
+            # },
+            # 'system_info': {
+            #     # 'memory_used_percent': memory.percent,
+            #     # 'disk_used_percent': disk.percent,
+            # }
+        }
+    except Exception as e:
+        status_info = {
+            'status': 'error',
+            'message': str(e)
+        }
+
+    return JsonResponse(status_info)
+
+
+@login_required
+def get_all_products(request):
+    try:
+        page = int(request.GET.get('p_page', 1))
+        items_per_page = 12
+        start_idx = (page - 1) * items_per_page
+        end_idx = start_idx + items_per_page
+
+        products = models.Product.objects.all()[start_idx:end_idx]
+        total_products = models.Product.objects.count()
+
+        product_data = [{
+            'index': start_idx + idx + 1,
+            'id': p.categorie_id,
+            'name': p.product_name,
+            'price': p.price,
+            'quantity': p.stock_quantity,
+            'quality': p.quality,
+            'category': p.categorie_id.categorie_name,
+        } for idx, p in enumerate(products)]
+
+        return {
+            'products': product_data,
+            'total_pages': (total_products + items_per_page - 1) // items_per_page,
+            'current_page_products': page
+        }
+
+    except Exception as e:
+        return {
+            'products': [],
+            'total_pages': 0,
+            'current_page_products': page
+        }
+
+
+def get_all_Categories(request):
+    try:
+        page = int(request.GET.get('c_page', 1))
+        items_per_page = 13
+        start_idx = (page - 1) * items_per_page
+        end_idx = start_idx + items_per_page
+
+        categories = models.Categories.objects.all()[start_idx:end_idx]
+        total_categories = models.Categories.objects.count()
+
+        category_data = [{
+            'index': start_idx + idx + 1,
+            'id': c.id,
+            'name': c.categorie_name
+        } for idx, c in enumerate(categories)]
+
+        return {
+            'categories': category_data,
+            'total_pages': (total_categories + items_per_page - 1) // items_per_page,
+            'current_page_categories': page
+        }
+    except Exception as e:
+        return {
+            'categories': [],
+            'total_pages': 0,
+            'current_page_categories': page
+        }

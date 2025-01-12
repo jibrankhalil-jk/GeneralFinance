@@ -1,6 +1,8 @@
 {% extends 'home/components/dashboard_base.html' %} {% load static %} {% block title %}Entry -
 Genfin{% endblock %} {%block body %}
 
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+
 <style>
   .item-hover-effect:hover {
     color: #3e3c50;
@@ -101,33 +103,15 @@ Genfin{% endblock %} {%block body %}
         </div>
         <div class="d-flex flex-row m-3">
           <div class="form-check me-3">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="transaction_type"
-              id="Cash"
-              {{default_source.Cash}}
-            />
+            <input class="form-check-input" type="radio" name="transaction_type" id="Cash" />
             <label class="form-check-label" for="transaction_type">Cash</label>
           </div>
           <div class="form-check me-3">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="transaction_type"
-              id="Loan"
-              {{default_source.Loan}}
-            />
+            <input class="form-check-input" type="radio" name="transaction_type" id="Loan" />
             <label class="form-check-label" for="transaction_type">Loan</label>
           </div>
           <div class="form-check me-3">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="transaction_type"
-              id="Online"
-              {{default_source.Online}}
-            />
+            <input class="form-check-input" type="radio" name="transaction_type" id="Online" />
             <label class="form-check-label" for="transaction_type">Online</label>
           </div>
         </div>
@@ -151,14 +135,14 @@ Genfin{% endblock %} {%block body %}
 
 <script>
   function showElert(message) {
-     $(".alert").empty();
+    $(".alert").empty();
     $(".alert").removeClass("alert-success").addClass("alert-danger");
     $(".alert").show();
     $(".alert").append(`<strong>` + message + `</strong>`);
     $(".alert")
       .fadeTo(2000, 500)
       .slideUp(500, function () {
-      $(".alert").slideUp(500);
+        $(".alert").slideUp(500);
       });
   }
 
@@ -170,11 +154,41 @@ Genfin{% endblock %} {%block body %}
     $(".alert")
       .fadeTo(2000, 500)
       .slideUp(500, function () {
-      $(".alert").slideUp(500);
+        $(".alert").slideUp(500);
       });
   }
   current_selected_user = [];
-  current_transaction_type = "Cash";
+
+  function getTransactionType() {
+    let transaction_type = Cookies.get("default_transaction_type");
+    if (!transaction_type) {
+      Cookies.set("default_transaction_type", "Cash");
+      transaction_type = "Cash";
+    }
+    return transaction_type;
+  }
+
+  function getMaxItems() {
+    let max_items = Cookies.get("max_items");
+    if (!max_items) {
+      Cookies.set("max_items", "10");
+      max_items = "10";
+    }
+    return parseInt(max_items);
+  }
+
+  function getMaxProducts() {
+    let max_products = Cookies.get("max_products");
+    if (!max_products) {
+      Cookies.set("max_products", "18");
+      max_products = "18";
+    }
+    return parseInt(max_products);
+  }
+
+  current_transaction_type = getTransactionType() || "Cash";
+  max_items = getMaxItems() || 10;
+  max_products = getMaxProducts() || 18;
 
   class Inventory {
     items = []; // [item1,item2,item3]
@@ -190,13 +204,15 @@ Genfin{% endblock %} {%block body %}
     }
 
     insert_item(name, price, stock) {
-      if (this.items.includes(name)) {
-        this.increment_item(name);
-      } else {
-        this.items.push(name);
-        this.all_items[name] = { name: name, price: price, quantity: 1, stock: stock };
+      if (this.items.length < max_products) {
+        if (this.items.includes(name)) {
+          this.increment_item(name);
+        } else {
+          this.items.push(name);
+          this.all_items[name] = { name: name, price: price, quantity: 1, stock: stock };
+        }
+        this.update();
       }
-      this.update();
     }
 
     update_item(name, quantity) {
@@ -222,10 +238,10 @@ Genfin{% endblock %} {%block body %}
     increment_item(name) {
       if (this.items.includes(name)) {
         if (this.all_items[name].quantity < this.all_items[name].stock) {
-          if (this.all_items[name].quantity < 10) {
+          if (this.all_items[name].quantity < max_items) {
             this.all_items[name].quantity += 1;
           } else {
-            this.all_items[name].quantity = 10;
+            this.all_items[name].quantity = max_items;
           }
         } else {
           showElert("Stock Limit Reached");
@@ -339,6 +355,9 @@ Genfin{% endblock %} {%block body %}
   curr_Inventory = new Inventory();
 
   $(document).ready(function () {
+    // Set the radio button based on saved transaction type
+    $(`#${getTransactionType()}`).prop("checked", true);
+
     // show user on type
     $("#name").on("input", function () {
       var userList = $("#userList"); // serched user name list
@@ -542,11 +561,6 @@ Genfin{% endblock %} {%block body %}
           });
       }
     });
-
-    // $("#entryForm").on("submit", function (event) {
-    //   event.preventDefault(); // Prevent the form from submitting via the browser
-    //   console.log("Form submit intercepted");
-    // });
   });
 </script>
 

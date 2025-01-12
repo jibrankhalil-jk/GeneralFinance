@@ -1,5 +1,7 @@
 {% extends 'home/components/dashboard_base.html' %} {% block title %}Settings - Genfin{% endblock %}
 {% block body %}
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="container">
   <div class="row">
@@ -14,7 +16,6 @@
     <div class="flex-grow-1 ms-3 text-white">Dark Theme</div>
     <div class="flex-grow-1 ms-3 text-white">currently not suported</div>
     <div class="flex-shrink-0">
-
       <i class="fa-solid fa-chevron-right"></i>
     </div>
   </div>
@@ -32,7 +33,7 @@
         </div></div
     ></a>
 
-    <a href="">
+    <a href="" id="status">
       <div class="d-flex bg-gray-900 p-md-3">
         <div class="flex-shrink-0">
           <i class="fa-solid fa-chart-simple"></i>
@@ -55,6 +56,80 @@
     ></a>
   </div>
 
+  <div class="d-flex bg-gray-900 p-md-3 rounded-3 mb-4 mt-4">
+    <div class="flex-shrink-0">
+      <i class="fa-solid fa-money-bill-transfer"></i>
+    </div>
+    <div class="flex-grow-1 ms-3 text-white">Default Transaction Type</div>
+    <div class="btn-group ms-3" role="group" aria-label="Transaction type options">
+      <input
+        type="radio"
+        class="btn-check"
+        name="transactionType"
+        id="Cash"
+        autocomplete="off"
+        value="Cash"
+      />
+      <label class="btn btn-outline-light text-white" for="Cash">Cash</label>
+
+      <input
+        type="radio"
+        class="btn-check"
+        name="transactionType"
+        id="Online"
+        autocomplete="off"
+        value="Online"
+      />
+      <label class="btn btn-outline-light text-white" for="Online">Online</label>
+
+      <input
+        type="radio"
+        class="btn-check"
+        name="transactionType"
+        id="Loan"
+        autocomplete="off"
+        value="Loan"
+      />
+      <label class="btn btn-outline-light text-white" for="Loan">Loan</label>
+    </div>
+  </div>
+
+  <div class="d-flex bg-gray-900 p-md-3 rounded-3 mb-4">
+    <div class="flex-shrink-0">
+      <i class="fa-solid fa-list-ol"></i>
+    </div>
+    <div class="flex-grow-1 ms-3 text-white">Maximum Items / Product</div>
+    <div class="input-group" style="width: auto">
+      <input
+        type="number"
+        class="form-control"
+        id="maxItems"
+        min="5"
+        max="100"
+        style="width: 100px"
+      />
+      <label class="input-group-text" for="maxItems">items</label>
+    </div>
+  </div>
+
+  <div class="d-flex bg-gray-900 p-md-3 rounded-3 mb-4">
+    <div class="flex-shrink-0">
+      <i class="fa-solid fa-boxes-stacked"></i>
+    </div>
+    <div class="flex-grow-1 ms-3 text-white">Maximum Products</div>
+    <div class="input-group" style="width: auto">
+      <input
+        type="number"
+        class="form-control"
+        id="maxProducts"
+        min="5"
+        max="100"
+        style="width: 100px"
+      />
+      <label class="input-group-text" for="maxProducts">products</label>
+    </div>
+  </div></div>
+
   <a href="{% url 'home/logout' %}">
     <div class="d-flex flex-column gap-1 mt-4">
       <div class="d-flex bg-gray-900 p-md-3 rounded-2">
@@ -68,5 +143,65 @@
       </div></div
   ></a>
 </div>
+
+<script>
+  function getTransactionType() {
+    let transaction_type = Cookies.get("default_transaction_type");
+    if (!transaction_type) {
+      Cookies.set("default_transaction_type", "Cash");
+      transaction_type = "Cash";
+    }
+    return transaction_type;
+  }
+
+  current_transaction_type = getTransactionType() || "Cash";
+
+  $(document).ready(function () {
+    // Set default transaction type
+    $("input[name=transactionType]").each(function () {
+      if ($(this).val() === current_transaction_type) {
+        $(this).prop("checked", true);
+      }
+    });
+
+    $("input[name=transactionType]").change(function () {
+      Cookies.set("default_transaction_type", $(this).val());
+    });
+
+    // Set default max items
+    let max_items = Cookies.get("max_items") || "10";
+    $("#maxItems").val(max_items);
+
+    $("#maxItems").change(function () {
+      Cookies.set("max_items", $(this).val());
+    });
+
+    // Set default max products
+    let max_products = Cookies.get("max_products") || "18";
+    $("#maxProducts").val(max_products);
+
+    $("#maxProducts").change(function () {
+      Cookies.set("max_products", $(this).val());
+    });
+
+    $("#status").click(function (e) {
+      e.preventDefault();
+      $.ajax({
+        url: '{% url "check_db_status" %}', // You'll need to create this endpoint
+        method: "GET",
+        success: function (response) {
+          Swal.fire({
+            icon: response.status ? "success" : "error",
+            title: "Database Status",
+            html: response.datetime + "<br>Database Size: " + response.database_size_mb + " MB",
+          });
+        },
+        error: function () {
+          alert("Could not check database status");
+        },
+      });
+    });
+  });
+</script>
 
 {% endblock %}

@@ -29,6 +29,7 @@ def redirect_to_home(request):
 @login_required
 def Home(request):
     data = get_home_data(request)
+    log(data)
     return render(request, 'home/home.html', context=data)
 
 
@@ -40,12 +41,21 @@ def get_home_data(request):
             'monthly_sales': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             'top_selling_producs': None
             }
+
     try:
         data['today_sales'] = apis.get_today_sales_data()
+    except Exception:
+        pass
+    try:
         data['sources'] = apis.get_today_payement_sources()
+    except Exception:
+        pass
+    try:
         data['monthly_sales'] = apis.get_monthly_sales()
+    except Exception:
+        pass
+    try:
         data['top_selling_producs'] = apis.top_selling_products()
-
     except Exception:
         pass
 
@@ -85,16 +95,36 @@ def get_entry_data():
 
 @login_required
 def Inventory(request):
-    data = {'active': 'inventory'}
+    data = get_inventory_data(request)
     return render(request, 'home/inventory.html', context=data)
+
+
+def get_inventory_data(request):
+    products = apis.get_all_products(request)
+    categories = apis.get_all_Categories(request)
+    
+    
+
+    data = {'active': 'inventory'} | products | categories
+    return data
+
 
 # ----------------------------------- Khata  ----------------------------------------------------------------------
 
 
 @login_required
 def Khata(request):
-    data = {'active': 'khata'}
+
+    data = get_khata_data(request)
+
     return render(request, 'home/khata.html', context=data)
+
+
+def get_khata_data(request):
+
+    users = apis.get_loan_customers(request)
+    data = {'active': 'khata', 'users': users}
+    return data
 
 # ----------------------------------- Analysis  ----------------------------------------------------------------------
 
@@ -102,7 +132,6 @@ def Khata(request):
 @login_required
 def Analysis(request):
     data = {'active': 'analysis'}
-    analysis.analyis_monthly_sales(request)
     return render(request, 'home/analysis.html', context=data)
 
 # ----------------------------------- Settings  ----------------------------------------------------------------------
@@ -229,8 +258,6 @@ def get_user_info(request):
         else:
             pass
     return JsonResponse({"data": []})
-
-
 
 
 # Inventory Product
