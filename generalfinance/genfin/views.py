@@ -102,10 +102,8 @@ def Inventory(request):
 def get_inventory_data(request):
     products = apis.get_all_products(request)
     categories = apis.get_all_Categories(request)
-    
-    
-
-    data = {'active': 'inventory'} | products | categories
+    total = apis.getTotalProdCatCount(request)
+    data = {'active': 'inventory'} | total | products | categories
     return data
 
 
@@ -121,9 +119,8 @@ def Khata(request):
 
 
 def get_khata_data(request):
-
-    users = apis.get_loan_customers(request)
-    data = {'active': 'khata', 'users': users}
+    
+    data = {'active': 'khata'}
     return data
 
 # ----------------------------------- Analysis  ----------------------------------------------------------------------

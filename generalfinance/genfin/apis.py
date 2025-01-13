@@ -322,30 +322,77 @@ def check_db_status(request):
 @login_required
 def get_all_products(request):
     try:
-        page = int(request.GET.get('p_page', 1))
-        items_per_page = 12
-        start_idx = (page - 1) * items_per_page
-        end_idx = start_idx + items_per_page
+        current_seached_proudct = request.GET.get('pd_search')
+        if current_seached_proudct and current_seached_proudct != '':
 
-        products = models.Product.objects.all()[start_idx:end_idx]
-        total_products = models.Product.objects.count()
+            try:
+                products = models.Product.objects.filter(
+                    product_name__startswith=current_seached_proudct)[:12]
 
-        product_data = [{
-            'index': start_idx + idx + 1,
-            'id': p.categorie_id,
-            'name': p.product_name,
-            'price': p.price,
-            'quantity': p.stock_quantity,
-            'quality': p.quality,
-            'category': p.categorie_id.categorie_name,
-        } for idx, p in enumerate(products)]
+                searhedProducts = [{
+                    'index': idx+1,
+                    'id': p.pk,
+                    'name': p.product_name,
+                    'price': p.price,
+                    'quantity': p.stock_quantity,
+                    'quality': p.quality,
+                    'category': p.categorie_id.categorie_name,
+                } for idx, p in enumerate(products)]
 
-        return {
-            'products': product_data,
-            'total_pages': (total_products + items_per_page - 1) // items_per_page,
-            'current_page_products': page
-        }
+                return {
+                    'products': searhedProducts,
+                    'current_page_products': 1,
+                    'total_pages': 1
+                }
 
+            except Exception as e:
+                log(e)
+                return {
+                    'products': [],
+                    'total_pages': 0,
+                    'current_page_products': 1
+                }
+        else:
+            try:
+                sort_by_stock = request.GET.get('sort_by_stock')
+
+                page = int(request.GET.get('p_page', 1))
+                items_per_page = 12
+                start_idx = (page - 1) * items_per_page
+                end_idx = start_idx + items_per_page
+
+                products = []
+
+                total_products = models.Product.objects.count()
+
+                if sort_by_stock and sort_by_stock != '':
+                    products = models.Product.objects.all().order_by(
+                        'stock_quantity')[start_idx:end_idx]
+                else:
+                    products = models.Product.objects.all()[start_idx:end_idx]
+
+                product_data = [{
+                    'index': start_idx + idx + 1,
+                    'id': p.pk,
+                    'name': p.product_name,
+                    'price': p.price,
+                    'quantity': p.stock_quantity,
+                    'quality': p.quality,
+                    'category': p.categorie_id.categorie_name,
+                } for idx, p in enumerate(products)]
+
+                return {
+                    'products': product_data,
+                    'total_pages': (total_products + items_per_page - 1) // items_per_page,
+                    'current_page_products': page
+                }
+
+            except Exception as e:
+                return {
+                    'products': [],
+                    'total_pages': 0,
+                    'current_page_products': page
+                }
     except Exception as e:
         return {
             'products': [],
@@ -354,30 +401,204 @@ def get_all_products(request):
         }
 
 
+def getTotalProdCatCount(request):
+    total_products = models.Product.objects.count()
+    total_categories = models.Categories.objects.count()
+    return {'total_p': total_products, 'total_c': total_categories}
+
+
 def get_all_Categories(request):
     try:
-        page = int(request.GET.get('c_page', 1))
-        items_per_page = 13
-        start_idx = (page - 1) * items_per_page
-        end_idx = start_idx + items_per_page
+        current_seached_categorie = request.GET.get('cg_search')
 
-        categories = models.Categories.objects.all()[start_idx:end_idx]
-        total_categories = models.Categories.objects.count()
+        if current_seached_categorie and current_seached_categorie != '':
 
-        category_data = [{
-            'index': start_idx + idx + 1,
-            'id': c.id,
-            'name': c.categorie_name
-        } for idx, c in enumerate(categories)]
+            try:
+                categories = models.Categories.objects.filter(
+                    categorie_name__istartswith=current_seached_categorie)[:12]
 
-        return {
-            'categories': category_data,
-            'total_pages': (total_categories + items_per_page - 1) // items_per_page,
-            'current_page_categories': page
-        }
-    except Exception as e:
+                category_data = [{
+                    'index': idx + 1,
+                    'id': c.pk,
+                    'name': c.categorie_name
+                } for idx, c in enumerate(categories)]
+
+                return {
+                    'categories': category_data,
+                    'total_pages': 1,
+                    'current_page_categories': 1
+                }
+
+            except Exception as e:
+                log(e)
+                return {
+                    'categories': [],
+                    'total_pages': 0,
+                    'current_page_categories': page
+                }
+        else:
+            try:
+                page = int(request.GET.get('c_page', 1))
+                items_per_page = 13
+                start_idx = (page - 1) * items_per_page
+                end_idx = start_idx + items_per_page
+
+                categories = models.Categories.objects.all()[
+                    start_idx:end_idx]
+                total_categories = models.Categories.objects.count()
+
+                category_data = [{
+                    'index': start_idx + idx + 1,
+                    'id': c.pk,
+                    'name': c.categorie_name
+                } for idx, c in enumerate(categories)]
+
+                return {
+                    'categories': category_data,
+                    'total_pages': (total_categories + items_per_page - 1) // items_per_page,
+                    'current_page_categories': page
+                }
+            except Exception as e:
+                return {
+                    'categories': [],
+                    'total_pages': 0,
+                    'current_page_categories': page
+                }
+    except Exception as es:
         return {
             'categories': [],
             'total_pages': 0,
             'current_page_categories': page
         }
+
+
+@login_required
+def delete_product(request):
+    log('deleting product')
+    try:
+        product_id = request.POST.get('product_id')
+        log(product_id)
+        if product_id:
+            product = models.Product.objects.filter(pk=product_id).first()
+            if product:
+                product.delete()
+                return JsonResponse({'status': 'success', 'message': 'Product deleted successfully'})
+            return JsonResponse({'status': 'error', 'message': 'Product not found'})
+        return JsonResponse({'status': 'error', 'message': 'No product ID provided'})
+    except Exception as e:
+        if str(e).__contains__('where clause'):
+            return JsonResponse({'status': 'error', 'message': 'Cant be deleted already used for some customers'})
+        else:
+            return JsonResponse({'status': 'error', 'message': str(e)})
+
+
+@login_required
+def update_product(request):
+    log(request.POST)
+    try:
+        product_id = request.POST.get('product_id')
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        quantity = request.POST.get('quantity')
+
+        if product_id:
+            product = models.Product.objects.filter(pk=product_id).first()
+            if product:
+                if name:
+                    product.product_name = name
+                if price:
+                    product.price = price
+                if quantity:
+                    product.stock_quantity = quantity
+                product.save()
+                return JsonResponse({'status': 'success', 'message': 'Product updated successfully'})
+            return JsonResponse({'status': 'error', 'message': 'Product not found'})
+        return JsonResponse({'status': 'error', 'message': 'No product ID provided'})
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'message': str(e)})
+
+
+def get_user_loan_data(request):
+    r_user = request.POST.get('user')
+    r_phone = request.POST.get('phone')
+    user = str(r_user).strip()
+    phone = str(r_phone).strip()
+    log(f'user: {user}')
+    log(f'number: {phone}')
+    try:
+        today = datetime.datetime.now()
+        start_date = datetime.datetime(today.year, today.month, 1)
+        end_date = (start_date.replace(month=start_date.month +
+                    1, day=1) - datetime.timedelta(days=1))
+
+        user_obj = User.objects.filter(username=user).first()
+        customer = models.Customer.objects.filter(user_id=user_obj).first()
+        log('fun initialized')
+
+        if customer:
+            month_sales = models.Sales.objects.filter(
+                user_id=customer,
+                date_time__range=(start_date, end_date)
+            ).order_by('-date_time')
+
+            sales_data = [{
+                'id': sale.pk,
+                'total_amount': sale.total_amount,
+                'date': sale.date_time.strftime('%Y-%m-%d %H:%M:%S'),
+                'items': sale.items
+            } for sale in month_sales]
+
+            total_amount = sum(sale.total_amount for sale in month_sales)
+            log(sales_data)
+            return JsonResponse({
+                'status': 'success',
+                'sales': sales_data,
+                'total_sales': total_amount,
+                'total_orders': len(month_sales)
+            })
+        log('sucess')
+        return JsonResponse({'status': 'error', 'message': 'Customer not found'})
+    except Exception as e:
+        log(f'error {e}')
+        return JsonResponse({'status': 'error', 'message': str(e)})
+
+
+def add_user(request):
+    log(request)
+    try:
+        username = request.POST.get('name')
+        phone = request.POST.get('phone')
+        adress = request.POST.get('address')
+
+        log(username)
+        log(phone)
+        log(adress)
+
+        if username and phone:
+
+            username = str(username).strip().lower()
+            phone = str(phone).strip()
+            adress = str(adress).strip()
+
+            # Check if user already exists
+            if User.objects.filter(username=username).exists():
+                return JsonResponse({'status': 'error', 'message': 'Username already exists'})
+            log('creating user')
+            # Create Django User
+            user = User.objects.create_user(username=username)
+            user.save()
+
+            # Create Customer
+            customer = models.Customer.objects.create(
+                user_id=user,
+                customer_name=username,
+                phone_number=phone
+            )
+            customer.save()
+            log('sucess')
+            return JsonResponse({'status': 'success', 'message': 'User created successfully'})
+        log('error ')
+        return JsonResponse({'status': 'error', 'message': 'Username and phone required'})
+    except Exception as e:
+        log('error :'+e)
+        return JsonResponse({'status': 'error', 'message': str(e)})

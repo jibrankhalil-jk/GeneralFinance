@@ -1,6 +1,19 @@
 {% extends 'home/components/dashboard_base.html' %} {% block title %}Khata - Genfin{% endblock %}
 {%block body %}
 
+<style>
+  .item-hover-effect:hover {
+    color: #3e3c50;
+    background-color: #feebc1;
+    border: solid 3px #3e3c50;
+  }
+  .quantitybutton {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+  }
+</style>
+
 <div class="row-1 m-4">
   <h2 class="text-left text-white m-auto">Khata</h2>
 </div>
@@ -8,21 +21,19 @@
 <div class="row m-4 justify-content-between">
   <div class="col-5">
     <div class="input-group">
-      <span class="input-group-text" id="basic-addon1">
-        <i class="bi bi-search"></i>
-      </span>
       <input
         type="text"
-        class="form-control"
-        placeholder="Search for User"
-        aria-label="Search"
-        aria-describedby="basic-addon1"
-        id="userSearchInput"
-        onkeyup="filterUsers()"
+        id="name"
+        placeholder="Type a username"
+        class="mb-3 px-4 py-2 rounded-3 border border-0"
+        maxlength="20"
+        autocomplete="off"
       />
-      <ul class="dropdown-menu mt-5" id="userDropdown">
-        <!-- Dynamic user list will be appended here -->
-      </ul>
+      <ul
+        class="list-group position-absolute bg-white shadow-lg mt-5"
+        id="userList"
+        style="z-index: 1000; width: 40vh"
+      ></ul>
     </div>
   </div>
 
@@ -56,13 +67,67 @@
           </div>
           <div class="mb-3">
             <label for="userNumber" class="form-label">Phone Number</label>
-            <input type="text" class="form-control" id="userNumber" name="number" required />
+            <input
+              type="tel"
+              class="form-control"
+              id="userNumber"
+              name="number"
+              pattern="03[0-9]{9}"
+              maxlength="11"
+              placeholder="03XXXXXXXXX"
+              title="Please enter a valid 11-digit number starting with 03"
+              required
+            />
           </div>
           <div class="mb-3">
             <label for="userAddress" class="form-label">Address</label>
             <input type="text" class="form-control" id="userAddress" name="address" />
           </div>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary" id="addUserSubmit">Save</button>
+          <script>
+            $("#addUserForm").on("submit", function (e) {
+              dd = {};
+              try {
+                dd = {
+                  name: $("#userName").val(),
+                  phone: $("#userNumber").val(),
+                  address: $("#userAddress").val(),
+                  csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+                };
+              } catch (e) {}
+              console.log(dd);
+              e.preventDefault();
+              $.ajax({
+                url: "{% url 'add_user' %}",
+                method: "POST",
+                data: dd,
+                success: function (response) {
+                  if (response.status === "success") {
+                    Swal.fire({
+                      icon: "success",
+                      title: "Success",
+                      text: "User added successfully!",
+                    });
+                    $("#addUserModal").modal("hide");
+                    $("#addUserForm")[0].reset();
+                  } else {
+                    Swal.fire({
+                      icon: "error",
+                      title: "Error",
+                      text: response.message || "Failed to add user",
+                    });
+                  }
+                },
+                error: function () {
+                  Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "Failed to add user",
+                  });
+                },
+              });
+            });
+          </script>
         </form>
       </div>
     </div>
@@ -76,8 +141,8 @@
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Item Name</th>
-          <th scope="col">Price</th>
+          <th scope="col">Total Price</th>
+          <th scope="col">Date</th>
           <th scope="col">Quantity</th>
         </tr>
       </thead>
@@ -96,7 +161,7 @@
             <th scope="col">User Info</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="currentuserInfo">
           <!-- Data will be dynamically inserted here -->
         </tbody>
       </table>
@@ -119,119 +184,132 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   $(document).ready(function () {
-    // _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+    current_selected_user = [];
+    // show user on type
+    $("#name").on("input", function () {
+      var userList = $("#userList"); // serched user name list
+      var search_name = $(this).val().toLowerCase(); // search name
+      userList.empty();
 
-    function getCookie(name) {
-      let cookieValue = null;
-      if (document.cookie && document.cookie !== "") {
-        const cookies = document.cookie.split(";");
-        for (let i = 0; i < cookies.length; i++) {
-          const cookie = cookies[i].trim();
-          if (cookie.substring(0, name.length + 1) === name + "=") {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
-          }
-        }
+      if (search_name.length > 0) {
+        $.ajax({
+          url: "{% url 'get_user' %}",
+          data: { username: search_name },
+          success: function (response) {
+            if (response.data && response.data.length > 0) {
+              response.data.forEach(function (user) {
+                userList.append(
+                  '<div class="list-group-item item-hover-effect" > <li class="name">' +
+                    user[0] +
+                    '  </li> <li class="number"> \t' +
+                    user[1] +
+                    "</li> </div>"
+                );
+              });
+            } else {
+              userList.empty();
+            }
+          },
+          error: function (xhr, status, error) {
+            console.log("Error: " + error);
+          },
+        });
       }
-      return cookieValue;
-    }
+    });
 
-    const csrftoken = getCookie("csrftoken");
+    // selectng a user
+    $("#userList").on("click", ".list-group-item", function () {
+      current_selected_user[0] = $(this).children(".name").text();
+      current_selected_user[1] = $(this).children(".number").text().trimLeft();
 
-    $("#addUserForm").on("submit", function (event) {
-      event.preventDefault();
-      const formData = $(this).serialize();
+      $("#name").val(""); // clear the input field
+      $("#userList").empty(); // clear the list
+
+      console.log($(this).text());
+
+      var userinfos = $(".currentuserInfo");
+
+      userinfos.empty(); // clear the list
+      userinfos.append(`
+            <tr>
+              <td>
+            <div class="d-flex flex-column">
+              <div class="mb-2">
+                <small class="text-muted">Name</small>
+                <div class="fw-bold">${current_selected_user[0]}</div>
+              </div>
+              <div>
+                <small class="text-muted">Phone</small>
+                <div class="fw-bold">${current_selected_user[1]}</div>
+              </div>
+            </div>
+              </td>
+            </tr>
+          `);
+
+      // Get user loan data
       $.ajax({
-        url: '{% url "add_customer" %}',
-        type: "POST",
-        data: formData,
-        beforeSend: function (xhr, settings) {
-          xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        url: "{% url 'get_user_loan_data' %}",
+        method: "POST",
+        data: {
+          phone: current_selected_user[1],
+          user: current_selected_user[0],
+          csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
         },
         success: function (response) {
-          if (response.success) {
-            const user = response.user;
-            $("#userDropdown").append(
-              `<li class="dropdown-item" onclick="fetchUserData(${user.id})">${user.name}</li>`
-            );
-            $("#addUserModal").modal("hide");
-            $("#addUserForm")[0].reset();
-            alert("User added successfully!");
+          if (response.empty) {
+            console.log("No data received or invalid data format");
           } else {
-            alert("Failed to add user ");
+            console.log("Data received ");
+            const data = response;
+
+            if (data.status == "success") {
+              console.log("got data");
+              const tbody = $("#khataTable tbody");
+              tbody.empty();
+              console.log(data.sales);
+              data.sales.forEach((item, index) => {
+                tbody.append(`
+                  <tr id={{item.id}}>
+                    <td>${index + 1}</td>
+                    <td>Rs.${item.total_amount}</td>
+                    <td>${item.date}</td>
+                    <td> ${Object.values(item.items).length} 
+                     [${Object.values(item.items).reduce(
+                       (sum, item) => sum + parseInt(item.quantity),
+                       0
+                     )}]
+                  </td>
+                  </tr>
+                
+                `);
+              });
+
+              // Add click handler for table rows
+                tbody.on('click', 'tr', function() {
+                const rowId = $(this).attr('id');
+                // First, fetch the items for this sale
+                 
+                });
+
+            } else {
+              console.log("No user found");
+              Swal.fire({
+                icon: "error",
+                title: "User Not Found",
+                text: "No loan data found for this user",
+              });
+            }
           }
         },
-        error: function (error) {
-          console.error("Error:", error);
-          alert("Failed to add user.", error);
+        error: function (xhr, status, error) {
+          console.log("Error fetching loan data:", error);
         },
       });
     });
-
-    window.filterUsers = function () {
-      const input = $("#userSearchInput").val().toLowerCase();
-      const dropdown = $("#userDropdown");
-      dropdown.empty();
-
-      if (input) {
-        $.ajax({
-          url: '{% url "get_customer" %}',
-          type: "GET",
-          data: { username: input },
-          success: function (response) {
-            if (response.success) {
-              const users = response.data;
-              users.forEach((user) => {
-                dropdown.append(
-                  `<li class="dropdown-item" onclick="fetchUserData(${user.id})">${user.name}</li>`
-                );
-              });
-              dropdown.addClass("show");
-            } else {
-              dropdown.removeClass("show");
-            }
-          },
-          error: function (error) {
-            console.error("Error:", error);
-            dropdown.removeClass("show");
-          },
-        });
-      } else {
-        dropdown.removeClass("show");
-      }
-    };
-
-    window.fetchUserData = function (userId) {
-      $.ajax({
-        url: '{% url "get_customer" %}',
-        type: "GET",
-        data: { user_id: userId },
-        success: function (response) {
-          if (response.success) {
-            const data = response.data;
-            const dropdown = $("#userDropdown");
-            const input_field = $("#userSearchInput");
-            input_field.val("");
-            dropdown.empty();
-            dropdown.removeClass("show");
-            const userInfoTable = $("#userInfoTable tbody");
-            userInfoTable.html(`
-              <tr><td>Name: ${data.name}</td></tr>
-              <tr><td>Address: ${data.address}</td></tr>
-              <tr><td>Phone: ${data.phone}</td></tr>
-            `);
-          } else {
-            alert("Failed to fetch user data.");
-          }
-        },
-        error: function (error) {
-          console.error("Error:", error);
-          alert("Failed to fetch user data.");
-        },
-      });
-    };
   });
 </script>
 {% endblock %}

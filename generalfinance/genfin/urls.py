@@ -34,10 +34,13 @@ urlpatterns = [
 
     path('check_db_status/', apis.check_db_status, name='check_db_status'),
     path('user/', views.createUser, name='user'),
+    path('delete-product/', apis.delete_product, name='delete-product'),
+    path('update-product/', apis.update_product, name='update-product'),
 
 
 
-    # path('get-all-products/', apis.get_user, name='get_user'),
+    path('get_user_loan_data/', apis.get_user_loan_data, name='get_user_loan_data'),
+    path('add_user/', apis.add_user, name='add_user'),
 
 
 ]
